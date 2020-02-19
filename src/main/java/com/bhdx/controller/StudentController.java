@@ -19,6 +19,7 @@ public class StudentController {
 
     @RequestMapping(value = "/student", method = RequestMethod.GET)
     public String showStudent(Model model) {
+        System.out.println("hahaS");
         List<Student> studentList = studentService.findStudent();
         model.addAttribute("student", studentList);
         //返回视图
