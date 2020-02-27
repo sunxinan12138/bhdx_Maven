@@ -11,7 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-
 <a href="/student">hellow!</a>
 </body>
 </html>

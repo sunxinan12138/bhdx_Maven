@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface StudentMapper {
     public List<Student> findAll();
+    public List<Student> selectInfo(String id);
 }

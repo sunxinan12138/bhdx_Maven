@@ -6,4 +6,7 @@
     <select id="findAll" resultType="Student">
     SELECT * FROM student
   </select>
+    <select id="selectInfo" parameterType="String" resultType="Student" >
+    SELECT * FROM student WHERE id=#{id}
+  </select>
 </mapper>
