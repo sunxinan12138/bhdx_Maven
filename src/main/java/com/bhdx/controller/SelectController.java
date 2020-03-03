@@ -9,14 +9,19 @@ import com.google.gson.Gson;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 级联查询
@@ -209,17 +214,6 @@ public class SelectController {
         }
         System.out.println(jfLIst);
         new AjaxTool(jfLIst, response);
-    }
-
-    @RequestMapping("/doaddZs")
-    public void doaddZs(HttpServletRequest request, HttpServletResponse response) {
-        Object obj0 = request.getParameter("addZs");
-        Object obj1 = request.getParameter("addMark");
-        Object objd = request.getParameter("adata");
-        System.out.println(obj0 + "--" + obj1 + "--" + objd);
-        List jfLIst = new ArrayList<>();
-        new AjaxTool(jfLIst, response);
-
     }
 }
 
