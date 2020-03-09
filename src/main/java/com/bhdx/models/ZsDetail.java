@@ -1,5 +1,7 @@
 package com.bhdx.models;
 
+import java.util.Arrays;
+
 /**
  * 添加证书审核类
  */
@@ -11,7 +13,9 @@ public class ZsDetail {
     private String detail;//细节
     private String Level;//等级
     private double mark;//分数
-    //图片
+    private String imageName;//图片
+    private byte[] img;	//字节数组
+
 
     public int getId() {
         return id;
@@ -69,6 +73,22 @@ public class ZsDetail {
         this.proclass = proclass;
     }
 
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
+    public byte[] getImg() {
+        return img;
+    }
+
+    public void setImg(byte[] img) {
+        this.img = img;
+    }
+
     @Override
     public String toString() {
         return "ZsDetail{" +
@@ -79,6 +99,8 @@ public class ZsDetail {
                 ", detail='" + detail + '\'' +
                 ", Level='" + Level + '\'' +
                 ", mark=" + mark +
+                ", imageName='" + imageName + '\'' +
+                ", img=" + Arrays.toString(img) +
                 '}';
     }
 }

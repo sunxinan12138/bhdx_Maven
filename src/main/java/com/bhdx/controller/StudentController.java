@@ -42,7 +42,7 @@ public class StudentController {
     @RequestMapping("/doSelectStu")
     @ResponseBody
     public void doSelectStu(Student s, HttpServletRequest request, HttpServletResponse response) {
-        /* System.out.println("ajax!");*/
+        System.out.println("ajax!");
         boolean log = false;
         boolean pswvoolean = false;
         Object objid = request.getParameter("stuid");
