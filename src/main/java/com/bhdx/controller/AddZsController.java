@@ -19,7 +19,7 @@ public class AddZsController {
     @Autowired
     private AddZsService addZsService;
 
-    //综测
+    //综测jiafen
     @RequestMapping("/doaddZC")
     @ResponseBody
     public void doaddZs(HttpServletRequest request, HttpServletResponse response, ZCDetail zcDetail, @RequestParam("file") MultipartFile file) {
