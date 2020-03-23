@@ -17,7 +17,7 @@
 <body>
 <div class="container">
     <section id="content">
-        <form action="dologin">
+        <form action="dologin" method="post">
             <h1>登录</h1>
             <div><input type="text" placeholder="账号" id="username" name="ID" /></div>
             <div><input type="password" placeholder="密码"  id="password" name="password" /></div>

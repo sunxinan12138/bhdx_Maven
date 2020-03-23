@@ -3,13 +3,25 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bhdx.DAO.AdminMapper">
+    <resultMap id="Student_CXDetail" type="com.bhdx.models.Student">
+        <id column="student_ID" property="id" />
+        <result column="student_name" property="name"/>
+        <collection property="cxDetailList" ofType="com.bhdx.models.CXDetail">
+            <id column="" property=""/>
+        </collection>
+    </resultMap>
 
     <select id="Select_Admin" resultType="com.bhdx.models.Admin">
         SELECT * from Admin
     </select>
 
-    <select id="SelectZsDetail" resultType="com.bhdx.models.ZsDetail">
-        SELECT * from zsdetail
+    <select id="SelectCXDetail" resultMap="Student_CXDetail">
+--         SELECT * from zsdetail where classID = #{classID}
+        SELECT s.ID student_ID,s.name student_name,
+        z.zsName zs_name,z.detail zs_detail,z.mark zs_mark,
+        z.img zs_img,z.time zs_time,z.remark zs_mark,
+        z.userMark zs_userMark,z.shCondition zs_shCondition
+        FROM student s,cxDetail z WHERE s.classID = #{classID}AND s.ID = z.studentId
     </select>
 
 </mapper>

@@ -1,7 +1,8 @@
 package com.bhdx.controller;
 
 import com.bhdx.models.Admin;
-import com.bhdx.models.ZsDetail;
+import com.bhdx.models.CXDetail;
+import com.bhdx.tools.StringSplittingTool;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,7 @@ public class AdminController {
     ModelAndView mav = null;
     @Autowired
     private SqlSessionTemplate template;
-    @RequestMapping("doSelectAdmin")
+    @RequestMapping("doSelectAdmin")//测试
     public void  SelectAdmin(){
         List<Admin> lAdmin = template.selectList("com.bhdx.DAO.AdminMapper.Select_Admin");
         for ( Admin admin : lAdmin ){
@@ -25,7 +26,7 @@ public class AdminController {
         }
     }
 
-    @RequestMapping("dologin")//管理员登录
+    @RequestMapping("dologin")//管理员登录（待优化）
     public ModelAndView selectUser(HttpServletRequest request, HttpSession session)
     {
         ModelAndView andView = new ModelAndView();
@@ -36,12 +37,15 @@ public class AdminController {
         for(int i=0;i<list.size();++i){
             Admin temp = list.get(i);
             if(temp.getID()!=null||temp.getPassword()!=null){
-                if(temp.getID().equals(ID)&&temp.getPassword().equals(Psd)){
-                    List <ZsDetail> zsDetails = template.selectList("com.bhdx.DAO.AdminMapper.SelectZsDetail");
-                    andView.addObject("zsDetails",zsDetails);
-                    HttpSession sessionl = request.getSession();
-                    session.setAttribute("UserID",temp.getID());//把登录用户存储到session里
-                    System.out.println( session.getAttribute("UserID"));
+                if(temp.getID().equals(ID)&&temp.getPassword().equals(Psd)){//登陆成功
+//                    HttpSession sessionl = request.getSession();
+//                    session.setAttribute("UserName",temp.getName());//把登录用户存储到session里
+                    StringSplittingTool classID = new StringSplittingTool();
+                    //拆分出专业班级代号，传到数据库进行查询
+                    List <CXDetail> cxDetails = template.selectList("com.bhdx.DAO.AdminMapper.SelectCXDetail",classID.GetSubjectID(temp.getID()));
+                    andView.addObject("cxDetails",cxDetails);//把查询出来的放到zsdetail里传到前端
+                    andView.addObject("UserName",temp.getName());
+//                    System.out.println( session.getAttribute("UserName"));
                     //跳回主页面
                     andView.setViewName("check");
                     flag=true;

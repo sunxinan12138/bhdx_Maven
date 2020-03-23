@@ -7,14 +7,24 @@ public class Student {
     private String id;//ID
     private String psw;//密码
     private String name;//名字
-    private List<ZsDetail> zsDetails;
+    private List<CXDetail> cxDetailList;
+    private  List<ZCDetail> zcDetailList;
 
-    public List<ZsDetail> getZsDetails() {
-        return zsDetails;
+
+    public List<CXDetail> getCxDetailList() {
+        return cxDetailList;
     }
 
-    public void setZsDetails(List<ZsDetail> zsDetails) {
-        this.zsDetails = zsDetails;
+    public void setCxDetailList(List<CXDetail> cxDetailList) {
+        this.cxDetailList = cxDetailList;
+    }
+
+    public List<ZCDetail> getZcDetailList() {
+        return zcDetailList;
+    }
+
+    public void setZcDetailList(List<ZCDetail> zcDetailList) {
+        this.zcDetailList = zcDetailList;
     }
 
     public String getId() {
@@ -47,7 +57,8 @@ public class Student {
                 "id='" + id + '\'' +
                 ", psw='" + psw + '\'' +
                 ", name='" + name + '\'' +
-                ", zsDetails=" + zsDetails +
+                ", cxDetailList=" + cxDetailList +
+                ", zcDetailList=" + zcDetailList +
                 '}';
     }
 }
