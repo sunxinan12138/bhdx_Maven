@@ -3,7 +3,6 @@ package com.bhdx.controller;
 import com.bhdx.models.DetailMark;
 import com.bhdx.models.JIngFei_mark;
 import com.bhdx.models.JingFei;
-import com.bhdx.models.Student;
 import com.bhdx.service.SelectService;
 import com.bhdx.tools.AjaxTool;
 import com.google.gson.Gson;
@@ -17,12 +16,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -32,7 +29,6 @@ import java.util.Map;
 
 @Controller
 public class SelectController {
-    private static HashMap mymap = new HashMap();
     ModelAndView mav = null;
     @Autowired
     private SelectService selectService;
@@ -218,20 +214,6 @@ public class SelectController {
         }
         System.out.println(jfLIst);
         new AjaxTool(jfLIst, response);
-    }
-
-    @RequestMapping("/dostuidSession")
-    public void stuidSession(HttpServletRequest request, HttpSession httpSession, HttpServletResponse response) {
-        String stui = null;
-        String sessionId = request.getSession().getId();
-        // System.out.println(sessionId);
-        List<Student> slist = (List) httpSession.getAttribute("stuid");
-        System.out.println(slist.size());
-        if (slist.size() != 0) {
-            stui = slist.get(0).getId();
-        }
-        System.out.println(stui);
-        new AjaxTool(stui, response);
     }
 }
 

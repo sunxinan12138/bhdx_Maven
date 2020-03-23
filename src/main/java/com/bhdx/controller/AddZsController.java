@@ -1,17 +1,26 @@
 package com.bhdx.controller;
 
-import com.bhdx.models.CXDetail;
-import com.bhdx.models.ZCDetail;
+import com.bhdx.models.ZsDetail;
 import com.bhdx.service.AddZsService;
 import com.bhdx.tools.AjaxTool;
+import org.apache.commons.fileupload.FileItemIterator;
+import org.apache.commons.fileupload.FileItemStream;
+import org.apache.commons.fileupload.disk.DiskFileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.util.*;
 
 @Controller
 public class AddZsController {
@@ -19,10 +28,9 @@ public class AddZsController {
     @Autowired
     private AddZsService addZsService;
 
-    //综测jiafen
-    @RequestMapping("/doaddZC")
+    @RequestMapping("/doaddZs")
     @ResponseBody
-    public void doaddZs(HttpServletRequest request, HttpServletResponse response, ZCDetail zcDetail, @RequestParam("file") MultipartFile file) {
+    public void doaddZs(HttpServletRequest request, HttpServletResponse response, ZsDetail zsDetail, @RequestParam("file") MultipartFile file) {
         boolean btn = false;
         System.out.println("添加");
         try {
@@ -30,36 +38,25 @@ public class AddZsController {
             request.setCharacterEncoding("utf-8");
             String originalName = file.getOriginalFilename();
             originalName = originalName.substring(originalName.length() - 4);
-            String imgName = "imgZC" + originalName;
-            /**
-             * detail: "国家级"
-             * mark: "12"
-             * remark: "请二位发我QQ"
-             * stuid: "220123"
-             * time: "2019-2020"
-             * zsname: "1去去去"
-             * zk：折扣
-             */
+            String imgName = "img" + originalName;
+
+            String multia = request.getParameter("multia");
+            String multib = request.getParameter("multib");
             String detail = request.getParameter("detail");
-            String remark = request.getParameter("remark");
+            String level = request.getParameter("level");
             String mark = request.getParameter("mark");
-            String stuid = request.getParameter("stuid");
-            String zsname = request.getParameter("zsname");
-            String zk = request.getParameter("zk");
-            String time = request.getParameter("time");
             double markdou = Double.parseDouble(mark);
             //System.out.println(markdou);
-            zcDetail.setStuid(stuid);
-            zcDetail.setLevel(detail);
-            zcDetail.setRemark(remark);
-            zcDetail.setTime(time);
-            zcDetail.setZsName(zsname);
-            zcDetail.setMark(markdou);
-            zcDetail.setZk(zk);
-            zcDetail.setImgName(imgName);
-            zcDetail.setImg(file.getBytes());
-            System.out.println(zcDetail);
-            // btn = addZsService.sout(zsDetail);
+            zsDetail.setStudentId("201916050112");
+            zsDetail.setDetail(detail);
+            zsDetail.setProclass(multib);
+            zsDetail.setLevel(level);
+            zsDetail.setMark(markdou);
+            zsDetail.setProject(multia);
+            zsDetail.setImageName(imgName);
+            zsDetail.setImg(file.getBytes());
+            System.out.println(zsDetail);
+            //btn = addZsService.sout(zsDetail);
             System.out.println(btn);
         } catch (Exception e) {
             e.printStackTrace();
@@ -68,58 +65,6 @@ public class AddZsController {
         }
     }
 
-    //  创新
-    @RequestMapping("/doaddCX")
-    @ResponseBody
-    public void doaddCx(HttpServletRequest request, HttpServletResponse response, CXDetail cxDetail, @RequestParam("file") MultipartFile file) {
-        boolean btn = false;
 
-        try {
-            response.setCharacterEncoding("utf-8");
-            request.setCharacterEncoding("utf-8");
-            String iname = file.getOriginalFilename();
-            iname = iname.substring(iname.length() - 4);
-            String imgName = "imgCX" + iname;
-            cxDetail.setImgName(imgName);
-            cxDetail.setImg(file.getBytes());
-            System.out.println(cxDetail);
-            // btn = addZsService.sout(zsDetail);
-            System.out.println(btn);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            new AjaxTool(btn, response);
-        }
-    }
-
-    @RequestMapping("/doaddZAC")
-    @ResponseBody
-    public void doaddZAC(HttpServletRequest request, HttpServletResponse response, ZCDetail zcDetail, CXDetail cxDetail, @RequestParam("file") MultipartFile file) {
-        boolean btn = false;
-        try {
-            response.setCharacterEncoding("utf-8");
-            request.setCharacterEncoding("utf-8");
-            String zsname = request.getParameter("zsname");
-            String iname = file.getOriginalFilename();
-            iname = iname.substring(iname.length() - 4);
-            String imgCXName = "imgCX" + iname;
-            String imgZCName = "imgZC" + iname;
-            zcDetail.setZsName(zsname);
-            zcDetail.setImgName(imgZCName);
-            zcDetail.setImg(file.getBytes());
-            cxDetail.setImgName(imgCXName);
-            cxDetail.setImg(file.getBytes());
-            System.out.println(cxDetail);
-            System.out.println(zcDetail);
-            //综测添加
-            // btn = addZsService.sout(zsDetail);
-            //创新添加
-            // btn = addZsService.sout(zsDetail);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            new AjaxTool(btn, response);
-        }
-    }
 }
 
