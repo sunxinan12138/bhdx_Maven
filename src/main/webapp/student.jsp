@@ -20,5 +20,6 @@
     ${student.name}<br>
 </c:forEach>
 test
+<%=session.getAttribute("stuid")%>
 </body>
 </html>
