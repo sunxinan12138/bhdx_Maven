@@ -1,8 +1,8 @@
 package com.bhdx.service;
 
 
-import com.bhdx.models.ZsDetail;
+import com.bhdx.models.ZCDetail;
 
 public interface AddZsService {
-    public boolean sout(ZsDetail zsDetail);
+    public boolean sout(ZCDetail zcDetail);
 }

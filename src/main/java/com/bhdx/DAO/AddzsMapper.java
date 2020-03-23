@@ -1,7 +1,7 @@
 package com.bhdx.DAO;
 
-import com.bhdx.models.ZsDetail;
+import com.bhdx.models.ZCDetail;
 
 public interface AddzsMapper {
-    void addZs(ZsDetail zsDetail);
+    void addZs(ZCDetail zsDetail);
 }

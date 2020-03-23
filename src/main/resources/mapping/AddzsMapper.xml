@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bhdx.DAO.AddzsMapper">
-    <insert id="addZs" parameterType="com.bhdx.models.ZsDetail">
+    <insert id="addZs" parameterType="com.bhdx.models.ZCDetail">
     insert into zsdetail (id,studentId,project,detail,Level,mark,imageName,img) values  (#{id}, #{studentId}, #{project}, #{detail}, #{Level}, #{mark}, #{imageName}, #{img});
     </insert>
 
