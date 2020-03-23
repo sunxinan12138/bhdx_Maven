@@ -25,4 +25,9 @@ public class StringSplittingTool {
          String New_ID=Subject+ID.substring(2,4)+"级"+ID.substring(9,10)+"班";
          return New_ID;
      }
+
+     public String GetSubjectID (String ID){
+        String SubjectID = ID.substring(2,10);
+        return SubjectID;
+     }
 }
