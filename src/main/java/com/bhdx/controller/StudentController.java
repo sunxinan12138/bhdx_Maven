@@ -3,6 +3,7 @@ package com.bhdx.controller;
 import com.alibaba.druid.support.json.JSONUtils;
 import com.bhdx.models.Student;
 import com.bhdx.service.StudentService;
+import com.bhdx.tools.AjaxTool;
 import com.google.gson.Gson;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +44,7 @@ public class StudentController {
     @RequestMapping("/doSelectStu")
     @ResponseBody
     public void doSelectStu(Student s, HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("ajax!");
+        // System.out.println("ajax!");
         boolean log = false;
         boolean pswvoolean = false;
         Object objid = request.getParameter("stuid");
@@ -57,12 +59,14 @@ public class StudentController {
             response.setHeader("Content-Type", "text/html;charset=utf-8");
             PrintWriter out = response.getWriter();
             if (pswvoolean) {
+                System.out.println("session");
+                // request.getSession().setAttribute("assTel", slist.get(0).getId());
+                request.getSession().setAttribute("stuid", slist);
+                String sessionId = request.getSession().getId() + "--" + slist.get(0).getId();
+                System.out.println(sessionId);
                 Gson g = new Gson();
-                String value = g.toJson(slist);
-                //System.out.println(slist);
-
-               // response.setCharacterEncoding("UTF-8");
-               // System.out.println(value);
+                String value = g.toJson(sessionId);
+                // System.out.println(request.getSession().getAttribute("stuid"));
                 out.print(value);// 返给ajax请求
             } else {
                 out.print(log);
