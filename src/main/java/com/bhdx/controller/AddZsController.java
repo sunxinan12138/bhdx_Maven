@@ -59,7 +59,7 @@ public class AddZsController {
             zcDetail.setImgName(imgName);
             zcDetail.setImg(file.getBytes());
             System.out.println(zcDetail);
-            btn = addZsService.sout(zcDetail);
+            btn = addZsService.zcadd(zcDetail);
             System.out.println(btn);
         } catch (Exception e) {
             e.printStackTrace();
@@ -112,9 +112,9 @@ public class AddZsController {
             System.out.println(cxDetail);
             System.out.println(zcDetail);
             //综测添加
-            // btn = addZsService.sout(zsDetail);
+            btn = addZsService.zcadd(zcDetail);
             //创新添加
-            // btn = addZsService.sout(zsDetail);
+            btn = addZsService.cxadd(cxDetail);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
