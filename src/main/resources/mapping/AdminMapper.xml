@@ -7,7 +7,13 @@
         <id column="student_ID" property="id" />
         <result column="student_name" property="name"/>
         <collection property="cxDetailList" ofType="com.bhdx.models.CXDetail">
-            <id column="" property=""/>
+            <id column="cstuid" property="stuid"/>
+            <result column="clevel" property="level"/>
+            <result column="czsname" property="zsname"/>
+            <result column="cmark" property="mark"/>
+            <result column="cremark" property="remark"/>
+            <result column="cimg" property="img"/>
+            <result column="cshCondition" property="shCondition"/>
         </collection>
     </resultMap>
 
@@ -18,10 +24,9 @@
     <select id="SelectCXDetail" resultMap="Student_CXDetail">
 --         SELECT * from zsdetail where classID = #{classID}
         SELECT s.ID student_ID,s.name student_name,
-        z.zsName zs_name,z.detail zs_detail,z.mark zs_mark,
-        z.img zs_img,z.time zs_time,z.remark zs_mark,
-        z.userMark zs_userMark,z.shCondition zs_shCondition
-        FROM student s,cxDetail z WHERE s.classID = #{classID}AND s.ID = z.studentId
+        c.stuid cstuid,c.level clevel,c.zsname czsname,c.mark cmark,c.remark cremark,
+        c.img cimg,c.shCondition cshCondition
+        FROM student s,cxDetail c WHERE s.classID = #{classID}AND s.ID = c.studentId
     </select>
 
 </mapper>
