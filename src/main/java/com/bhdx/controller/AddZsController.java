@@ -59,7 +59,7 @@ public class AddZsController {
             zcDetail.setImgName(imgName);
             zcDetail.setImg(file.getBytes());
             System.out.println(zcDetail);
-            // btn = addZsService.sout(zsDetail);
+            btn = addZsService.sout(zcDetail);
             System.out.println(btn);
         } catch (Exception e) {
             e.printStackTrace();
