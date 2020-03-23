@@ -26,7 +26,7 @@
         SELECT s.ID student_ID,s.name student_name,
         c.stuid cstuid,c.level clevel,c.zsname czsname,c.mark cmark,c.remark cremark,
         c.img cimg,c.shCondition cshCondition
-        FROM student s,cxDetail c WHERE s.classID = #{classID}AND s.ID = c.studentId
+        FROM student s,cxDetail c WHERE s.classID = #{classID}AND s.ID = c.stuid
     </select>
 
 </mapper>
