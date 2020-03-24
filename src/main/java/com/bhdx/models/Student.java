@@ -7,6 +7,7 @@ public class Student {
     private String id;//ID
     private String psw;//密码
     private String name;//名字
+    private String classID;//班级代号
     private List<CXDetail> cxDetailList;
     private  List<ZCDetail> zcDetailList;
 
@@ -51,12 +52,21 @@ public class Student {
         this.name = name;
     }
 
+    public String getClassID() {
+        return classID;
+    }
+
+    public void setClassID(String classID) {
+        this.classID = classID;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
                 "id='" + id + '\'' +
                 ", psw='" + psw + '\'' +
                 ", name='" + name + '\'' +
+                ", classID='" + classID + '\'' +
                 ", cxDetailList=" + cxDetailList +
                 ", zcDetailList=" + zcDetailList +
                 '}';
