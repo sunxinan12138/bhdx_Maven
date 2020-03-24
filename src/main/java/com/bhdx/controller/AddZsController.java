@@ -83,7 +83,7 @@ public class AddZsController {
             cxDetail.setImgName(imgName);
             cxDetail.setImg(file.getBytes());
             System.out.println(cxDetail);
-            // btn = addZsService.sout(zsDetail);
+            btn = addZsService.cxadd(cxDetail);
             System.out.println(btn);
         } catch (Exception e) {
             e.printStackTrace();
@@ -96,21 +96,34 @@ public class AddZsController {
     @ResponseBody
     public void doaddZAC(HttpServletRequest request, HttpServletResponse response, ZCDetail zcDetail, CXDetail cxDetail, @RequestParam("file") MultipartFile file) {
         boolean btn = false;
+        boolean repet = true;
         try {
             response.setCharacterEncoding("utf-8");
             request.setCharacterEncoding("utf-8");
             String zsname = request.getParameter("zsname");
+            String markzc = request.getParameter("markzc");
+            double markzcd = Double.parseDouble(markzc);
+            String markcx = request.getParameter("markcx");
+            double markcxd = Double.parseDouble(markcx);
             String iname = file.getOriginalFilename();
             iname = iname.substring(iname.length() - 4);
             String imgCXName = "imgCX" + iname;
             String imgZCName = "imgZC" + iname;
             zcDetail.setZsName(zsname);
+            zcDetail.setMark(markzcd);
             zcDetail.setImgName(imgZCName);
             zcDetail.setImg(file.getBytes());
+            cxDetail.setMark(markcxd);
             cxDetail.setImgName(imgCXName);
             cxDetail.setImg(file.getBytes());
             System.out.println(cxDetail);
             System.out.println(zcDetail);
+
+            // 查重
+
+            if(repet){
+                return;
+            }
             //综测添加
             btn = addZsService.zcadd(zcDetail);
             //创新添加
@@ -121,5 +134,6 @@ public class AddZsController {
             new AjaxTool(btn, response);
         }
     }
+    //查重
 }
 

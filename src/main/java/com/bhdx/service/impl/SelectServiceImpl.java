@@ -4,11 +4,16 @@ import com.bhdx.DAO.SelectMapper;
 import com.bhdx.models.DetailMark;
 import com.bhdx.models.JIngFei_mark;
 import com.bhdx.models.JingFei;
+import com.bhdx.models.Student;
 import com.bhdx.service.SelectService;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -140,19 +145,40 @@ public class SelectServiceImpl implements SelectService {
 
     @Override
     public List<JIngFei_mark> findzzMark() {
-        List<JIngFei_mark> zzMList =template.selectList("com.bhdx.DAO.SelectMapper.findzzMark");
+        List<JIngFei_mark> zzMList = template.selectList("com.bhdx.DAO.SelectMapper.findzzMark");
         return zzMList;
     }
 
     @Override
     public List<JIngFei_mark> findhxMark() {
-        List<JIngFei_mark> hxMMList =template.selectList("com.bhdx.DAO.SelectMapper.findhxMark");
+        List<JIngFei_mark> hxMMList = template.selectList("com.bhdx.DAO.SelectMapper.findhxMark");
         return hxMMList;
     }
 
     @Override
     public List<JIngFei_mark> findhszMark() {
-        List<JIngFei_mark> hszMList =template.selectList("com.bhdx.DAO.SelectMapper.findhszMark");
+        List<JIngFei_mark> hszMList = template.selectList("com.bhdx.DAO.SelectMapper.findhszMark");
         return hszMList;
+    }
+
+    @Override
+    public String getHeader(HttpServletRequest request) {
+        String sessionid = null;
+        //自己封装sessionContext
+//        HashMap mymap = new HashMap();
+//        Enumeration<String> headerNames = request.getHeaderNames();
+//        for (Enumeration<String> e = headerNames; e.hasMoreElements(); ) {
+//            String thisName = e.nextElement().toString();
+//            String thisValue = request.getHeader(thisName);
+//            if (thisName.equals("cookie")) {
+//                sessionid = thisValue;
+//            }
+//            // System.out.println("header的key:" + thisName + "--------------header的value:" + thisValue);
+//        }
+//        System.out.println(sessionid);
+//        HttpSession session = (HttpSession) mymap.get(sessionid);
+//        // HttpSession session = MySessionContext.getSession(sessionid);
+//        System.out.println(session.getAttribute("stuid"));
+        return sessionid;
     }
 }

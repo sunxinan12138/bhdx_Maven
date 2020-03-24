@@ -40,7 +40,7 @@ public class StudentController {
         return "student";
     }
 
-    // ajax查询订单
+    // ajax查询
     @RequestMapping("/doSelectStu")
     @ResponseBody
     public void doSelectStu(Student s, HttpServletRequest request, HttpServletResponse response) {
@@ -80,6 +80,17 @@ public class StudentController {
             // TODO: handle exception
         }
 
+    }
+
+    @RequestMapping("/dochangeStu")
+    @ResponseBody
+    public void dochangeStu(Student s, HttpServletRequest request, HttpServletResponse response) {
+        boolean btn = false;
+        String stuid = request.getParameter("stuid");
+        String pawend = request.getParameter("pswend");
+        //更改数据库
+
+        new AjaxTool(btn, response);
     }
 
 }

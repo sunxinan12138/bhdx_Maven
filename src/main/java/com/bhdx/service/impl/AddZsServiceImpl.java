@@ -15,9 +15,9 @@ public class AddZsServiceImpl implements AddZsService {
     @Override
     public boolean zcadd(ZCDetail zcDetail) {
         //添加成功返回true
-        boolean b =false;
-        int a = template.insert("com.bhdx.DAO.AddzsMapper.zcadd",zcDetail);
-        if (a==1){
+        boolean b = false;
+        int a = template.insert("com.bhdx.DAO.AddzsMapper.zcadd", zcDetail);
+        if (a == 1) {
             b = true;
         }
         return b;
@@ -26,11 +26,16 @@ public class AddZsServiceImpl implements AddZsService {
     @Override
     public boolean cxadd(CXDetail cxDetail) {
         //添加成功返回true
-        boolean b =false;
-        int a = template.insert("com.bhdx.DAO.AddzsMapper.cxadd",cxDetail);
-        if (a==1){
+        boolean b = false;
+        int a = template.insert("com.bhdx.DAO.AddzsMapper.cxadd", cxDetail);
+        if (a == 1) {
             b = true;
         }
         return b;
+    }
+
+    @Override
+    public boolean findRepeat() {
+        return false;
     }
 }

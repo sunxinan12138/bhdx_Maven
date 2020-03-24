@@ -5,6 +5,8 @@ import com.bhdx.models.JIngFei_mark;
 import com.bhdx.models.JingFei;
 import org.omg.CORBA.INTERNAL;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public interface SelectService {
@@ -60,4 +62,6 @@ public interface SelectService {
     public List<JIngFei_mark> findhxMark();
 
     public List<JIngFei_mark> findhszMark();
+
+    public String getHeader(HttpServletRequest request);
 }
