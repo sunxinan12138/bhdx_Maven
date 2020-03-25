@@ -237,6 +237,33 @@ public class SelectController {
 
         new AjaxTool("哈哈哈", response);
     }
+
+    //查重
+    @RequestMapping("/selectrepeat")
+    public void selectrepeat(HttpServletRequest request, HttpServletResponse response) {
+        boolean btn = true;
+        String zsname = request.getParameter("zsname");
+        btn = selectService.cchcx(zsname);
+        new AjaxTool(btn, response);
+    }
+    @RequestMapping("/selectzcrepeat")
+    public void selectzcrepeat(HttpServletRequest request, HttpServletResponse response) {
+        boolean btn = true;
+        String zsname = request.getParameter("zsname");
+
+        // 查询证书回显
+        btn = selectService.cchzc(zsname);
+        new AjaxTool(btn, response);
+    }
+    @RequestMapping("/selectallrepeat")
+    public void selectallrepeat(HttpServletRequest request, HttpServletResponse response) {
+        String message = "";
+        String zsname = request.getParameter("zsname");
+
+        // 查询证书回显
+        message = selectService.cchall(zsname);
+        new AjaxTool(message, response);
+    }
 }
 
 

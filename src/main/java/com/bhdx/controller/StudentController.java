@@ -89,7 +89,7 @@ public class StudentController {
         String stuid = request.getParameter("stuid");
         String pawend = request.getParameter("pswend");
         //更改数据库
-
+        System.out.println(stuid + "-" + pawend);
         new AjaxTool(btn, response);
     }
 

@@ -1,10 +1,7 @@
 package com.bhdx.service.impl;
 
 import com.bhdx.DAO.SelectMapper;
-import com.bhdx.models.DetailMark;
-import com.bhdx.models.JIngFei_mark;
-import com.bhdx.models.JingFei;
-import com.bhdx.models.Student;
+import com.bhdx.models.*;
 import com.bhdx.service.SelectService;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -180,5 +178,49 @@ public class SelectServiceImpl implements SelectService {
 //        // HttpSession session = MySessionContext.getSession(sessionid);
 //        System.out.println(session.getAttribute("stuid"));
         return sessionid;
+    }
+
+    @Override
+    public boolean cchcx(String zsname) {
+        boolean btn = true;
+        List list = new ArrayList();
+        if (list.size() != 0) {
+            btn = !btn;
+        }
+        return btn;
+    }
+
+    @Override
+    public boolean cchzc(String zsname) {
+        boolean btn = true;
+        List list = new ArrayList();
+        if (list.size() != 0) {
+            btn = !btn;
+        }
+        return btn;
+    }
+
+    @Override
+    public String cchall(String zsname) {
+        String message = "";
+        boolean btn = true;
+        boolean btn1 = true;
+        boolean btn2 = true;
+        btn1 = cchzc(zsname);
+        btn2 = cchcx(zsname);
+        if (!btn1) {
+            message = "综测证书提交过了只需提交创新证书即可";
+        }
+        if (!btn2) {
+            message = "创新证书提交过了只需提交综测证书即可";
+        }
+        btn = btn1 && btn2;
+        if (btn1 || btn2) {
+            message = "证书重复，请勿重复提交";
+        }
+        if (btn) {
+            message = "";
+        }
+        return message;
     }
 }

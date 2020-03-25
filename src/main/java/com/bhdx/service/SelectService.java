@@ -64,4 +64,10 @@ public interface SelectService {
     public List<JIngFei_mark> findhszMark();
 
     public String getHeader(HttpServletRequest request);
+
+    public boolean cchcx(String zsname);
+
+    public boolean cchzc(String zsname);
+
+    public String  cchall(String zsname);
 }
