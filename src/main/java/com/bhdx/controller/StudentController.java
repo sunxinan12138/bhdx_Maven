@@ -20,7 +20,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class StudentController {
@@ -85,10 +87,13 @@ public class StudentController {
     @RequestMapping("/dochangeStu")
     @ResponseBody
     public void dochangeStu(Student s, HttpServletRequest request, HttpServletResponse response) {
+        Map<String,String> pswmap = new HashMap<>();
         boolean btn = false;
         String stuid = request.getParameter("stuid");
         String pawend = request.getParameter("pswend");
+        pswmap.put(stuid,pawend);
         //更改数据库
+        studentService.changepsw(pswmap);
         System.out.println(stuid + "-" + pawend);
         new AjaxTool(btn, response);
     }
