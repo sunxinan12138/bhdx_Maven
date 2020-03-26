@@ -25,9 +25,12 @@ public class StudentManagementController {
     public void SelectStudentByID(HttpServletRequest request,HttpServletResponse response){
 //        ModelAndView modelAndView = new ModelAndView();
         System.out.println("我进来啦哈哈哈哈");
-        String ID = request.getParameter("studentID");
+        String ID = request.getParameter("hhh");
         System.out.println(ID);
         List<Student> S = template.selectList("com.bhdx.DAO.StudentManagementMapper.SelectStudentByID",ID);
+        for(Student students: S ){
+            System.out.println(students);
+        }
 //        modelAndView.addObject("Student",S);
 //        modelAndView.setViewName("StudentManagementTest");
         AjaxTool ajaxTool = new AjaxTool(S, response);

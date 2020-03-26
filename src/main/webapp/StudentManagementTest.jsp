@@ -10,10 +10,11 @@
 <head>
     <title>Test</title>
 </head>
-<script>
-    $(document).ready(
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
         function validateForm(){
-        alert("shayebushi");
+            var hhh = $("#studentID").val();
+        alert(hhh);
         $.ajax({
             //属性名:属性值
             //请求的路径
@@ -27,7 +28,7 @@
             //传递数据的类型
             dataType:'text',
             //传递的数据
-            // date:$("#studentID").innerText,
+            data:{'hhh':hhh},
             success:function(d){
                 //解析
                 var studentArray = JSON.parse(d);
@@ -43,15 +44,15 @@
                 }
             }
     })
-    })
+    }
 </script>
 <body>
 <div>
     <div>
-        <form action="/doSelectStudentByID" method="post" name="myForm" enctype="application/x-www-form-urlencoded">
+        <%--<form action="/doSelectStudentByID" method="post" name="myForm" enctype="application/x-www-form-urlencoded">--%>
             <input type="text" name="studentID" placeholder="请输入学号" id="studentID" />
             <input type="submit" value="查询" onclick="validateForm()"/>
-        </form>
+        <%--</form>--%>
     </div>
     <div>
         <table class="table table-hover" >
