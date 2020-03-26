@@ -7,7 +7,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <head>
+    <base href="<%=basePath%>">
     <title>tab</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
@@ -18,7 +23,7 @@
 <nav class="navbar navbar-inverse" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" target="_parent" href="http://localhost:9090/managerCX/manager.jsp">创新证书管理系统</a>
+            <a class="navbar-brand" target="_parent" href="managerCX/manager.jsp">创新证书管理系统</a>
         </div>
     </div>
 </nav>

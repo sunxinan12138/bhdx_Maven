@@ -7,11 +7,16 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <head>
+    <base href="<%=basePath%>">
     <title>Title</title>
 </head>
 <frameset cols="25%,*" noresize="noresize" >
-    <frame name="left" src="daohang.jsp">
-    <frame name="right" src="welcome.jsp">
+    <frame name="left" src="managerCX/daohang.jsp">
+    <frame name="right" src="managerCX/welcome.jsp">
 </frameset>
 </html>

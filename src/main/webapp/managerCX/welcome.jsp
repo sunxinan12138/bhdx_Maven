@@ -7,11 +7,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <head>
+    <base href="<%=basePath%>">
     <title>Welcome！！！</title>
-    <strong> Welcome！！！</strong>
 </head>
 <body>
-
+<strong> Welcome！！！</strong>
 </body>
 </html>
