@@ -9,9 +9,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class AdminController {
@@ -38,14 +44,14 @@ public class AdminController {
             Admin temp = list.get(i);
             if(temp.getID()!=null||temp.getPassword()!=null){
                 if(temp.getID().equals(ID)&&temp.getPassword().equals(Psd)){//登陆成功
-//                    HttpSession sessionl = request.getSession();
-//                    session.setAttribute("UserName",temp.getName());//把登录用户存储到session里
+                    HttpSession sessionl = request.getSession();
+                    session.setAttribute("UserName",temp.getName());//把登录用户存储到session里
+                    session.setAttribute("ID",ID);
                     StringSplittingTool classID = new StringSplittingTool();
                     //拆分出专业班级代号，传到数据库进行查询
-                    List <CXDetail> cxDetails = template.selectList("com.bhdx.DAO.AdminMapper.SelectCXDetail",classID.GetSubjectID(temp.getID()));
-                    andView.addObject("cxDetails",cxDetails);//把查询出来的放到zsdetail里传到前端
+//                    List <CXDetail> cxDetails = template.selectList("com.bhdx.DAO.AdminMapper.SelectCXDetail",classID.GetSubjectID(temp.getID()));
+//                    andView.addObject("cxDetails",cxDetails);//把查询出来的放到zsdetail里传到前端
                     andView.addObject("UserName",temp.getName());
-//                    System.out.println( session.getAttribute("UserName"));
                     //跳回主页面
                     andView.setViewName("check");
                     flag=true;
@@ -58,6 +64,25 @@ public class AdminController {
                 andView.setViewName("login");
             }
         }return andView;
+    }
+    //修改密码
+    @RequestMapping("doChangePsw")
+    public void ChangePsw(HttpSession session, HttpServletRequest request, HttpServletResponse response)throws ServletException {
+        String ID = session.getAttribute("ID").toString();
+        String newPassword = request.getParameter("newPassword");
+        try {
+            Map<String,String>  params = new HashMap<String, String>();
+            params.put("ID",ID);
+            params.put("newPassword", newPassword);
+            for(String key:params.keySet()){
+                System.out.println("Key: "+key+" Value: "+params.get(key));
+            }
+            template.update("com.bhdx.DAO.AdminMapper.ChangePsw");
+            request.getRequestDispatcher("login.jsp").forward(request,response);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
 
 

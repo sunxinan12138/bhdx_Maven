@@ -29,4 +29,7 @@
         FROM student s,cxDetail c WHERE s.classID = #{classID}AND s.ID = c.stuid
     </select>
 
+    <update id="ChangePsw" parameterType="java.util.Map">
+      UPDATE Admin SET `Password`=#{newPassword} WHERE `ID`=#{ID};
+    </update>
 </mapper>

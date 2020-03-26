@@ -11,6 +11,21 @@
     <title>Title</title>
 </head>
 <body>
+<script>
+    $(document).ready(
+        function check() {
+        var reg = /^[\w]{6,12}$/
+        if(document.getElementById("newPassword").innerText.match(reg)){
+            alert("The password is valid!");
+        }
+    })
+</script>
 <a href="/student">hellow!</a>
+<div>
+    <form action="/doChangePsw" method="post">
+        请输入要修改的新密码<input type="text" name="newPassword" id="newPassword" onblur="check()"/>
+        <input type="submit" value="提交"/>
+    </form>
+</div>
 </body>
 </html>
