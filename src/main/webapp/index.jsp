@@ -17,6 +17,7 @@
         var reg = /^[\w]{6,12}$/
         if(document.getElementById("newPassword").innerText.match(reg)){
             alert("The password is valid!");
+
         }
     })
 </script>

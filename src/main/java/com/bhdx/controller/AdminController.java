@@ -66,6 +66,7 @@ public class AdminController {
         }return andView;
     }
     //修改密码
+
     @RequestMapping("doChangePsw")
     public void ChangePsw(HttpSession session, HttpServletRequest request, HttpServletResponse response)throws ServletException {
         String ID = session.getAttribute("ID").toString();
