@@ -24,6 +24,7 @@
     <li style="padding: 15px"><a href="managerCX/selectClass.jsp" target="right">按班级查找和导出</a></li>
     <li style="padding: 15px"><a href="#"  target="right">查看所有创新证书</a></li>
     <li style="padding: 15px"><a href="#"  target="right">学生管理</a></li>
+    <li style="padding: 15px"><a href="#"  target="right">班级管理</a></li>
 </ul>
 </body>
 </html>

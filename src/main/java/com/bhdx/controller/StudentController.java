@@ -5,6 +5,7 @@ import com.bhdx.models.Student;
 import com.bhdx.service.StudentService;
 import com.bhdx.tools.AjaxTool;
 import com.google.gson.Gson;
+import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -87,15 +88,29 @@ public class StudentController {
     @RequestMapping("/dochangeStu")
     @ResponseBody
     public void dochangeStu(Student s, HttpServletRequest request, HttpServletResponse response) {
-        Map<String,String> pswmap = new HashMap<>();
+        Map<String, String> pswmap = new HashMap<>();
         boolean btn = false;
         String stuid = request.getParameter("stuid");
         String pawend = request.getParameter("pswend");
-        pswmap.put(stuid,pawend);
+        pswmap.put(stuid, pawend);
         //更改数据库
         studentService.changepsw(pswmap);
         System.out.println(stuid + "-" + pawend);
         new AjaxTool(btn, response);
     }
+
+    @RequestMapping("/doselectall")
+    public void doselectall(HttpServletRequest request, HttpServletResponse response) {
+        String id = request.getParameter("id");
+        System.out.println(id);
+        String classid = "";
+        List<Student> slist = template.selectList("com.bhdx.DAO.StudentMapper.selectInfo", id);
+        if (slist.size() != 0) {
+            classid = slist.get(0).getClassID();
+            //查找班级
+        }
+        new AjaxTool(slist, response);
+    }
+
 
 }
