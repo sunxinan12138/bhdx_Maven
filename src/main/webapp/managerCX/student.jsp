@@ -9,7 +9,7 @@
 <html>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <head>
     <base href="<%=basePath%>">
@@ -19,13 +19,8 @@
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body>
-<ul class="nav-pills nav-stacked" >
-    <li style="padding: 15px"><a href="managerCX\changeClass.jsp" target="_blank">转专业</a></li>
-    <li style="padding: 15px"><a href="managerCX\addStudent.jsp"  target="_blank">添加新学生</a></li>
-    <li style="padding: 15px"><a href="#"  target="_blank">需要删除的学生</a></li>
-    <li style="padding: 15px"><a href="#"  target="_blank">查看所有学生及管理</a></li>
-
-</ul>
-</body>
+<frameset rows="10%,*" noresize="noresize" frameborder="no">
+    <frame name="up" src="managerCX\studentNavbar.jsp">
+    <frame name="down" src="managerCX\changeClass.jsp">
+</frameset>
 </html>
