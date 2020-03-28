@@ -19,11 +19,8 @@
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body>
-<ul class="nav-pills nav-stacked">
-    <li style="padding: 15px"><a href="managerCX\addClass.jsp" target="right">添加班级</a></li>
-    <li style="padding: 15px"><a href="#" target="right">删除班级</a></li>
-    <li style="padding: 15px"><a href="#" target="right">查看班级信息及管理</a></li>
-</ul>
-</body>
+<frameset rows="10%,*" noresize="noresize" frameborder="no">
+    <frame name="up" src="managerCX\classNavbar.jsp">
+    <frame name="down" src="managerCX\addClass.jsp">
+</frameset>
 </html>

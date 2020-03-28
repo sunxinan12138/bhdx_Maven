@@ -4,6 +4,7 @@ import com.bhdx.models.CXDetail;
 import com.bhdx.models.ZCDetail;
 import com.bhdx.service.AddZsService;
 import com.bhdx.tools.AjaxTool;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +27,7 @@ public class AddZsController {
         boolean btn = false;
         System.out.println("添加");
         try {
+
             response.setCharacterEncoding("utf-8");
             request.setCharacterEncoding("utf-8");
             String originalName = file.getOriginalFilename();
