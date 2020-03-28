@@ -1,13 +1,14 @@
 <%--
   Created by IntelliJ IDEA.
   User: 25778
-  Date: 2020/3/26
-  Time: 12:17
+  Date: 2020/3/27
+  Time: 12:34
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <%
+    String classid = request.getParameter("classId");
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
@@ -19,10 +20,10 @@
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
-    <title>按班级查找和导出</title>
+    <base href="<%=basePath%>"/>
+    <title><%=classid%>证书审核</title>
 </head>
 <body>
-<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 
     $(document).ready(
@@ -50,22 +51,24 @@
         }
     )
 </script>
+
+
 <div class="panel panel-default">
     <div>
         <table class="table table-hover">
             <thead align="center">
             <tr>
-                <th width="20%">班级</th>
-                <th width="20%">专业代号</th>
-                <th width="20%">审核</th>
+                <th width="20%">学号</th>
+                <th width="20%">证书</th>
+                <th width="20%">等</th>
                 <th width="10%">操作</th>
             </tr>
             </thead>
             <tbody class="panel-body" id="tableid" align="center">
             <tr>
-                <th >17级通合作1班</th>
-                <th >20171111</th>
-                <th ><a target="_blank" href="managerCX/zsByclass.jsp?classId=20171111"> 审核证书</a></th>
+                <th >201711111111</th>
+                <th >四级</th>
+                <th ><a target="_blank" href="managerZC/zsByclass.jsp?classId=20171111"> 审核证书</a></th>
                 <th >操作</th>
             </tr>
             </tbody>
@@ -73,6 +76,8 @@
     </div>
 </div>
 </div>
-
+<div>
+    <button type="button" class="btn btn-info">导出表格</button>
+</div>
 </body>
 </html>
