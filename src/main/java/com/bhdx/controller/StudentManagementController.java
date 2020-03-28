@@ -48,7 +48,7 @@ public class StudentManagementController {
         nclass.setId(newClassID);
         nclass.setSubject(newClass);
         System.out.println(nclass.getId() + " " + nclass.getSubject());
-        int i = template.insert("com.bhdx,StudentManagementMapper.AddNewclass",nclass);
+        int i = template.insert("com.bhdx.DAO.StudentManagementMapper.AddNewclass",nclass);
         if (i == 1){
             result = true;
         }else  if( i == -1){

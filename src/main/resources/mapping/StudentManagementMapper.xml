@@ -8,6 +8,6 @@
     </select>
 
     <insert id="AddNewclass" parameterType="com.bhdx.models.SubjectClass">
-            INSERT INTO  'class'(`ID`,`Subject`) VALUES  (#{id},#{subject});
+            INSERT INTO  class(`ID`,`Subject`) VALUES  (#{id},#{subject});
     </insert>
 </mapper>
