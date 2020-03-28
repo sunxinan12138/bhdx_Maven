@@ -30,4 +30,25 @@ public class StringSplittingTool {
         String SubjectID = ID.substring(2,10);
         return SubjectID;
      }
+     public String GetSubjectByClassID(String ClassID){
+         String SubjectID = ClassID.substring(2,6);
+         switch (SubjectID){
+             case "1601" : SubjectID = "测控";
+                 break;
+             case "1602" : SubjectID = "电气";
+                 break;
+             case "1603" : SubjectID = "信息";
+                 break;
+             case "1604" : SubjectID = "通信";
+                 break;
+             case "1605" : SubjectID = "电子";
+                 break;
+             case "1606" : SubjectID = "自动化";
+                 break;
+             case "1607" : SubjectID = "通合作";
+         }
+         String New_ID=SubjectID+ClassID.substring(0,2)+"级"+ClassID.substring(7,8)+"班";
+         return New_ID;
+    }
+
 }

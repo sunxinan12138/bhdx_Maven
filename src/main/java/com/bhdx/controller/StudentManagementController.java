@@ -1,21 +1,23 @@
 package com.bhdx.controller;
 
+import com.bhdx.models.SubjectClass;
 import com.bhdx.models.Student;
 import com.bhdx.tools.AjaxTool;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.ServletException;
+import javax.security.auth.Subject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import  com.bhdx.tools.StringSplittingTool;
+
 
 @Controller
 public class StudentManagementController {
@@ -23,19 +25,35 @@ public class StudentManagementController {
     private SqlSessionTemplate template;
     @RequestMapping("doSelectStudentByID")//根据学号查询学生
     public void SelectStudentByID(HttpServletRequest request,HttpServletResponse response){
-//        ModelAndView modelAndView = new ModelAndView();
-        System.out.println("我进来啦哈哈哈哈");
         String ID = request.getParameter("hhh");
         System.out.println(ID);
         List<Student> S = template.selectList("com.bhdx.DAO.StudentManagementMapper.SelectStudentByID",ID);
         for(Student students: S ){
             System.out.println(students);
         }
-//        modelAndView.addObject("Student",S);
-//        modelAndView.setViewName("StudentManagementTest");
         AjaxTool ajaxTool = new AjaxTool(S, response);
-//        return modelAndView;
     }
+    @RequestMapping("doSelectAllClass")
+    public void SelectAllClass(){
 
-
+    }
+    @RequestMapping("doAddNewClass")
+    public void AddNewClass(HttpServletRequest request,HttpServletResponse response){
+        boolean result = false;
+        String newClassID = request.getParameter("newClass");
+        StringSplittingTool stringSplittingTool = new StringSplittingTool();
+        String newClass = stringSplittingTool.GetSubjectByClassID(newClassID);
+        System.out.println(newClass+"  "+newClassID);
+        SubjectClass nclass = new SubjectClass();
+        nclass.setId(newClassID);
+        nclass.setSubject(newClass);
+        System.out.println(nclass.getId() + " " + nclass.getSubject());
+        int i = template.insert("com.bhdx,StudentManagementMapper.AddNewclass",nclass);
+        if (i == 1){
+            result = true;
+        }else  if( i == -1){
+            result = false;
+        }
+        AjaxTool ajaxTool = new AjaxTool(result,response);
+    }
 }

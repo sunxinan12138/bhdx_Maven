@@ -45,14 +45,35 @@
             }
     })
     }
+        function addNewclass () {
+            var newClass = $("#addClass").val();
+            $.ajax({
+                url:'doAddNewClass',
+                type:'POST',
+                async:true,
+                timeout:'3000',
+                dataType:'text',
+                data:{'newClass':newClass},
+                success:function(d){
+                    var result = JSON.parse(d);
+                    if(result==true){
+                        alert("添加成功");
+                    }else{
+                        alert("添加失败");
+                    }
+                }
+            })
+        }
 </script>
 <body>
 <div>
     <div>
-        <%--<form action="/doSelectStudentByID" method="post" name="myForm" enctype="application/x-www-form-urlencoded">--%>
             <input type="text" name="studentID" placeholder="请输入学号" id="studentID" />
             <input type="submit" value="查询" onclick="validateForm()"/>
-        <%--</form>--%>
+    </div>
+    <div>
+        <input type="text" name="studentID" placeholder="请添加班级 例：17160501" id="addClass" />
+        <input type="submit" value="添加" onclick="addNewclass()"/>
     </div>
     <div>
         <table class="table table-hover" >
@@ -67,9 +88,20 @@
             </tbody>
         </table>
     </div>
-</div>
-<script type="text/javascript">
 
-</script>
+    <div>
+        <table class="table table-hover" >
+            <thead align="center">
+            <tr>
+                <th width="10%">学号</th>
+                <th width="20%">姓名</th>
+                <th width="10%">班级编号</th>
+            </tr>
+            </thead>
+            <tbody id="class"  align="center">
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
 </html>

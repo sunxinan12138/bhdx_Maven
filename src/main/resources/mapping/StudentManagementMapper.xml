@@ -6,4 +6,8 @@
     <select id="SelectStudentByID" resultType="com.bhdx.models.Student">
         SELECT id,name,classID from student where id = #{ID}
     </select>
+
+    <insert id="AddNewclass" parameterType="com.bhdx.models.SubjectClass">
+            INSERT INTO  'class'(`ID`,`Subject`) VALUES  (#{id},#{subject});
+    </insert>
 </mapper>
