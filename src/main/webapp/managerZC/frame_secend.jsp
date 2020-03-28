@@ -16,7 +16,7 @@
     <title>Title</title>
 </head>
 <frameset cols="25%,*" noresize="noresize" >
-    <frame name="left" src="managerCX/daohang.jsp">
-    <frame name="right" src="managerCX/welcome.jsp">
+    <frame name="left" src="managerZC/daohang.jsp">
+    <frame name="right" src="managerZC/welcome.jsp">
 </frameset>
 </html>

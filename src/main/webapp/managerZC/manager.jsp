@@ -17,7 +17,7 @@
     <title>综测管理员界面</title>
 </head>
 <frameset rows="10%,*" noresize="noresize" frameborder="no" >
-    <frame src="managerCX/navbar.jsp">
-    <frame src="managerCX/frame_secend.jsp">
+    <frame src="managerZC/navbar.jsp">
+    <frame src="managerZC/frame_secend.jsp">
 </frameset>
 </html>

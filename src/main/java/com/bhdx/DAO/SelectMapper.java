@@ -3,7 +3,6 @@ package com.bhdx.DAO;
 import com.bhdx.models.DetailMark;
 import com.bhdx.models.JIngFei_mark;
 import com.bhdx.models.JingFei;
-import sun.tools.jinfo.JInfo;
 
 import java.util.List;
 
