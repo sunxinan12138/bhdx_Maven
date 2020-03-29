@@ -64,6 +64,7 @@
                 dataType:'text',
                 success:function(d){
                     var SubjectClassArray = JSON.parse(d);
+                    for(var i = 0;i < SubjectClassArray.length;i++){
                     var $tr = $("<tr>"+
                         "<td>"+SubjectClassArray[i].id+"</td>"+
                         "<td>"+SubjectClassArray[i].subject+"</td>"+
@@ -71,6 +72,7 @@
                         "</tr>");
                     var $table = $("#subject");
                     $table.append($tr);
+                }
                 }
             })
         }
