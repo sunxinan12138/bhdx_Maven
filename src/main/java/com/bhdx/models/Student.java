@@ -10,6 +10,9 @@ public class Student {
     private String classID;//班级代号
     private List<CXDetail> cxDetailList;
     private  List<ZCDetail> zcDetailList;
+    private String tel;//电话号
+    private String address;//家庭住址
+    private int dormitory;//寝室号
 
 
     public List<CXDetail> getCxDetailList() {
@@ -60,6 +63,30 @@ public class Student {
         this.classID = classID;
     }
 
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getDormitory() {
+        return dormitory;
+    }
+
+    public void setDormitory(int dormitory) {
+        this.dormitory = dormitory;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -69,6 +96,9 @@ public class Student {
                 ", classID='" + classID + '\'' +
                 ", cxDetailList=" + cxDetailList +
                 ", zcDetailList=" + zcDetailList +
+                ", tel='" + tel + '\'' +
+                ", address='" + address + '\'' +
+                ", dormitory=" + dormitory +
                 '}';
     }
 }
