@@ -2,6 +2,7 @@ package com.bhdx.controller;
 
 import com.bhdx.models.Admin;
 import com.bhdx.models.CXDetail;
+import com.bhdx.tools.AjaxTool;
 import com.bhdx.tools.StringSplittingTool;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,12 +49,20 @@ public class AdminController {
                     session.setAttribute("UserName",temp.getName());//把登录用户存储到session里
                     session.setAttribute("ID",ID);
                     StringSplittingTool classID = new StringSplittingTool();
-                    //拆分出专业班级代号，传到数据库进行查询
+                    if(temp.getMark().equals("CX")){
+                        //拆分出专业班级代号，传到数据库进行查询
 //                    List <CXDetail> cxDetails = template.selectList("com.bhdx.DAO.AdminMapper.SelectCXDetail",classID.GetSubjectID(temp.getID()));
 //                    andView.addObject("cxDetails",cxDetails);//把查询出来的放到zsdetail里传到前端
-                    andView.addObject("UserName",temp.getName());
-                    //跳回主页面
-                    andView.setViewName("check");
+                        andView.addObject("UserName",temp.getName());
+                        //跳回主页面
+                        andView.setViewName("managerCX/test");
+                    }else if(temp.getMark().equals("ZC")){
+                        //拆分出专业班级代号，传到数据库进行查询
+                        andView.addObject("UserName",temp.getName());
+                        //跳回主页面
+                        andView.setViewName("check");
+                    }
+
                     flag=true;
                     break;
                 }
@@ -68,22 +77,20 @@ public class AdminController {
     //修改密码
 
     @RequestMapping("doChangePsw")
-    public void ChangePsw(HttpSession session, HttpServletRequest request, HttpServletResponse response)throws ServletException {
+    public void ChangePsw(HttpSession session, HttpServletRequest request, HttpServletResponse response){
+        boolean result;
         String ID = session.getAttribute("ID").toString();
         String newPassword = request.getParameter("newPassword");
-        try {
-            Map<String,String>  params = new HashMap<String, String>();
-            params.put("ID",ID);
-            params.put("newPassword", newPassword);
-            for(String key:params.keySet()){
-                System.out.println("Key: "+key+" Value: "+params.get(key));
-            }
-            template.update("com.bhdx.DAO.AdminMapper.ChangePsw");
-            request.getRequestDispatcher("login.jsp").forward(request,response);
-        }catch (IOException e){
-            e.printStackTrace();
+        Admin admin = new Admin();
+        admin.setID(ID);
+        admin.setPassword(newPassword);
+        int i = template.update("com.bhdx.DAO.AdminMapper.ChangePsw",admin);
+        if(i==1){
+            result = true;
+        }else{
+            result = false;
         }
-
+        AjaxTool ajaxTool = new AjaxTool(result,response);
     }
 
 
