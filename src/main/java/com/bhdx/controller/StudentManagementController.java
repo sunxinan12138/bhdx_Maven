@@ -7,14 +7,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.security.auth.Subject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import  com.bhdx.tools.StringSplittingTool;
 
@@ -34,16 +29,20 @@ public class StudentManagementController {
         AjaxTool ajaxTool = new AjaxTool(S, response);
     }
     @RequestMapping("doSelectAllClass")
-    public void SelectAllClass(){
-
+    public void SelectAllClass(HttpServletResponse response){
+        List<SubjectClass> slist = template.selectList("com.bhdx.DAO.StudentManagementMapper.SelectAllClass");
+        for(SubjectClass subjectClass : slist){
+            System.out.println(subjectClass);
+        }
+        AjaxTool ajaxTool = new AjaxTool(slist,response);
     }
+    //添加班级
     @RequestMapping("doAddNewClass")
     public void AddNewClass(HttpServletRequest request,HttpServletResponse response){
         boolean result = false;
         String newClassID = request.getParameter("newClass");
         StringSplittingTool stringSplittingTool = new StringSplittingTool();
-        String newClass = stringSplittingTool.GetSubjectByClassID(newClassID);
-        System.out.println(newClass+"  "+newClassID);
+        String newClass = stringSplittingTool.GetSubjectByClassID(newClassID);;
         SubjectClass nclass = new SubjectClass();
         nclass.setId(newClassID);
         nclass.setSubject(newClass);

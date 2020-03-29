@@ -3,11 +3,16 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bhdx.DAO.StudentManagementMapper">
+    <!--输入学号查询学生-->
     <select id="SelectStudentByID" resultType="com.bhdx.models.Student">
         SELECT id,name,classID from student where id = #{ID}
     </select>
-
+    <!--添加新班级-->
     <insert id="AddNewclass" parameterType="com.bhdx.models.SubjectClass">
             INSERT INTO  class(`ID`,`Subject`) VALUES  (#{id},#{subject});
     </insert>
+    <!--查询所有班级-->
+    <select id="SelectAllClass" resultType="com.bhdx.models.SubjectClass">
+        select * from class;
+    </select>
 </mapper>

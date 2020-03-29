@@ -14,23 +14,14 @@
 <script type="text/javascript">
         function validateForm(){
             var hhh = $("#studentID").val();
-        alert(hhh);
         $.ajax({
-            //属性名:属性值
-            //请求的路径
             url:'doSelectStudentByID',
-            //请求的方式
             type:'POST',
-            //是否异步
             async:true,
-            //请求超时时间
             timeout:'3000',
-            //传递数据的类型
             dataType:'text',
-            //传递的数据
             data:{'hhh':hhh},
             success:function(d){
-                //解析
                 var studentArray = JSON.parse(d);
                 for(var i = 0;i < studentArray.length;i++){
                     console.log(studentArray);
@@ -64,6 +55,25 @@
                 }
             })
         }
+    function selectAllClass() {
+            $.ajax({
+                url:'doSelectAllClass',
+                type:'POST',
+                async:true,
+                timeout:'3000',
+                dataType:'text',
+                success:function(d){
+                    var SubjectClassArray = JSON.parse(d);
+                    var $tr = $("<tr>"+
+                        "<td>"+SubjectClassArray[i].id+"</td>"+
+                        "<td>"+SubjectClassArray[i].subject+"</td>"+
+                        "<td>"+"<a href='#'>"+"查看"+"</a>"+"</td>"+
+                        "</tr>");
+                    var $table = $("#subject");
+                    $table.append($tr);
+                }
+            })
+        }
 </script>
 <body>
 <div>
@@ -88,17 +98,17 @@
             </tbody>
         </table>
     </div>
-
+    <div><input type="submit" value="查询所有班级" onclick="selectAllClass() "/></div>
     <div>
         <table class="table table-hover" >
             <thead align="center">
             <tr>
-                <th width="10%">学号</th>
-                <th width="20%">姓名</th>
                 <th width="10%">班级编号</th>
+                <th width="20%">班级</th>
+                <th width="10%">查看班级</th>
             </tr>
             </thead>
-            <tbody id="class"  align="center">
+            <tbody id="subject"  align="center">
             </tbody>
         </table>
     </div>
