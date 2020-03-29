@@ -24,4 +24,14 @@ public class StudentServiceImpl implements StudentService {
     public void changepsw(Map map) {
         studentMapper.changepsw(map);
     }
+
+    @Override
+    public boolean changemessage(Student student) {
+        boolean btn = false;
+        int a = studentMapper.changemessage(student);
+        if (a != 0) {
+            btn = !btn;
+        }
+        return btn;
+    }
 }

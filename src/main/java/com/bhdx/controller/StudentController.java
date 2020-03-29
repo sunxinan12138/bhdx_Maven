@@ -100,6 +100,7 @@ public class StudentController {
     }
 
     @RequestMapping("/doselectall")
+    @ResponseBody
     public void doselectall(HttpServletRequest request, HttpServletResponse response) {
         String id = request.getParameter("id");
         System.out.println(id);
@@ -112,5 +113,12 @@ public class StudentController {
         new AjaxTool(slist, response);
     }
 
+    @RequestMapping("/changemessage")
+    @ResponseBody
+    public void changemessage(HttpServletRequest request, HttpServletResponse response, Student student) {
+        boolean btn = false;
+        btn = studentService.changemessage(student);
+        new AjaxTool(btn, response);
+    }
 
 }

@@ -11,5 +11,7 @@ public interface StudentMapper {
 
     public List<Student> selectInfo(String id);
 
-    public void changepsw(@Param("map")  Map map);
+    public void changepsw(@Param("map") Map map);
+
+    public int changemessage(Student student);
 }

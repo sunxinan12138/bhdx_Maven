@@ -10,4 +10,6 @@ public interface StudentService {
     public List<Student> findStudent();
 
     public void changepsw(Map map);
+
+    boolean changemessage(Student student);
 }

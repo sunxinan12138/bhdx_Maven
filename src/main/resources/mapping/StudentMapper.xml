@@ -18,4 +18,13 @@
             ID=#{key}
         </foreach>
     </update>
+    <update id="changemessage" parameterType="com.bhdx.models.Student">
+  UPDATE student
+            SET
+            tel = #{tel},
+            address = #{address},
+            dormitory = #{dormitory}
+            where
+            ID=#{id}
+    </update>
 </mapper>
