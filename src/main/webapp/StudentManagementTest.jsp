@@ -73,6 +73,7 @@
                     var $table = $("#subject");
                     $table.append($tr);
                 }
+                    document.getElementById("cla").innerHTML="<div style='display: none'></div>"
                 }
             })
         }
@@ -100,7 +101,7 @@
             </tbody>
         </table>
     </div>
-    <div><input type="submit" value="查询所有班级" onclick="selectAllClass() "/></div>
+    <div id="cla"><input type="submit" value="查询所有班级" onclick="selectAllClass() "/></div>
     <div>
         <table class="table table-hover" >
             <thead align="center">
