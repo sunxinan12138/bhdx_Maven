@@ -20,11 +20,11 @@
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<form action="#" role="form">
+<form action="doAddNewClass" role="form">
     <div class="form-group">
         <label>新班级添加</label>
-        <input style="width: 50%" type="text" class="form-control" name="calssId"
-               placeholder="请输入班级号">
+        <input style="width: 50%" type="text" class="form-control" name="newClass"
+               placeholder="请输入班级号()">
         <button type="submit" class="btn btn-default">提交</button>
     </div>
 </form>

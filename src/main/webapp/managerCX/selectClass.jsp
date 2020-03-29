@@ -27,8 +27,9 @@
 
     $(document).ready(
         function () {
+
             $.ajax({
-                url: '',
+                url: 'doSelectAllClass',
                 type: 'POST',
                 async: true,
                 timeout: '3000',
@@ -38,9 +39,9 @@
                     var arr = JSON.parse(e);
                     for (var i = 0; i < arr.length; i++) {
                         var $tr = $("<tr >" +
+                            "<td>" + arr[i].subject + "</td>" +
                             "<td>" + arr[i].id + "</td>" +
-                            "<td>" + arr[i].name + "</td>" +
-                            "<td>" + arr[i].classID + "</td>" +
+                            "<td>" + "<a target='_blank' href='managerCX/zsByclass.jsp?classId=" + arr[i].id + "'> 审核证书</a>" + "</td>" +
                             "</tr>")
                         var $table = $("#tableid");
                         $table.append($tr);
@@ -55,19 +56,13 @@
         <table class="table table-hover">
             <thead align="center">
             <tr>
-                <th width="20%">班级</th>
-                <th width="20%">专业代号</th>
-                <th width="20%">审核</th>
-                <th width="10%">操作</th>
+                <th style="text-align: center" width="10%">班级</th>
+                <th style="text-align: center" width="10%">专业代号</th>
+                <th style="text-align: center" width="10%">操作</th>
             </tr>
             </thead>
             <tbody class="panel-body" id="tableid" align="center">
-            <tr>
-                <th >17级通合作1班</th>
-                <th >20171111</th>
-                <th ><a target="_blank" href="managerCX/zsByclass.jsp?classId=20171111"> 审核证书</a></th>
-                <th >操作</th>
-            </tr>
+
             </tbody>
         </table>
     </div>

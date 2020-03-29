@@ -184,6 +184,7 @@ public class SelectServiceImpl implements SelectService {
     public boolean cchcx(String zsname) {
         boolean btn = true;
         List list = new ArrayList();
+        template.selectList("",zsname);
         if (list.size() != 0) {
             btn = !btn;
         }

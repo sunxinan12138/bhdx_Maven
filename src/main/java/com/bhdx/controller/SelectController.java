@@ -243,9 +243,11 @@ public class SelectController {
     public void selectrepeat(HttpServletRequest request, HttpServletResponse response) {
         boolean btn = true;
         String zsname = request.getParameter("zsname");
+        //  String stuid = request.getParameter("stuid");
         btn = selectService.cchcx(zsname);
         new AjaxTool(btn, response);
     }
+
     @RequestMapping("/selectzcrepeat")
     public void selectzcrepeat(HttpServletRequest request, HttpServletResponse response) {
         boolean btn = true;
@@ -255,6 +257,7 @@ public class SelectController {
         btn = selectService.cchzc(zsname);
         new AjaxTool(btn, response);
     }
+
     @RequestMapping("/selectallrepeat")
     public void selectallrepeat(HttpServletRequest request, HttpServletResponse response) {
         String message = "";
