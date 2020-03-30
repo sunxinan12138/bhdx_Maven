@@ -46,6 +46,8 @@ public class StringSplittingTool {
              case "1606" : SubjectID = "自动化";
                  break;
              case "1607" : SubjectID = "通合作";
+                break;
+             default:  SubjectID = "error";
          }
          String New_ID=SubjectID+ClassID.substring(0,2)+"级"+ClassID.substring(7,8)+"班";
          return New_ID;

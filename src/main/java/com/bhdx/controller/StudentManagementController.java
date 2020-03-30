@@ -42,15 +42,17 @@ public class StudentManagementController {
         boolean result = false;
         String newClassID = request.getParameter("newClass");
         StringSplittingTool stringSplittingTool = new StringSplittingTool();
-        String newClass = stringSplittingTool.GetSubjectByClassID(newClassID);;
+        String newClass = stringSplittingTool.GetSubjectByClassID(newClassID);
         SubjectClass nclass = new SubjectClass();
         nclass.setId(newClassID);
         nclass.setSubject(newClass);
         System.out.println(nclass.getId() + " " + nclass.getSubject());
-        int i = template.insert("com.bhdx.DAO.StudentManagementMapper.AddNewclass",nclass);
-        if (i == 1){
+//            template.delete("com.bhdx.DAO.StudentManagementMapper.deleteClassByID",nclass);
+        boolean b = newClass.startsWith("e");
+        if(b == false){
+            template.insert("com.bhdx.DAO.StudentManagementMapper.AddNewclass",nclass);
             result = true;
-        }else  if( i == -1){
+        }else{
             result = false;
         }
         AjaxTool ajaxTool = new AjaxTool(result,response);
