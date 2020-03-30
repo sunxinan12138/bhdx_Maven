@@ -28,13 +28,13 @@
                    placeholder="请输入学号">
         </div>
         <div class="form-group">
-            <label>新的班级号</label>
+            <label>新的班级</label>
             <div style="padding-bottom: 10px" class="dropdown">
                 <select style="width: 50%" onchange="choose()" class="form-control" id="selectId">
                 </select>
             </div>
             <input id="clsId" readonly="readonly" style="width: 50%" type="text" class="form-control" name="classId"
-                   placeholder="请输入班级号">
+                   placeholder="班级号">
 
         </div>
         <button type="submit" class="btn btn-default">提交</button>

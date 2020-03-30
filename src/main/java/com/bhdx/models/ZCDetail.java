@@ -16,7 +16,6 @@ public class ZCDetail {
         shConditionchar(10)*/
     private int id;
     private String stuid;
-    private String level;
     private double mark;
     private String zk;
     private String zsName;
@@ -41,12 +40,19 @@ public class ZCDetail {
         this.stuid = stuid;
     }
 
-    public String getLevel() {
-        return level;
-    }
-
-    public void setLevel(String level) {
-        this.level = level;
+    @Override
+    public String toString() {
+        return "ZCDetail{" +
+                "id=" + id +
+                ", stuid='" + stuid + '\'' +
+                ", mark=" + mark +
+                ", zk='" + zk + '\'' +
+                ", zsName='" + zsName + '\'' +
+                ", time='" + time + '\'' +
+                ", remark='" + remark + '\'' +
+                ", imgName='" + imgName + '\'' +
+                ", img=" + Arrays.toString(img) +
+                '}';
     }
 
     public double getMark() {
@@ -105,19 +111,4 @@ public class ZCDetail {
         this.img = img;
     }
 
-    @Override
-    public String toString() {
-        return "ZCDetail{" +
-                "id=" + id +
-                ", stuid='" + stuid + '\'' +
-                ", level='" + level + '\'' +
-                ", mark=" + mark +
-                ", zk='" + zk + '\'' +
-                ", zsName='" + zsName + '\'' +
-                ", time='" + time + '\'' +
-                ", remark='" + remark + '\'' +
-                ", imgName='" + imgName + '\'' +
-                ", img=" + Arrays.toString(img) +
-                '}';
-    }
 }

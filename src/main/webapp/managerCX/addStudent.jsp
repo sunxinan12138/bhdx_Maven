@@ -36,23 +36,51 @@
         <div class="form-group">
             <label>班级号</label>
             <div class="dropdown">
-                <button style="width: 50%" type="button" class="btn dropdown-toggle" id="dropdownMenu1"
-                        data-toggle="dropdown">
-                    班级号
-                </button>
-                <ul style="width: 50%" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                    <li role="presentation">
-                        <p id="chooseId" onclick="chooes()">2017160501</p>
-                    </li>
+                <div style="padding-bottom: 10px" class="dropdown">
+                    <select style="width: 50%" onchange="choose()" class="form-control" id="selectId">
+                    </select>
+                </div>
+                <input id="clsId" readonly="readonly" style="width: 50%" type="text" class="form-control" name="classId"
+                       placeholder="班级号">
 
-                </ul>
             </div>
-            <input id="classId"  readonly="readonly" style="width: 50%" type="text" class="form-control" name="classId"
-                   placeholder="请输入班级号">
         </div>
 
         <button type="submit" class="btn btn-default">提交</button>
     </form>
 </div>
+
+<script type="text/javascript">
+
+    $(document).ready(
+        function () {
+
+            $.ajax({
+                url: 'doSelectAllClass',
+                type: 'POST',
+                async: true,
+                timeout: '3000',
+                dataType: 'text',
+                success: function (e) {
+                    // 解析
+                    var arr = JSON.parse(e);
+                    for (var i = 0; i < arr.length; i++) {
+                        var $tr = $("<option value ='" + arr[i].id + "'>" + arr[i].subject + "</option>")
+                        var $table = $("#selectId");
+                        $table.append($tr);
+                    }
+                }
+            })
+        }
+    )
+
+    function choose() {
+        var options = $("#selectId option:selected");
+        options.val();          //拿到选中项的值
+        options.text();
+        $("#clsId").val(options.val());
+    }
+
+</script>
 </body>
 </html>

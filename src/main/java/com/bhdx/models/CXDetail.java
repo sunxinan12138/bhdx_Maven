@@ -22,10 +22,11 @@ public class CXDetail {
         */
     private int id;
     private String stuid;
-    private String level;
     private String zsname;
     private Double mark;
     private String remark;
+    private String time;
+    private String sort;
     private String imgName;
     private byte[] img;
 
@@ -43,14 +44,6 @@ public class CXDetail {
 
     public void setStuid(String stuid) {
         this.stuid = stuid;
-    }
-
-    public String getLevel() {
-        return level;
-    }
-
-    public void setLevel(String level) {
-        this.level = level;
     }
 
     public String getZsname() {
@@ -93,15 +86,32 @@ public class CXDetail {
         this.img = img;
     }
 
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getSort() {
+        return sort;
+    }
+
+    public void setSort(String sort) {
+        this.sort = sort;
+    }
+
     @Override
     public String toString() {
         return "CXDetail{" +
                 "id=" + id +
                 ", stuid='" + stuid + '\'' +
-                ", level='" + level + '\'' +
                 ", zsname='" + zsname + '\'' +
-                ", mark='" + mark + '\'' +
+                ", mark=" + mark +
                 ", remark='" + remark + '\'' +
+                ", time='" + time + '\'' +
+                ", sort='" + sort + '\'' +
                 ", imgName='" + imgName + '\'' +
                 ", img=" + Arrays.toString(img) +
                 '}';

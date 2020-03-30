@@ -22,8 +22,7 @@
 <body>
 <ul class="nav nav-pills">
     <li onclick="changea()" class="a active" style="padding: 15px"><a href="managerCX\addClass.jsp" target="down">添加班级</a></li>
-    <li onclick="changeb()" class="b" style="padding: 15px"><a href="#" target="down">删除班级</a></li>
-    <li onclick="changec()" class="c" style="padding: 15px"><a href="#" target="down">查看班级信息及管理</a></li>
+    <li onclick="changec()" class="c" style="padding: 15px"><a href="StudentManagementTest.jsp" target="down">查看班级信息及管理</a></li>
 </ul>
 <script type="text/javascript">
     function changea() {

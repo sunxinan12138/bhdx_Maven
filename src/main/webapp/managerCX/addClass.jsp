@@ -24,7 +24,7 @@
     <div class="form-group">
         <label>新班级添加</label>
         <input style="width: 50%" type="text" class="form-control" name="newClass"
-               placeholder="请输入班级号()">
+               placeholder="请输入班级号(8位，例：17160501)">
         <button type="submit" class="btn btn-default">提交</button>
     </div>
 </form>

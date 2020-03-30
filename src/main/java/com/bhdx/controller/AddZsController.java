@@ -52,7 +52,6 @@ public class AddZsController {
             double markdou = Double.parseDouble(mark);
             //System.out.println(markdou);
             zcDetail.setStuid(stuid);
-            zcDetail.setLevel(detail);
             zcDetail.setRemark(remark);
             zcDetail.setTime(time);
             zcDetail.setZsName(zsname);
