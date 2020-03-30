@@ -55,7 +55,7 @@
                 }
             })
         }
-    function selectAllClass() {
+        $(document).ready(function () {
             $.ajax({
                 url:'doSelectAllClass',
                 type:'POST',
@@ -76,7 +76,7 @@
                     document.getElementById("cla").innerHTML="<div style='display: none'></div>"
                 }
             })
-        }
+        });
 </script>
 <body>
 <div>
@@ -101,7 +101,6 @@
             </tbody>
         </table>
     </div>
-    <div id="cla"><input type="submit" value="查询所有班级" onclick="selectAllClass() "/></div>
     <div>
         <table class="table table-hover" >
             <thead align="center">
