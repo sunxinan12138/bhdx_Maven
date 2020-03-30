@@ -47,10 +47,23 @@ public class StudentManagementController {
         nclass.setId(newClassID);
         nclass.setSubject(newClass);
         System.out.println(nclass.getId() + " " + nclass.getSubject());
-//            template.delete("com.bhdx.DAO.StudentManagementMapper.deleteClassByID",nclass);
+//
         boolean b = newClass.startsWith("e");
         if(b == false){
             template.insert("com.bhdx.DAO.StudentManagementMapper.AddNewclass",nclass);
+            result = true;
+        }else{
+            result = false;
+        }
+        AjaxTool ajaxTool = new AjaxTool(result,response);
+    }
+    @RequestMapping("doDeleteClass")
+    public void deleteClassByID(HttpServletResponse response,HttpServletRequest request){
+        boolean result = false;
+        String sid = request.getParameter("sid");
+        System.out.println(sid);
+        int i = template.delete("com.bhdx.DAO.StudentManagementMapper.deleteClassByID",sid);
+        if(i == 1){
             result = true;
         }else{
             result = false;

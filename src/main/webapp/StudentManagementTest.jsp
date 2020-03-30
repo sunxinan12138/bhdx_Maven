@@ -49,6 +49,7 @@
                     var result = JSON.parse(d);
                     if(result==true){
                         alert("添加成功");
+                        window.location.reload();
                     }else{
                         alert("添加失败");
                     }
@@ -65,10 +66,11 @@
                 success:function(d){
                     var SubjectClassArray = JSON.parse(d);
                     for(var i = 0;i < SubjectClassArray.length;i++){
+                    var sid = SubjectClassArray[i].id;
                     var $tr = $("<tr>"+
                         "<td>"+SubjectClassArray[i].id+"</td>"+
                         "<td>"+SubjectClassArray[i].subject+"</td>"+
-                        "<td>"+"<a href='#'>"+"查看"+"</a>"+"</td>"+
+                        "<td>"+"<a href='#'>"+"查看"+"</a>"+"    "+"<a href='javascript:deleteClass(\"" + sid+ "\")'>"+"删除"+"</a>"+"</td>"+
                         "</tr>");
                     var $table = $("#subject");
                     $table.append($tr);
@@ -77,6 +79,26 @@
                 }
             })
         });
+        function deleteClass(sid) {
+            alert(sid);
+            $.ajax({
+                url:'doDeleteClass',
+                type:'POST',
+                async:true,
+                timeout:'3000',
+                dataType:'text',
+                data:{'sid':sid},
+                success:function(d){
+                    var result = JSON.parse(d);
+                    if(result==true){
+                        alert("删除成功");
+                        window.location.reload();
+                    }else{
+                        alert("删除失败");
+                    }
+                }
+            })
+        }
 </script>
 <body>
 <div>
@@ -107,7 +129,7 @@
             <tr>
                 <th width="10%">班级编号</th>
                 <th width="20%">班级</th>
-                <th width="10%">查看班级</th>
+                <th width="10%">操作班级</th>
             </tr>
             </thead>
             <tbody id="subject"  align="center">

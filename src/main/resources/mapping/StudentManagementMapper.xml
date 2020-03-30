@@ -15,4 +15,8 @@
     <select id="SelectAllClass" resultType="com.bhdx.models.SubjectClass">
         select * from class;
     </select>
+
+    <delete id="deleteClassByID" parameterType="java.lang.String">
+        DELETE from class where id = #{sid}
+    </delete>
 </mapper>
