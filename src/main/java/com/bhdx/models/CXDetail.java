@@ -22,12 +22,14 @@ public class CXDetail {
         */
     private int id;
     private String stuid;
+    private String name;
     private String zsname;
     private Double mark;
     private String remark;
     private String time;
     private String sort;
     private String imgName;
+    private String classID;
     private byte[] img;
 
     public int getId() {
@@ -102,17 +104,35 @@ public class CXDetail {
         this.sort = sort;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getClassID() {
+        return classID;
+    }
+
+    public void setClassID(String classID) {
+        this.classID = classID;
+    }
+
     @Override
     public String toString() {
         return "CXDetail{" +
                 "id=" + id +
                 ", stuid='" + stuid + '\'' +
+                ", name='" + name + '\'' +
                 ", zsname='" + zsname + '\'' +
                 ", mark=" + mark +
                 ", remark='" + remark + '\'' +
                 ", time='" + time + '\'' +
                 ", sort='" + sort + '\'' +
                 ", imgName='" + imgName + '\'' +
+                ", classID='" + classID + '\'' +
                 ", img=" + Arrays.toString(img) +
                 '}';
     }

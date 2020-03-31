@@ -16,11 +16,13 @@ public class ZCDetail {
         shConditionchar(10)*/
     private int id;
     private String stuid;
+    private String name;
     private double mark;
     private String zk;
     private String zsName;
     private String time;
     private String remark;
+    private String classID;
     private String imgName;
     private byte[] img;
 
@@ -38,21 +40,6 @@ public class ZCDetail {
 
     public void setStuid(String stuid) {
         this.stuid = stuid;
-    }
-
-    @Override
-    public String toString() {
-        return "ZCDetail{" +
-                "id=" + id +
-                ", stuid='" + stuid + '\'' +
-                ", mark=" + mark +
-                ", zk='" + zk + '\'' +
-                ", zsName='" + zsName + '\'' +
-                ", time='" + time + '\'' +
-                ", remark='" + remark + '\'' +
-                ", imgName='" + imgName + '\'' +
-                ", img=" + Arrays.toString(img) +
-                '}';
     }
 
     public double getMark() {
@@ -111,4 +98,35 @@ public class ZCDetail {
         this.img = img;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getClassID() {
+        return classID;
+    }
+
+    public void setClassID(String classID) {
+        this.classID = classID;
+    }
+    @Override
+    public String toString() {
+        return "ZCDetail{" +
+                "id=" + id +
+                ", stuid='" + stuid + '\'' +
+                ", name='" + name + '\'' +
+                ", mark=" + mark +
+                ", zk='" + zk + '\'' +
+                ", zsName='" + zsName + '\'' +
+                ", time='" + time + '\'' +
+                ", remark='" + remark + '\'' +
+                ", classID='" + classID + '\'' +
+                ", imgName='" + imgName + '\'' +
+                ", img=" + Arrays.toString(img) +
+                '}';
+    }
 }

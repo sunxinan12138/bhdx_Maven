@@ -66,10 +66,10 @@
             </thead>
             <tbody class="panel-body" id="tableid" align="center">
             <tr>
-                <th >201711111111</th>
-                <th >四级</th>
-                <th ><a target="_blank" href="managerZC/zsByclass.jsp?classId=20171111"> 审核证书</a></th>
-                <th >操作</th>
+                <th>201711111111</th>
+                <th>四级</th>
+                <th><a target="_blank" href="managerZC/zsByclass.jsp?classId=20171111"> 审核证书</a></th>
+                <th>操作</th>
             </tr>
             </tbody>
         </table>
@@ -77,7 +77,7 @@
 </div>
 </div>
 <div>
-    <button type="button" class="btn btn-info">导出表格</button>
+    <a href="outFile\outCXExcel.jsp?classId=<%=classid%>" target="_blank" class="btn btn-info">导出表格</a>
 </div>
 </body>
 </html>

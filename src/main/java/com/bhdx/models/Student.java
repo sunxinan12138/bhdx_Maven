@@ -10,6 +10,8 @@ public class Student {
     private String classID;//班级代号
     private List<CXDetail> cxDetailList;
     private  List<ZCDetail> zcDetailList;
+    private List<OutCX> outCXList;
+    //  private  List<ZCDetail> zcDetailList;
     private String tel;//电话号
     private String address;//家庭住址
     private int dormitory;//寝室号
@@ -87,6 +89,14 @@ public class Student {
         this.dormitory = dormitory;
     }
 
+    public List<OutCX> getOutCXList() {
+        return outCXList;
+    }
+
+    public void setOutCXList(List<OutCX> outCXList) {
+        this.outCXList = outCXList;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -96,6 +106,7 @@ public class Student {
                 ", classID='" + classID + '\'' +
                 ", cxDetailList=" + cxDetailList +
                 ", zcDetailList=" + zcDetailList +
+                ", outCXList=" + outCXList +
                 ", tel='" + tel + '\'' +
                 ", address='" + address + '\'' +
                 ", dormitory=" + dormitory +

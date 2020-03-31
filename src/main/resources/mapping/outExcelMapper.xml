@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bhdx.DAO.OutExcelMapper">
+    <resultMap id="Student_OutCX" type="com.bhdx.models.Student">
+        <id column="student_ID" property="id"/>
+        <result column="student_name" property="name"/>
+        <collection property="outCXList" ofType="com.bhdx.models.OutCX">
+            <id column="out_id" property="id"/>
+            <result column="out_zsname" property="zsname"/>
+            <result column="out_mark" property="mark"/>
+            <result column="out_sort" property="sort"/>
+        </collection>
+    </resultMap>
+    <select id="selectOutCx" parameterType="java.lang.String" resultMap="Student_OutCX">
+SELECT s.ID student_ID,s.name student_name,o.id out_id,o.zsname out_zsname,o.mark out_mark,o.sort out_sort
+FROM student s,outCx o WHERE s.classID = #{classId} AND s.ID = o.stuid
+    </select>
+</mapper>
