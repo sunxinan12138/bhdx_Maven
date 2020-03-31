@@ -9,7 +9,6 @@
 <html>
 <head>
     <%
-        String classid = request.getParameter("classId");
         String path = request.getContextPath();
         String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
     %>
@@ -21,13 +20,11 @@
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<p id="classId"><%=classid%>
-</p>
 <div style="margin: 0 auto ;height: auto; width: 40%" class="panel-heading">
     <form action="doOutExcel" method="post">
         <div class="form-group">
-            <input style="width: 50%" name="path" type="text" name="path" value="E:\Business业务\电气学院综测系统\excel">
-
+            <input style="width: 100%" name="path" type="text" name="path" value="E:\Business业务\电气学院综测系统\excel"
+                   placeholder="格式(盘符:\文件夹1\文件夹2)">
         </div>
         <div class="form-group">
             <label>新的班级</label>

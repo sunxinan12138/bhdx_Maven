@@ -25,6 +25,7 @@
     <li style="padding: 15px"><a href="#"  target="right">查看所有创新证书</a></li>
     <li style="padding: 15px"><a href="managerCX/student.jsp"  target="right">学生管理</a></li>
     <li style="padding: 15px"><a href="managerCX/class.jsp"  target="right">班级管理</a></li>
+    <li style="padding: 15px"><a href="outFile\outCXExcel.jsp"  target="right">证书导出</a></li>
 </ul>
 </body>
 </html>
