@@ -12,6 +12,7 @@
 </head>
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
+    // 根据学号查询ID
         function validateForm(){
             var hhh = $("#studentID").val();
         $.ajax({
@@ -33,9 +34,11 @@
                     var $table = $("#tableclass");
                     $table.append($tr);
                 }
+                window.location.reload();
             }
     })
     }
+    // 添加新班级
         function addNewclass () {
             var newClass = $("#addClass").val();
             $.ajax({
@@ -56,6 +59,7 @@
                 }
             })
         }
+        //查询所有班级
         $(document).ready(function () {
             $.ajax({
                 url:'doSelectAllClass',
@@ -68,17 +72,17 @@
                     for(var i = 0;i < SubjectClassArray.length;i++){
                     var sid = SubjectClassArray[i].id;
                     var $tr = $("<tr>"+
-                        "<td>"+SubjectClassArray[i].id+"</td>"+
-                        "<td>"+SubjectClassArray[i].subject+"</td>"+
-                        "<td>"+"<a href='#'>"+"查看"+"</a>"+"    "+"<a href='javascript:deleteClass(\"" + sid+ "\")'>"+"删除"+"</a>"+"</td>"+
+                        "<td id=\""+sid+"\">"+SubjectClassArray[i].id+"</td>"+
+                        "<td id=\""+sid+1+"\">"+SubjectClassArray[i].subject+"</td>"+
+                        "<td>"+"<a href='#'>"+"查看"+"</a>"+"    "+"<a href='javascript:deleteClass(\"" + sid+ "\")'>"+"删除"+"</a>"+"    "+"<a id=\""+sid+2+"\" href='javascript:updateClass(\"" + sid+ "\")'>"+"修改班级"+"</a>"+"</td>"+
                         "</tr>");
                     var $table = $("#subject");
                     $table.append($tr);
                 }
-                    document.getElementById("cla").innerHTML="<div style='display: none'></div>"
                 }
             })
         });
+        //删除班级
         function deleteClass(sid) {
             alert(sid);
             $.ajax({
@@ -95,6 +99,33 @@
                         window.location.reload();
                     }else{
                         alert("删除失败");
+                    }
+                }
+            })
+        }
+        //修改班级
+        function updateClass(sid){
+            document.getElementById(sid+1).innerHTML = "<input type='text'  name='newSub' id='\""+sid+5+"\"' placeholder="+document.getElementById(sid+1).innerText+">";
+            document.getElementById(sid+2).innerHTML = "<a href='javascript:commitUpdateClass(\""+sid+"\")'>提交修改</a>"
+        }
+        //提交修改班级
+        function commitUpdateClass(oldsid) {
+            var sAndsid = oldsid
+            sAndsid = oldsid +"_"+$("input[id='\""+oldsid+5+"\"']").val();
+            $.ajax({
+                url:'commitUpdateClass',
+                type:'POST',
+                async:true,
+                timeout:'3000',
+                dataType:'text',
+                data:{'sAndsid':sAndsid},
+                success:function(d){
+                    var result = JSON.parse(d);
+                    if(result==true){
+                        alert("修改成功");
+                        window.location.reload();
+                    }else{
+                        alert("修改失败");
                     }
                 }
             })

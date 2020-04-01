@@ -15,8 +15,12 @@
     <select id="SelectAllClass" resultType="com.bhdx.models.SubjectClass">
         select * from class;
     </select>
-
+    <!--删除班级-->
     <delete id="deleteClassByID" parameterType="java.lang.String">
         DELETE from class where id = #{sid}
     </delete>
+    <!--修改班级-->
+    <update id="updateClass" parameterType="com.bhdx.models.SubjectClass">
+        UPDATE class SET `Subject`=#{subject} WHERE `ID`=#{id};
+    </update>
 </mapper>

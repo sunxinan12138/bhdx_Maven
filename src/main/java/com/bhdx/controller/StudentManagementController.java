@@ -46,8 +46,6 @@ public class StudentManagementController {
         SubjectClass nclass = new SubjectClass();
         nclass.setId(newClassID);
         nclass.setSubject(newClass);
-        System.out.println(nclass.getId() + " " + nclass.getSubject());
-//
         boolean b = newClass.startsWith("e");
         if(b == false){
             template.insert("com.bhdx.DAO.StudentManagementMapper.AddNewclass",nclass);
@@ -57,9 +55,10 @@ public class StudentManagementController {
         }
         AjaxTool ajaxTool = new AjaxTool(result,response);
     }
+    //删除班级
     @RequestMapping("doDeleteClass")
     public void deleteClassByID(HttpServletResponse response,HttpServletRequest request){
-        boolean result = false;
+        boolean result;
         String sid = request.getParameter("sid");
         System.out.println(sid);
         int i = template.delete("com.bhdx.DAO.StudentManagementMapper.deleteClassByID",sid);
@@ -68,6 +67,24 @@ public class StudentManagementController {
         }else{
             result = false;
         }
+        AjaxTool ajaxTool = new AjaxTool(result,response);
+    }
+    //修改班级
+    @RequestMapping("commitUpdateClass")
+    public void updateClass(HttpServletRequest request,HttpServletResponse response){
+        boolean result;
+        String sAndsid = request.getParameter("sAndsid");
+        String[] s = sAndsid.split("_");
+        SubjectClass subjectClass = new SubjectClass();
+        subjectClass.setId(s[0]);
+        subjectClass.setSubject(s[1]);
+        int i = template.update("com.bhdx.DAO.StudentManagementMapper.updateClass",subjectClass);
+        if(i == 1){
+            result = true;
+        }else{
+            result = false;
+        }
+        System.out.println(result);
         AjaxTool ajaxTool = new AjaxTool(result,response);
     }
 }
