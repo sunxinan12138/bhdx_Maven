@@ -62,10 +62,10 @@ public class StudentManagementController {
         String sid = request.getParameter("sid");
         System.out.println(sid);
         int i = template.delete("com.bhdx.DAO.StudentManagementMapper.deleteClassByID",sid);
-        if(i == 1){
-            result = true;
-        }else{
+        if(i == -1){
             result = false;
+        }else{
+            result = true;
         }
         AjaxTool ajaxTool = new AjaxTool(result,response);
     }

@@ -17,7 +17,7 @@
     </select>
     <!--删除班级-->
     <delete id="deleteClassByID" parameterType="java.lang.String">
-        DELETE from class where id = #{sid}
+       DELETE class,student FROM class,student WHERE class.id = student.classId AND class.id= #{sid}
     </delete>
     <!--修改班级-->
     <update id="updateClass" parameterType="com.bhdx.models.SubjectClass">
