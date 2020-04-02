@@ -37,7 +37,7 @@
                placeholder="班级号">
         <input id="clsName" readonly="readonly" style="width: 50%" type="text" class="form-control" name="className"
         >
-        <button type="submit" class="btn btn-default">提交</button>
+        <button type="submit" class="btn btn-default">提交</button>·
 
         <a target="_blank" href="?classId=17160501"></a>
     </form>

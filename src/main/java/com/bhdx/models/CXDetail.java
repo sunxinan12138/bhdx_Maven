@@ -6,7 +6,6 @@ public class CXDetail {
     /*
         idint(11)
         stuidchar(10)
-        levelchar(8)
         zsnamechar(50)
         markdecimal(5,1)
         remarkchar(50)

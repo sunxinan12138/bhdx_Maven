@@ -3,76 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bhdx.DAO.SelectMapper">
-    <select id="findJF" resultType="com.bhdx.models.JingFei">
-       select detail from jf_detail
-   </select>
-    <select id="findJK" resultType="com.bhdx.models.JingFei">
-       select detail from jk_detail
-   </select>
-    <select id="findKF" resultType="com.bhdx.models.JingFei">
-        select detail from kf_detail
-    </select>
-    <select id="findKK" resultType="com.bhdx.models.JingFei">
-        select detail from kk_detail
-    </select>
-    <select id="findZQ" resultType="com.bhdx.models.JingFei">
-        select detail from zq_detail
-    </select>
-    <select id="findHK" resultType="com.bhdx.models.JingFei">
-        select detail from hk_detail
-    </select>
-    <select id="findHS" resultType="com.bhdx.models.JingFei">
-        select detail from hs_detail
-    </select>
-    <select id="findHST" resultType="com.bhdx.models.JingFei">
-        select detail from hst_detail
-    </select>
-    <select id="findZZ" resultType="com.bhdx.models.JingFei">
-        select detail from zz_detail_mark
-    </select>
-    <select id="findHX" resultType="com.bhdx.models.JingFei">
-        select detail from hx_detail_mark
-    </select>
-    <select id="findHSZ" resultType="com.bhdx.models.JingFei">
-        select detail from hsz_detail_mark
-    </select>
-    <!--分数查询-->
-    <select id="findjkmark" resultType="com.bhdx.models.JIngFei_mark">
-        select  * from jk_mark where jk_id=1
-    </select>
-    <select id="findJFmark" parameterType="Integer" resultType="com.bhdx.models.JIngFei_mark">
-      select  *from jf_mark where jf_id = #{id}
-    </select>
-    <select id="findKKmark" parameterType="Integer" resultType="com.bhdx.models.JIngFei_mark">
-      select  *from jf_mark where jf_id = #{id}
-    </select>
-    <select id="findKFmark" parameterType="Integer" resultType="com.bhdx.models.JIngFei_mark">
-      select  *from jf_mark where jf_id = #{id}
-    </select>
-    <select id="findZQmark" parameterType="Integer" resultType="com.bhdx.models.JIngFei_mark">
-      select  *from jf_mark where jf_id = #{id}
-    </select>
-    <select id="findHKmark" parameterType="Integer" resultType="com.bhdx.models.JIngFei_mark">
-      select  *from jf_mark where jf_id = #{id}
-    </select>
-    <select id="findHSmark" parameterType="Integer" resultType="com.bhdx.models.JIngFei_mark">
-      select  *from jf_mark where jf_id = #{id}
-    </select>
-    <select id="findHSTmark" parameterType="Integer" resultType="com.bhdx.models.JIngFei_mark">
-      select  *from jf_mark where jf_id = #{id}
-    </select>
     <!--查询学生all-->
     <select id="findXCAll" resultType="com.bhdx.models.DetailMark">
         select * from xc_all
     </select>
-    <!--改字段名查询-->
-    <select id="findzzMark" resultType="com.bhdx.models.JIngFei_mark">
-        SELECT id,detail AS LEVEL,mark FROM zz_detail_mark
-    </select>
-    <select id="findhxMark" resultType="com.bhdx.models.JIngFei_mark">
-      SELECT id,detail AS LEVEL,mark FROM hx_detail_mark
-    </select>
-    <select id="findhszMark" resultType="com.bhdx.models.JIngFei_mark">
-        SELECT id,detail AS LEVEL,mark FROM hsz_detail_mark
-    </select>
+
 </mapper>
