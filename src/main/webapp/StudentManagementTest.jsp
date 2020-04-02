@@ -40,6 +40,7 @@
     }
     // 添加新班级
         function addNewclass () {
+            if (confirm("确认添加?")){
             var newClass = $("#addClass").val();
             $.ajax({
                 url:'doAddNewClass',
@@ -59,6 +60,8 @@
                 }
             })
         }
+
+        }
         //查询所有班级
         $(document).ready(function () {
             $.ajax({
@@ -74,7 +77,7 @@
                     var $tr = $("<tr>"+
                         "<td id=\""+sid+"\">"+SubjectClassArray[i].id+"</td>"+
                         "<td id=\""+sid+1+"\">"+SubjectClassArray[i].subject+"</td>"+
-                        "<td>"+"<a href='#'>"+"查看"+"</a>"+"    "+"<a href='javascript:deleteClass(\"" + sid+ "\")'>"+"删除"+"</a>"+"    "+"<a id=\""+sid+2+"\" href='javascript:updateClass(\"" + sid+ "\")'>"+"修改班级"+"</a>"+"</td>"+
+                        "<td>"+"<a href='javascript:selectallStudent(\""+sid+"\")'>"+"查看"+"</a>"+"    "+"<a href='javascript:deleteClass(\"" + sid+ "\")'>"+"删除"+"</a>"+"    "+"<a id=\""+sid+2+"\" href='javascript:updateClass(\"" + sid+ "\")'>"+"修改班级"+"</a>"+"</td>"+
                         "</tr>");
                     var $table = $("#subject");
                     $table.append($tr);
@@ -84,52 +87,66 @@
         });
         //删除班级
         function deleteClass(sid) {
-            alert(sid);
-            $.ajax({
-                url:'doDeleteClass',
-                type:'POST',
-                async:true,
-                timeout:'3000',
-                dataType:'text',
-                data:{'sid':sid},
-                success:function(d){
-                    var result = JSON.parse(d);
-                    if(result==true){
-                        alert("删除成功");
-                        window.location.reload();
-                    }else{
-                        alert("删除失败");
+            if (confirm("确认删除"+document.getElementById(sid+1).innerText+"吗?")){
+                $.ajax({
+                    url:'doDeleteClass',
+                    type:'POST',
+                    async:true,
+                    timeout:'3000',
+                    dataType:'text',
+                    data:{'sid':sid},
+                    success:function(d){
+                        var result = JSON.parse(d);
+                        if(result==true){
+                            alert("删除成功");
+                            window.location.reload();
+                        }else{
+                            alert("删除失败");
+                        }
                     }
-                }
-            })
+                })
+            }
         }
         //修改班级
         function updateClass(sid){
-            document.getElementById(sid+1).innerHTML = "<input type='text'  name='newSub' id='\""+sid+5+"\"' placeholder="+document.getElementById(sid+1).innerText+">";
-            document.getElementById(sid+2).innerHTML = "<a href='javascript:commitUpdateClass(\""+sid+"\")'>提交修改</a>"
+            document.getElementById(sid+1).innerHTML = "<input type='text'  name='newSub' id='\""+sid+5+"\"' placeholder="+document.getElementById(sid+1).innerText+" >";
+            document.getElementById(sid+2).innerHTML = "<a href='javascript:commitUpdateClass(\""+sid+"\")' id='\""+sid+6+"\"'>提交修改</a>"
+            /*function undo(){
+                document.getElementById(sid+5).innerHTML = "<td id=\""+sid+1+"\">+document.getElementById(sid+1).innerText+</td>"
+                document.getElementById(sid+6).innerHTML = "<a id=\""+sid+2+"\" href='javascript:updateClass(\""+sid+"\")>+'修改班级'+</a>"
+            }*/
         }
         //提交修改班级
         function commitUpdateClass(oldsid) {
-            var sAndsid = oldsid
-            sAndsid = oldsid +"_"+$("input[id='\""+oldsid+5+"\"']").val();
-            $.ajax({
-                url:'commitUpdateClass',
-                type:'POST',
-                async:true,
-                timeout:'3000',
-                dataType:'text',
-                data:{'sAndsid':sAndsid},
-                success:function(d){
-                    var result = JSON.parse(d);
-                    if(result==true){
-                        alert("修改成功");
-                        window.location.reload();
-                    }else{
-                        alert("修改失败");
+            if (confirm("修改【"+document.getElementById(sid+1).innerText+"】吗?")){
+                var sAndsid = oldsid
+                sAndsid = oldsid +"_"+$("input[id='\""+oldsid+5+"\"']").val();
+                $.ajax({
+                    url:'commitUpdateClass',
+                    type:'POST',
+                    async:true,
+                    timeout:'3000',
+                    dataType:'text',
+                    data:{'sAndsid':sAndsid},
+                    success:function(d){
+                        var result = JSON.parse(d);
+                        if(result==true){
+                            alert("修改成功");
+                            window.location.reload();
+                        }else{
+                            alert("修改失败");
+                        }
                     }
-                }
-            })
+                })
+            }
+
         }
+        //根据班级ID查询本班所有学生
+    function selectallStudent(sid){
+        if (confirm("查询编号是【"+document.getElementById(sid+1).innerText+"】吗?")){
+            window.location.href="doselectAllStudentById?sid="+sid;
+        }
+    }
 </script>
 <body>
 <div>
@@ -155,7 +172,7 @@
         </table>
     </div>
     <div>
-        <table class="table table-hover" >
+        <table class="table table-hover" border="">
             <thead align="center">
             <tr>
                 <th width="10%">班级编号</th>

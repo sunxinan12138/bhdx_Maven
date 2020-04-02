@@ -1,5 +1,4 @@
 package com.bhdx.controller;
-
 import com.bhdx.models.SubjectClass;
 import com.bhdx.models.Student;
 import com.bhdx.tools.AjaxTool;
@@ -10,30 +9,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
-
 import  com.bhdx.tools.StringSplittingTool;
+import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
 public class StudentManagementController {
     @Autowired
     private SqlSessionTemplate template;
-    @RequestMapping("doSelectStudentByID")//根据学号查询学生
+    //根据学号查询学生
+    @RequestMapping("doSelectStudentByID")
     public void SelectStudentByID(HttpServletRequest request,HttpServletResponse response){
         String ID = request.getParameter("hhh");
         System.out.println(ID);
         List<Student> S = template.selectList("com.bhdx.DAO.StudentManagementMapper.SelectStudentByID",ID);
-        for(Student students: S ){
-            System.out.println(students);
-        }
         AjaxTool ajaxTool = new AjaxTool(S, response);
     }
+    //查询所有班级
     @RequestMapping("doSelectAllClass")
     public void SelectAllClass(HttpServletResponse response){
         List<SubjectClass> slist = template.selectList("com.bhdx.DAO.StudentManagementMapper.SelectAllClass");
-        for(SubjectClass subjectClass : slist){
-            System.out.println(subjectClass);
-        }
         AjaxTool ajaxTool = new AjaxTool(slist,response);
     }
     //添加班级
@@ -86,5 +81,16 @@ public class StudentManagementController {
         }
         System.out.println(result);
         AjaxTool ajaxTool = new AjaxTool(result,response);
+    }
+    //根据班级id查询班级所有学生
+    @RequestMapping("doselectAllStudentById")
+    public ModelAndView selectAllStudentById (HttpServletRequest request){
+        ModelAndView modelAndView = new ModelAndView();
+        String subjectId = request.getParameter("sid");
+        System.out.println(subjectId);
+        List<Student> studentList = template.selectList("com.bhdx.DAO.StudentManagementMapper.selectAllStudentById",subjectId);
+        modelAndView.addObject("studentList",studentList);
+        modelAndView.setViewName("SM_test");
+        return modelAndView;
     }
 }
