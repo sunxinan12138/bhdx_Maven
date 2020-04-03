@@ -9,6 +9,9 @@ public interface StudentService {
 
     public List<Student> findStudent();
 
+    //通过学号找班级
+    public String findStuidByClassId(String stuid);
+
     public void changepsw(Map map);
 
     boolean changemessage(Student student);

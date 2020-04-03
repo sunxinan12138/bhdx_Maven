@@ -21,6 +21,12 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public String findStuidByClassId(String stuid) {
+        String classId1 = studentMapper.findClassIdBystuid(stuid);
+        return classId1;
+    }
+
+    @Override
     public void changepsw(Map map) {
         studentMapper.changepsw(map);
     }

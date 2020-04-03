@@ -42,4 +42,9 @@
         DELETE FROM student WHERE ID=#{ID};
     </delete>
 
+
+
+    <select id="findClassIdBystuid" resultType="java.lang.String" parameterType="java.lang.String">
+        SELECT classId FROM student WHERE ID = #{stuid}
+    </select>
 </mapper>

@@ -4,10 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bhdx.DAO.AddzsMapper">
     <insert id="zcadd" parameterType="com.bhdx.models.ZCDetail">
-    insert into zceDetail (stuid,level,mark,zk,zsname,time,remark,imgName,img) values  (#{stuid}, #{level}, #{mark}, #{zk}, #{zsName},#{time},#{remark}, #{imgName}, #{img});
+    insert into zceDetail (stuid,name,mark,zk,zsname,time,remark,imgName,img,classId) values  (#{stuid}, #{name}, #{mark}, #{zk}, #{zsName},#{time},#{remark}, #{imgName}, #{img},#{classID});
     </insert>
     <insert id="cxadd" parameterType="com.bhdx.models.CXDetail">
-    insert into cxDetail (stuid,level,zsname,mark,remark,imgName,img) values  (#{stuid}, #{level}, #{zsname}, #{mark}, #{remark}, #{imgName}, #{img});
+    insert into cxDetail (stuid,name,zsname,mark,time,sort,remark,imgName,img,classId) values  (#{stuid}, #{name}, #{zsname}, #{mark},#{time},#{sort}, #{remark}, #{imgName}, #{img},#{classID});
     </insert>
 
 </mapper>

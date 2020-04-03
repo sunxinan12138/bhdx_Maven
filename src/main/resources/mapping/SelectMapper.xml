@@ -7,5 +7,10 @@
     <select id="findXCAll" resultType="com.bhdx.models.DetailMark">
         select * from xc_all
     </select>
-
+    <select id="selectKind" parameterType="java.lang.String" resultType="com.bhdx.models.KindDic">
+      SELECT * FROM dicKind WHERE lableId = #{lableId}
+    </select>
+    <select id="selectlevel" parameterType="java.lang.String" resultType="com.bhdx.models.LevelDic">
+      SELECT * FROM dicZs WHERE kindId = #{kindId}
+    </select>
 </mapper>

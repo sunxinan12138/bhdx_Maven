@@ -20,4 +20,6 @@ public interface StudentMapper {
     public void getStudentID(String condition);//获取最大学号
 
     public void deleteStudent(String ID);
+
+    String findClassIdBystuid(String stuid);
 }

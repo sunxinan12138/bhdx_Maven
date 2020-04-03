@@ -15,6 +15,19 @@ public class SelectServiceImpl implements SelectService {
     @Autowired
     private SqlSessionTemplate template;
 
+    //证书查Kind
+    @Override
+    public List<KindDic> selectKind(String lableId) {
+        List<KindDic> kindDicList = template.selectList("com.bhdx.DAO.SelectMapper.selectKind", lableId);
+        return kindDicList;
+    }
+
+    //查细节
+    @Override
+    public List<LevelDic> selectlevel(String kindId) {
+        List<LevelDic> levelDicList = template.selectList("com.bhdx.DAO.SelectMapper.selectlevel", kindId);
+        return levelDicList;
+    }
 
     //学生细节分数查询
     @Override
@@ -48,7 +61,7 @@ public class SelectServiceImpl implements SelectService {
     public boolean cchcx(String zsname) {
         boolean btn = true;
         List list = new ArrayList();
-        template.selectList("",zsname);
+        template.selectList("", zsname);
         if (list.size() != 0) {
             btn = !btn;
         }

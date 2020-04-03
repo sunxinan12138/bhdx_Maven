@@ -1,5 +1,7 @@
 package com.bhdx.controller;
 
+import com.bhdx.models.KindDic;
+import com.bhdx.models.LevelDic;
 import com.bhdx.service.SelectService;
 import com.bhdx.tools.AjaxTool;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,14 +27,29 @@ public class SelectController {
 
 
     //查询Kind
+    @RequestMapping("/doselectKind")
+    public void doselectKind(HttpServletRequest request, Integer lableId, HttpServletResponse response) {
+        lableId += 1;
+        String id = lableId.toString();
+        System.out.println(lableId);
+        List<KindDic> kindDicList = selectService.selectKind(id);
+        System.out.println(kindDicList);
+        new AjaxTool(kindDicList, response);
+    }
+
     //查询zs细节
-
-
+    @RequestMapping("/doselectlevel")
+    public void doselectlevel(HttpServletRequest request, String kindId, HttpServletResponse response) {
+        List<LevelDic> levelDicList = selectService.selectlevel(kindId);
+        //System.out.println(levelDicList);
+        new AjaxTool(levelDicList, response);
+    }
+        // 获取session
     @RequestMapping("/dostuidSession")
     public void stuidSession(HttpServletRequest request, HttpSession httpSession, HttpServletResponse response) {
         String stui = null;
         stui = selectService.getHeader(request);
-        System.out.println(stui);
+        //System.out.println(stui);
         new AjaxTool(stui, response);
     }
 

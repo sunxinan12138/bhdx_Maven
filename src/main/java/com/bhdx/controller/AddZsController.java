@@ -3,6 +3,7 @@ package com.bhdx.controller;
 import com.bhdx.models.CXDetail;
 import com.bhdx.models.ZCDetail;
 import com.bhdx.service.AddZsService;
+import com.bhdx.service.StudentService;
 import com.bhdx.tools.AjaxTool;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ public class AddZsController {
     ModelAndView mav = null;
     @Autowired
     private AddZsService addZsService;
+    @Autowired
+    private StudentService studentService;
 
     //综测
     @RequestMapping("/doaddZC")
@@ -97,10 +100,19 @@ public class AddZsController {
     @ResponseBody
     public void doaddZAC(HttpServletRequest request, HttpServletResponse response, ZCDetail zcDetail, CXDetail cxDetail, @RequestParam("file") MultipartFile file) {
         boolean btn = false;
-        boolean repet = true;
         try {
             response.setCharacterEncoding("utf-8");
             request.setCharacterEncoding("utf-8");
+            String stuidAN = request.getParameter("stuidAname");
+            String[] a = stuidAN.split("-");
+            zcDetail.setName(a[1]);
+            zcDetail.setStuid(a[0]);
+            cxDetail.setName(a[1]);
+            cxDetail.setStuid(a[0]);
+            String classId = studentService.findStuidByClassId("201716050123");
+            System.out.println(classId);
+            cxDetail.setClassID(classId);
+            zcDetail.setClassID(classId);
             String zsname = request.getParameter("zsname");
             String markzc = request.getParameter("markzc");
             double markzcd = Double.parseDouble(markzc);
@@ -119,16 +131,14 @@ public class AddZsController {
             cxDetail.setImg(file.getBytes());
             System.out.println(cxDetail);
             System.out.println(zcDetail);
-
-            // 查重
-
-            if(repet){
-                return;
-            }
             //综测添加
-            btn = addZsService.zcadd(zcDetail);
+            if (zcDetail.getMark() != 0) {
+                btn = addZsService.zcadd(zcDetail);
+            }
             //创新添加
-            btn = addZsService.cxadd(cxDetail);
+            if (cxDetail.getMark() != 0) {
+                btn = addZsService.cxadd(cxDetail);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
