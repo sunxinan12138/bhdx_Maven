@@ -19,7 +19,9 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -120,5 +122,50 @@ public class StudentController {
         btn = studentService.changemessage(student);
         new AjaxTool(btn, response);
     }
+    @RequestMapping("/doAddStudent")
+    public void addStudent(Student stu,HttpServletRequest request, HttpServletResponse response)  {
 
+        try {
+            template.insert("com.bhdx.DAO.StudentMapper.addStudent", stu);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @RequestMapping("/doGetStudentID")
+    public void getStudentID(HttpServletRequest request, HttpServletResponse response) {
+        String condition=request.getParameter("condition");
+        System.out.println(condition);
+        String ID=template.selectOne("com.bhdx.DAO.StudentMapper.getStudentID",condition);
+        System.out.println(ID);
+        String sid=null;
+        if(ID!=null){
+            sid = ID.substring(ID.length() -2,ID.length());
+        }
+        else{
+            sid="none";
+        }
+        System.out.println(sid);
+        response.setHeader("Content-Type", "text/html; charset=utf-8");
+        try {
+            PrintWriter out = response.getWriter();
+            out.print(sid);
+            out.flush();
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @RequestMapping("doDeleteStudent")
+    public void deleteStudent(HttpServletResponse response,HttpServletRequest request){
+        boolean result = false;
+        String ID = request.getParameter("hhh");
+        int i = template.delete("com.bhdx.DAO.StudentMapper.deleteStudent",ID);
+        if(i == 1){
+            result = true;
+        }else{
+            result = false;
+        }
+        AjaxTool ajaxTool = new AjaxTool(result,response);
+    }
 }

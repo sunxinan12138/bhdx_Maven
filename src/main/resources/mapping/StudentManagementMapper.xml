@@ -15,16 +15,12 @@
     <select id="SelectAllClass" resultType="com.bhdx.models.SubjectClass">
         select * from class;
     </select>
-    <!--删除班级-->
+
     <delete id="deleteClassByID" parameterType="java.lang.String">
-       DELETE class,student FROM class,student WHERE class.id = student.classId AND class.id= #{sid}
+        DELETE from class where id = #{sid}
     </delete>
-    <!--修改班级-->
-    <update id="updateClass" parameterType="com.bhdx.models.SubjectClass">
-        UPDATE class SET `Subject`=#{subject} WHERE `ID`=#{id};
+    <!--转专业-->
+    <update id="updateStudentClass" parameterType="java.util.Map">
+        UPDATE student SET classId=#{classId} WHERE ID=#{ID};
     </update>
-    <!--根据班级ID查询该班级的所有学生-->
-    <select id="selectAllStudentById" resultType="com.bhdx.models.Student">
-        SELECT  * from student where classId = #{subjectid}
-    </select>
 </mapper>

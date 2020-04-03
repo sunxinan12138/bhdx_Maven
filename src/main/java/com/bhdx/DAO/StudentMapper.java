@@ -14,4 +14,10 @@ public interface StudentMapper {
     public void changepsw(@Param("map") Map map);
 
     public int changemessage(Student student);
+
+    public void addStudent(Student stu);
+
+    public void getStudentID(String condition);//获取最大学号
+
+    public void deleteStudent(String ID);
 }

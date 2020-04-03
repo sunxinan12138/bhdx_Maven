@@ -21,7 +21,7 @@
 </head>
 <body>
 <div style="margin: 0 auto ;height: auto; width: 40%" class="panel-heading">
-    <form action="#" role="form">
+    <form action="doUpdateStudentClass" role="form" method="post">
         <div class="form-group">
             <label>学号</label>
             <input style="width: 50%" type="text" class="form-control" name="stuid"

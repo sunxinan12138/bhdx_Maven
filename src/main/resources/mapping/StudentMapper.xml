@@ -27,4 +27,19 @@
             where
             ID=#{id}
     </update>
+    <insert id="addStudent" parameterType="com.bhdx.models.Student">
+        INSERT INTO student
+        (ID,psw,name,classId,tel,address,dormitory)
+        VALUES
+        (#{id},#{psw},#{name},#{classID},#{tel},#{address},#{dormitory});
+
+    </insert>
+    <select id="getStudentID" parameterType="String"  resultType="java.lang.String">
+      select max(ID) from student where ID like CONCAT(#{condition},'%');
+    </select>
+
+    <delete id="deleteStudent" parameterType="String">
+        DELETE FROM student WHERE ID=#{ID};
+    </delete>
+
 </mapper>
