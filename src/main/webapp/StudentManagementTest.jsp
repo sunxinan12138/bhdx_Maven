@@ -34,7 +34,7 @@
                     var $table = $("#tableclass");
                     $table.append($tr);
                 }
-                window.location.reload();
+                //window.location.reload();
             }
     })
     }
@@ -118,7 +118,7 @@
         }
         //提交修改班级
         function commitUpdateClass(oldsid) {
-            if (confirm("修改【"+document.getElementById(sid+1).innerText+"】吗?")){
+            if (confirm("修改为"+$("input[id='\""+oldsid+5+"\"']").val()+"吗?")){
                 var sAndsid = oldsid
                 sAndsid = oldsid +"_"+$("input[id='\""+oldsid+5+"\"']").val();
                 $.ajax({
@@ -143,7 +143,7 @@
         }
         //根据班级ID查询本班所有学生
     function selectallStudent(sid){
-        if (confirm("查询编号是【"+document.getElementById(sid+1).innerText+"】吗?")){
+        if (confirm("查询编号是【"+document.getElementById(sid).innerText+"】吗?")){
             window.location.href="doselectAllStudentById?sid="+sid;
         }
     }
