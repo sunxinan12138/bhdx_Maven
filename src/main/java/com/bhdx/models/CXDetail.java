@@ -28,33 +28,9 @@ public class CXDetail {
     private String time;
     private String sort;
     private String imgName;
-    private String classID;
+    private String classId;
     private byte[] img;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getStuid() {
-        return stuid;
-    }
-
-    public void setStuid(String stuid) {
-        this.stuid = stuid;
-    }
-
-    public String getZsname() {
-        return zsname;
-    }
-
-    public void setZsname(String zsname) {
-        this.zsname = zsname;
-    }
-
+    private String shCondition;
     public void setMark(Double mark) {
         this.mark = mark;
     }
@@ -111,12 +87,44 @@ public class CXDetail {
         this.name = name;
     }
 
-    public String getClassID() {
-        return classID;
+    public String getClassId() {
+        return classId;
     }
 
-    public void setClassID(String classID) {
-        this.classID = classID;
+    public void setClassId(String classId) {
+        this.classId = classId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getStuid() {
+        return stuid;
+    }
+
+    public void setStuid(String stuid) {
+        this.stuid = stuid;
+    }
+
+    public String getZsname() {
+        return zsname;
+    }
+
+    public void setZsname(String zsname) {
+        this.zsname = zsname;
+    }
+
+    public String getShCondition() {
+        return shCondition;
+    }
+
+    public void setShCondition(String shCondition) {
+        this.shCondition = shCondition;
     }
 
     @Override
@@ -131,8 +139,9 @@ public class CXDetail {
                 ", time='" + time + '\'' +
                 ", sort='" + sort + '\'' +
                 ", imgName='" + imgName + '\'' +
-                ", classID='" + classID + '\'' +
+                ", classId='" + classId + '\'' +
                 ", img=" + Arrays.toString(img) +
+                ", shCondition='" + shCondition + '\'' +
                 '}';
     }
 }

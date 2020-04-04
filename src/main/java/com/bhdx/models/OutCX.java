@@ -15,6 +15,7 @@ public class OutCX {
     private String zsname;
     private Double mark;
     private String sort;
+    private String cause;
 
     public int getId() {
         return id;
@@ -62,6 +63,14 @@ public class OutCX {
 
     public void setSort(String sort) {
         this.sort = sort;
+    }
+
+    public String getCause() {
+        return cause;
+    }
+
+    public void setCause(String cause) {
+        this.cause = cause;
     }
 
     @Override

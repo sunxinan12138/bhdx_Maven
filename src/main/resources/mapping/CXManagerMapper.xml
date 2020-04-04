@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bhdx.DAO.CXManagerMapper">
+    <!--根据班级号查询创新分-->
+    <select id="selectCXByClass" resultType="com.bhdx.models.CXDetail">
+        SELECT * FROM cxDetail WHERE classId = #{classId};
+    </select>
+    <!--根据创新编号删除记录-->
+    <delete id="deleteCXById">
+        DELETE FROM cxDetail WHERE id = #{CXid};
+    </delete>
+<!--根据证书编号修改证书详情-->
+    <update id="updateCXById" parameterType="com.bhdx.models.CXDetail">
+        UPDATE cxDetail SET stuid = #{stuid},name = #{name},zsname = #{zsname},mark = #{mark},remark = #{remark},time = #{time},sort = #{sort},classId = #{classId} WHERE id = #{id};
+    </update>
+    <!--通过证书编号查询证书-->
+    <select id="selectCXById" resultType="com.bhdx.models.CXDetail">
+    SELECT * FROM cxDetail WHERE id = #{id};
+    </select>
+        <!--通过审核-->
+    <insert id="insertOutCX" parameterType="com.bhdx.models.OutCX">
+    INSERT into outCx ('stuid','name','zsname','mark','sort','cause') VALUES (#{stuid},#{name},#{zsname},#{mark},#{sort},#{cause});
+    </insert>
+
+    <!--不通过审核-->
+    <insert id="insertDelMessage" parameterType="com.bhdx.models.DelMessage">
+        INSERT INTO delMessage ('stuid','zsname','cause') VALUES (#{stuid},#{zsname},#{cause});
+    </insert>
+
+
+</mapper>
