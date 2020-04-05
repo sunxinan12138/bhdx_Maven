@@ -109,7 +109,7 @@ public class AddZsController {
             zcDetail.setStuid(a[0]);
             cxDetail.setName(a[1]);
             cxDetail.setStuid(a[0]);
-            String classId = studentService.findStuidByClassId("201716050123");
+            String classId = studentService.findStuidByClassId(a[0]);
             System.out.println(classId);
             cxDetail.setClassID(classId);
             zcDetail.setClassID(classId);
