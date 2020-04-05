@@ -5,7 +5,7 @@
 <mapper namespace="com.bhdx.DAO.CXManagerMapper">
     <!--根据班级号查询创新分-->
     <select id="selectCXByClass" resultType="com.bhdx.models.CXDetail">
-        SELECT * FROM cxDetail WHERE classId = #{classId};
+        SELECT * FROM cxDetail WHERE classId = #{classID};
     </select>
     <!--根据创新编号删除记录-->
     <delete id="deleteCXById">
@@ -21,12 +21,12 @@
     </select>
         <!--通过审核-->
     <insert id="insertOutCX" parameterType="com.bhdx.models.OutCX">
-    INSERT into outCx ('stuid','name','zsname','mark','sort','cause') VALUES (#{stuid},#{name},#{zsname},#{mark},#{sort},#{cause});
+    INSERT into outCx (stuid,name,zsname,mark,sort,cause) VALUES (#{stuid},#{name},#{zsname},#{mark},#{sort},#{cause});
     </insert>
 
     <!--不通过审核-->
     <insert id="insertDelMessage" parameterType="com.bhdx.models.DelMessage">
-        INSERT INTO delMessage ('stuid','zsname','cause') VALUES (#{stuid},#{zsname},#{cause});
+        INSERT INTO delMessage (stuid,zsname,cause,flag) VALUES (#{stuid},#{zsname},#{cause},#{flag});
     </insert>
 
 

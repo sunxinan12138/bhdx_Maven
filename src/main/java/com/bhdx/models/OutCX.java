@@ -82,6 +82,7 @@ public class OutCX {
                 ", zsname='" + zsname + '\'' +
                 ", mark=" + mark +
                 ", sort='" + sort + '\'' +
+                ", cause='" + cause + '\'' +
                 '}';
     }
 }

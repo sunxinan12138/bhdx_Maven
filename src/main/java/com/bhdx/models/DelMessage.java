@@ -1,9 +1,11 @@
 package com.bhdx.models;
 
 public class DelMessage {
-    public String stuid;
-    public String zsname;
-    public String cause;
+
+    private String stuid;
+    private String zsname;
+    private String cause;
+    private String flag;
 
     public String getStuid() {
         return stuid;
@@ -27,5 +29,13 @@ public class DelMessage {
 
     public void setCause(String cause) {
         this.cause = cause;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
     }
 }

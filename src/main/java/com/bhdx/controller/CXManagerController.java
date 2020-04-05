@@ -76,8 +76,7 @@ public class CXManagerController {
         cxDetail.setTime(time);
         cxDetail.setSort(sort);
         cxDetail.setRemark(remark);
-        cxDetail.setClassId(classid);
-        cxDetail.setShCondition("0");
+        cxDetail.setClassID(classid);
         try{
             int i = template.update("com.bhdx.DAO.CXManagerMapper.updateCXById",cxDetail);
             System.out.println(i);
@@ -96,10 +95,10 @@ public class CXManagerController {
     @ResponseBody
     public void accessCX(HttpServletRequest request,HttpServletResponse response){
         boolean result = false;
-        String remark = request.getParameter("remark");
-        String status = request.getParameter("status");
+        String remark = request.getParameter("remark");//原因
+        String status = request.getParameter("status");//是否通过审核的标记
         String CXidStr = request.getParameter("CXid");
-        int CXid = Integer.parseInt(CXidStr);
+        int CXid = Integer.parseInt(CXidStr);//创新id
         List<CXDetail> list = template.selectList("com.bhdx.DAO.CXManagerMapper.selectCXById",CXid);
         if (list.size() > 0){
                 String stuid = list.get(0).getStuid();
@@ -107,7 +106,7 @@ public class CXManagerController {
                 String zsname = list.get(0).getZsname();
                 Double mark = list.get(0).getMark();
                 String sort = list.get(0).getSort();
-                if (status.equals("0")){
+                if (status.equals("0")){//审核通过
                     OutCX outCX = new OutCX();
                     outCX.setStuid(stuid);
                     outCX.setName(name);
@@ -116,23 +115,30 @@ public class CXManagerController {
                     outCX.setSort(sort);
                     outCX.setCause(remark);
                     int m = template.insert("com.bhdx.DAO.CXManagerMapper.insertOutCX",outCX);
-                    System.out.println(outCX);
-                    if (m > 0){
+                    int n = template.delete("com.bhdx.DAO.CXManagerMapper.deleteCXById",CXid);
+                   // System.out.println(n);
+                    if (m > 0 && n > 0){
                        result = true;
+                       AjaxTool ajaxTool = new AjaxTool(result,response);
                     }
-                }else{
+                }else if(status.equals("1")){//审核不通过
+                    //System.out.println("+++++++++++++++++++++++++++++++++++++++++++");
+                    String flag = "创新";
                     DelMessage delMessage = new DelMessage();
-                    delMessage.setStuid(remark);
                     delMessage.setStuid(stuid);
                     delMessage.setZsname(zsname);
-                    System.out.println(delMessage);
+                    delMessage.setCause(remark);
+                    delMessage.setFlag(flag);
+                    //System.out.println(delMessage);
                   int n =  template.insert("com.bhdx.DAO.CXManagerMapper.insertDelMessage",delMessage);
-                  if (n > 0){
-                      result = true;
+                  int m = template.delete("com.bhdx.DAO.CXManagerMapper.deleteCXById",CXid);
+                  if (n > 0 && m > 0){
+                      //result = false;
+                      AjaxTool ajaxTool = new AjaxTool(result,response);
                   }
                 }
         }
-        AjaxTool ajaxTool = new AjaxTool(result,response);
+
     }
 
     //通过id查询证书详情  然后修改

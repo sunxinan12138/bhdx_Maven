@@ -73,6 +73,7 @@
                         "<td>"+attr[i].remark+"</td>"+
                         "<td>"+attr[i].time+"</td>"+
                         "<td>"+attr[i].sort+"</td>"+
+                        "<td>"+attr[i].classID+"</td>"+
                         "<td><a href='javascript:' onclick='matterAccess("+CXid+")'>通过</a>&nbsp<a href='javascript:' onclick='matterNoAccess("+CXid+")'>不通过</a></td>" +
                         "<td><a href='doSelectCXById?CXid="+CXid+"'>修改</a></td></tr>")
                     $("#02").append($tr);//页面显示数据
@@ -105,12 +106,13 @@
                     "./doAccessCX",
                     {"CXid":CXid,"remark":remark,"status":status},
                     function(data){
-                        var result = data.result;
+                        var result = JSON.parse(data);
                         if(result==true){
                             alert("审核成功");
                             window.location.reload();
                         }else{
                             alert("审核失败");
+                            window.location.reload();
                         }
                     },'json')
             }
@@ -130,7 +132,7 @@
     function matterNoAccess(CXid) {
         //设置弹出框样式
         var  html = '<textarea onkeyup="word_limit(this,400);" style="width:90%;height:90%;display:block;margin:0 auto;" placeholder="最多输入400个字" id="content_text"></textarea>';
-        var status='1';//标记审核通过
+        var status='1';//标记审核不通过
         layer.open({
             title: "审核不通过的消息",
             type: 1,
@@ -151,12 +153,13 @@
                     "./doAccessCX",
                     {"CXid":CXid,"remark":remark,"status":status},
                     function(data){
-                        var result = data.result;
+                        var result = JSON.parse(data);
                         if(result==true){
                             alert("审核成功");
                             window.location.reload();
                         }else{
                             alert("审核失败");
+                            window.location.reload();
                         }
                     },'json')
             }
@@ -213,6 +216,7 @@
                 <th width="10%">remark</th>
                 <th width="10%">日期</th>
                 <th width="10%">sort</th>
+                <th width="10%">班级id</th>
                 <th width="10%">审核状态</th>
                 <th width="10%">操作</th>
             </tr>

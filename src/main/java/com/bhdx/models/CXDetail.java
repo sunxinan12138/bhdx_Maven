@@ -29,7 +29,6 @@ public class CXDetail {
     private String sort;
     private String imgName;
     private String classID;
-    private String classId;
     private byte[] img;
     private String shCondition;
     public void setMark(Double mark) {
@@ -88,12 +87,12 @@ public class CXDetail {
         this.name = name;
     }
 
-    public String getClassId() {
-        return classId;
+    public String getClassID() {
+        return classID;
     }
 
-    public void setClassId(String classId) {
-        this.classId = classId;
+    public void setClassID(String classID) {
+        this.classID = classID;
     }
 
     public int getId() {
@@ -128,13 +127,6 @@ public class CXDetail {
         this.shCondition = shCondition;
     }
 
-    public String getClassID() {
-        return classID;
-    }
-
-    public void setClassID(String classID) {
-        this.classID = classID;
-    }
 
     @Override
     public String toString() {
@@ -148,8 +140,7 @@ public class CXDetail {
                 ", time='" + time + '\'' +
                 ", sort='" + sort + '\'' +
                 ", imgName='" + imgName + '\'' +
-                ", classID='" + classID + '\'' +
-                ", classId='" + classId + '\'' +
+                ", classId='" + classID + '\'' +
                 ", img=" + Arrays.toString(img) +
                 ", shCondition='" + shCondition + '\'' +
                 '}';

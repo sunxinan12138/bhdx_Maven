@@ -29,7 +29,7 @@
     日&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp期： <input type="text" name="time" id="time" value="<%=cxDetail.getTime() %>"><br>
     sort&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp&nbsp<input type="text" name="sort" id="sort" value="<%=cxDetail.getSort() %>"><br>
     证书说明：<input type="text" name="remark" id="remark" value="<%=cxDetail.getRemark() %>"><br>
-    班级&nbsp&nbspid&nbsp：<input type="text" name="classId" id="classId" value="<%=cxDetail.getClassId() %>"><br>
+    班级&nbsp&nbspid&nbsp：<input type="text" name="classId" id="classId" value="<%=cxDetail.getClassID() %>"><br>
     <input type="submit" id="bnt" value="确认修改">
 </form>
 <%
