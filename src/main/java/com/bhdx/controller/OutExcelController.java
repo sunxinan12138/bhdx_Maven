@@ -25,7 +25,8 @@ public class OutExcelController {
         path = path + "\\" + className + "综测" + classId + ".xlsx";
         List<Student> list = outService.outExcel(classId, path);
         int lenth = list.size();
-        modelAndView.setViewName("sucess");
+        //跳转sucess。jsp
+         modelAndView.setViewName("sucess");
         request.setAttribute("lenth", lenth);
         return modelAndView;
     }

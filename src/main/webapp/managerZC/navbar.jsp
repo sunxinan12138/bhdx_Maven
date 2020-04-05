@@ -9,7 +9,7 @@
 <html>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <head>
     <base href="<%=basePath%>">
@@ -23,9 +23,30 @@
 <nav class="navbar navbar-inverse" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" target="_parent" href="managerCX/manager.jsp">创新证书管理系统</a>
+            <a class="navbar-brand" target="_parent" href="managerCX/manager.jsp">综测证书管理系统</a>
+            <p id="idAname" class="navbar-brand" style="display: none;margin-left: 550px"></p>
+            <a id="out" class="navbar-brand" target="_parent" href="../login.jsp">退出</a>
+            <a class="navbar-brand" target="_parent" style="margin-left: 600px" href="../login.jsp">登录</a>
         </div>
     </div>
 </nav>
+<script type="text/javascript">
+    $(document).ready(
+        function () {
+            var name = '<%=session.getAttribute("UserName")%>';
+            var id = '<%=session.getAttribute("ID")%>';
+            if (name != null && id != null) {
+                var msg = name + "---" + id;
+                $("#idAname").html(msg);
+                $("#idAname").css('display', 'inline');
+                $("#usermsg").css('display', 'none');
+            } else {
+                alert("请登录")
+            }
+
+
+        }
+    )
+</script>
 </body>
 </html>
