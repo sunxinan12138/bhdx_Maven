@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bhdx.DAO.ZCManagerMapper">
+    <!-- 根据班级查询综测-->
+    <select id="getZCByClass" resultType="com.bhdx.models.ZCDetail">
+        SELECT * FROM zceDetail WHERE classId = #{classId};
+    </select>
+    <!--查询所有班级 -->
+    <select id="selectAllClass" resultType="com.bhdx.models.SubjectClass">
+        SELECT * FROM class;
+    </select>
+    <!--根据证书编号删除证书-->
+    <delete id="deleteZCById">
+        DELETE FROM zceDetail WHERE id = #{ZCid};
+    </delete>
+    <!--审核通过存到outzc表中-->
+    <insert id="insertOutZC" parameterType="com.bhdx.models.OutZC">
+        INSERT INTO outZc (stuid,name,zsName,mark,zk,cause) VALUES (#{stuid},#{name},#{zsName},#{mark},#{zk},#{cause});
+    </insert>
+    <!--根据编号查询综测详情-->
+    <select id="getZCById" resultType="com.bhdx.models.ZCDetail">
+        SELECT * FROM zceDetail WHERE id = #{id};
+    </select>
+    <!--根据编号修改综测详情-->
+    <update id="updateZCById" parameterType="com.bhdx.models.ZCDetail">
+        UPDATE zceDetail SET stuid = #{stuid},name = #{name},zsname = #{zsName},mark = #{mark},zk = #{zk},remark = #{remark},time = #{time},classId = #{classID} WHERE id = #{id};
+    </update>
+    <!--
+     <update id="updateCXById" parameterType="com.bhdx.models.CXDetail">
+        UPDATE cxDetail SET stuid = #{stuid},name = #{name},zsname = #{zsname},mark = #{mark},remark = #{remark},time = #{time},sort = #{sort},classId = #{classId} WHERE id = #{id};
+    </update>
+    -->
+</mapper>
