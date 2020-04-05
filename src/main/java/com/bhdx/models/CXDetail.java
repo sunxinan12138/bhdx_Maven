@@ -28,6 +28,7 @@ public class CXDetail {
     private String time;
     private String sort;
     private String imgName;
+    private String classID;
     private String classId;
     private byte[] img;
     private String shCondition;
@@ -127,6 +128,14 @@ public class CXDetail {
         this.shCondition = shCondition;
     }
 
+    public String getClassID() {
+        return classID;
+    }
+
+    public void setClassID(String classID) {
+        this.classID = classID;
+    }
+
     @Override
     public String toString() {
         return "CXDetail{" +
@@ -139,6 +148,7 @@ public class CXDetail {
                 ", time='" + time + '\'' +
                 ", sort='" + sort + '\'' +
                 ", imgName='" + imgName + '\'' +
+                ", classID='" + classID + '\'' +
                 ", classId='" + classId + '\'' +
                 ", img=" + Arrays.toString(img) +
                 ", shCondition='" + shCondition + '\'' +

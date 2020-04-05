@@ -108,10 +108,10 @@ public class StudentController {
         System.out.println(id);
         String classid = "";
         List<Student> slist = template.selectList("com.bhdx.DAO.StudentMapper.selectInfo", id);
-        if (slist.size() != 0) {
-            classid = slist.get(0).getClassID();
-            //查找班级
-        }
+//        if (slist.size() != 0) {
+//            classid = slist.get(0).getClassID();
+//            //查找班级
+//        }
         new AjaxTool(slist, response);
     }
 

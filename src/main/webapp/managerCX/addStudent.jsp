@@ -22,10 +22,10 @@
 <body>
 
 <div style="margin: 0 auto ;height: auto; width: 40%" class="panel-heading">
-    <form action="#" role="form">
+    <form action="doAddStudent" role="form">
         <div class="form-group">
             <label>学号</label>
-            <input style="width: 50%" type="text" class="form-control" name="stuid"
+            <input style="width: 50%" type="text" class="form-control" name="ID"
                    placeholder="请输入学号">
         </div>
         <div class="form-group">

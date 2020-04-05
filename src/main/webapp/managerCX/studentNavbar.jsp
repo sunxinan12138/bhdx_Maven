@@ -25,7 +25,7 @@
                                                                           target="down">转专业</a></li>
         <li onclick="change()" class="e" style="padding: 15px"><a href="managerCX\addStudent.jsp"
                                                                   target="down">添加新学生</a></li>
-        <li onclick="changec()" class="c" style="padding: 15px"><a href="#" target="down">需要删除的学生</a></li>
+        <li onclick="changec()" class="c" style="padding: 15px"><a href="managerCX\delStudent.jsp" target="down">需要删除的学生</a></li>
         <li onclick="changed()" class="d" style="padding: 15px"><a href="#" target="down">查看所有学生及管理</a></li>
     </ul>
 </div>
