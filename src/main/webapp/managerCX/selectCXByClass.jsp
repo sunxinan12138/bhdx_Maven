@@ -14,7 +14,7 @@
 <head>
     <base href="<%=basePath%>">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="layer/theme/default/layer.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -30,7 +30,7 @@
         function () {
             $.ajax({
                 type:'GET',
-                url:'doSelectClass',
+                url:'doSelectAllClass',
                 data:'',
                 async: true,
                 dataType:'text',
