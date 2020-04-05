@@ -45,7 +45,6 @@ public class AdminController {
             Admin temp = list.get(i);
             if(temp.getID()!=null||temp.getPassword()!=null){
                 if(temp.getID().equals(ID)&&temp.getPassword().equals(Psd)){//登陆成功
-                    HttpSession sessionl = request.getSession();
                     session.setAttribute("UserName",temp.getName());//把登录用户存储到session里
                     session.setAttribute("ID",ID);
                     StringSplittingTool classID = new StringSplittingTool();
@@ -55,12 +54,12 @@ public class AdminController {
 //                    andView.addObject("cxDetails",cxDetails);//把查询出来的放到zsdetail里传到前端
                         andView.addObject("UserName",temp.getName());
                         //跳回主页面
-                        andView.setViewName("managerCX/test");
+                        andView.setViewName("managerCX/manager");
                     }else if(temp.getMark().equals("ZC")){
                         //拆分出专业班级代号，传到数据库进行查询
                         andView.addObject("UserName",temp.getName());
                         //跳回主页面
-                        andView.setViewName("check");
+                        andView.setViewName("managerZC/manager");
                     }
 
                     flag=true;

@@ -8,7 +8,7 @@
         <result column="student_name" property="name"/>
         <collection property="cxDetailList" ofType="com.bhdx.models.CXDetail">
             <id column="cstuid" property="stuid"/>
-            <result column="clevel" property="level"/>
+            <!--<result column="clevel" property="level"/>-->
             <result column="czsname" property="zsname"/>
             <result column="cmark" property="mark"/>
             <result column="cremark" property="remark"/>
