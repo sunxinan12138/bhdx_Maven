@@ -1,7 +1,7 @@
 package com.bhdx.controller;
 
 import com.bhdx.models.Admin;
-import com.bhdx.models.CXDetail;
+import com.bhdx.models.SubjectClass;
 import com.bhdx.tools.AjaxTool;
 import com.bhdx.tools.StringSplittingTool;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -10,15 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
+
 
 @Controller
 public class AdminController {
@@ -91,6 +87,33 @@ public class AdminController {
         }
         AjaxTool ajaxTool = new AjaxTool(result,response);
     }
-
-
+    @RequestMapping("selectClassByID")
+    public void selectClassByID(HttpServletRequest request,HttpServletResponse response){
+        String ID = request.getParameter("stuAdmin");
+        SubjectClass subjectClass = template.selectOne("com.bhdx.DAO.AdminMapper.queryClass",ID);
+        if (subjectClass==null){
+            AjaxTool ajaxTool = new AjaxTool("error",response);
+        }else{
+            AjaxTool ajaxTool = new AjaxTool(subjectClass.getSubject(),response);
+        }
+    }
+    //添加班级管理员
+    @RequestMapping("doAddStuAdmin")
+    public void addStuAdmin(HttpServletResponse response,HttpServletRequest request){
+        String ID = request.getParameter("classID");
+        StringSplittingTool splittingTool = new StringSplittingTool();
+        boolean result;
+        int max=1000000,min=1;
+        String password = Integer.toString((int) (Math.random()*(max-min)+min));
+        System.out.println(password);
+        Admin admin = new Admin();
+        admin.setID(ID);admin.setName(splittingTool.GetSubjectByClassID(ID));admin.setPassword(password);
+        int i = template.insert("com.bhdx.DAO.AdminMapper.addStuAdmin",admin);
+        if(i==1){
+           result = true;
+        }else{
+           result = false;
+        }
+        AjaxTool ajaxTool = new AjaxTool(result,response);
+    }
 }

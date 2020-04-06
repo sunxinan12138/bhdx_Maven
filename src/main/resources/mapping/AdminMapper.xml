@@ -32,4 +32,12 @@
     <update id="ChangePsw" parameterType="com.bhdx.models.Admin">
       UPDATE Admin SET `Password`=#{Password} WHERE `ID`=#{ID};
     </update>
+
+    <select id="queryClass" resultType="SubjectClass">
+       SELECT * FROM class WHERE ID = #{ID};
+    </select>
+
+    <insert id="addStuAdmin" parameterType="Admin">
+        insert  into  Admin (`ID`,`Password`,`Name`,`Mark`) VALUES ( #{ID},#{Password},#{Name},'stu');
+    </insert>
 </mapper>
