@@ -4,7 +4,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bhdx.DAO.TeacherMapper">
 
-    <select id="GetStuByCId" parameterType="String" resultType="Student">
-        SELECT * FROM student WHERE classId=#{classId}
+    <!-- 通过学生ID获得已审核的创新证书信息 :List-->
+    <select id="GetCXedByStuId" parameterType="String" resultType="OutCX">
+        SELECT * FROM outCx WHERE stuid=#{stuId}
     </select>
+
+    <!-- 通过学生ID获得已审核的综测证书信息 :List-->
+    <select id="GetZCedByStuId" parameterType="String" resultType="OutZC">
+        SELECT * FROM outZc WHERE stuid=#{stuId}
+    </select>
+
 </mapper>

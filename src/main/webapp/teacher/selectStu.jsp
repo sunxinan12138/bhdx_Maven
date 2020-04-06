@@ -6,16 +6,15 @@
 %>
 <head>
     <base href="<%=basePath%>">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
     <title>按班级查找学生</title>
 </head>
 <body>
-<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
     $(document).ready(
         function () {
@@ -67,7 +66,9 @@
 </script>
 <div>
     <div>
-        <select id="01" name="classId" onchange="getStuById($(this))"></select>
+        <select id="01" name="classId" onchange="getStuById($(this))">
+            <option>--请选择班级--</option>
+        </select>
     </div>
     <div>
         <table class="table table-hover" >
@@ -80,7 +81,7 @@
              <th width="10%">寝室号</th>
         </tr>
         </thead>
-        <tbody id="02"  align="center"></tbody>
+        <tbody id="02"></tbody>
     </table>
 </div>
 </div>
