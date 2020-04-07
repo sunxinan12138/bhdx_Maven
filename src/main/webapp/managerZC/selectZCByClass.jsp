@@ -72,7 +72,7 @@
                         "<td width=\"10%\">"+attr[i].zk+"</td>"+
                         "<td width=\"10%\">"+attr[i].time+"</td>"+
                         "<td width=\"10%\">"+attr[i].classID+"</td>"+
-                        "<td width=\"10%\"><img src="+attr[i].imgName+" width="+200%+" height="+200%+" /></td>"+
+                        "<td width=\"10%\"<img src="+attr[i].imgName+" width="+200%+" height="+200%+" /></td>"+
                         "<td width=\"10%\"><a href='javascript:' onclick='matterAccess("+ZCid+")'>通过</a>&nbsp<a href='javascript:' onclick='matterNoAccess("+ZCid+")'>不通过</a></td>" +
                         "<td width=\"10%\"><a href='doSelectZCById?ZCid="+ZCid+"'>修改</a></td></tr>")
                     $("#02").append($tr);//页面显示数据
