@@ -64,16 +64,17 @@
                 for ( var i = 0 ; i < attr.length ; i ++ ){
                     var ZCid = attr[i].id;
                     var $tr = $("<tr>" +
-                        "<td>"+attr[i].stuid+"</td>"+
-                        "<td>"+attr[i].name+"</td>"+
-                        "<td>"+attr[i].zsName+"</td>"+
-                        "<td>"+attr[i].mark+"</td>"+
-                        "<td>"+attr[i].remark+"</td>"+
-                        "<td>"+attr[i].zk+"</td>"+
-                        "<td>"+attr[i].time+"</td>"+
-                        "<td>"+attr[i].classID+"</td>"+
-                        "<td><a href='javascript:' onclick='matterAccess("+ZCid+")'>通过</a>&nbsp<a href='javascript:' onclick='matterNoAccess("+ZCid+")'>不通过</a></td>" +
-                        "<td><a href='doSelectZCById?ZCid="+ZCid+"'>修改</a></td></tr>")
+                        "<td width=\"10%\">"+attr[i].stuid+"</td>"+
+                        "<td width=\"10%\">"+attr[i].name+"</td>"+
+                        "<td width=\"10%\">"+attr[i].zsName+"</td>"+
+                        "<td width=\"10%\">"+attr[i].mark+"</td>"+
+                        "<td width=\"10%\">"+attr[i].remark+"</td>"+
+                        "<td width=\"10%\">"+attr[i].zk+"</td>"+
+                        "<td width=\"10%\">"+attr[i].time+"</td>"+
+                        "<td width=\"10%\">"+attr[i].classID+"</td>"+
+                        "<td width=\"10%\"><img src="+attr[i].imgName+" width="+200%+" height="+200%+" /></td>"+
+                        "<td width=\"10%\"><a href='javascript:' onclick='matterAccess("+ZCid+")'>通过</a>&nbsp<a href='javascript:' onclick='matterNoAccess("+ZCid+")'>不通过</a></td>" +
+                        "<td width=\"10%\"><a href='doSelectZCById?ZCid="+ZCid+"'>修改</a></td></tr>")
                     $("#02").append($tr);//页面显示数据
                 }
             }
@@ -217,6 +218,7 @@
                 <th width=10%">折扣</th>
                 <th width="10%">日期</th>
                 <th width="10%">班级id</th>
+                <th width="10%">图片</th>
                 <th width="10%">审核状态</th>
                 <th width="10%">操作</th>
             </tr>
