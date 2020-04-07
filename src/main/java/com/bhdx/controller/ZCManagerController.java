@@ -1,9 +1,6 @@
 package com.bhdx.controller;
 
-import com.bhdx.models.DelMessage;
-import com.bhdx.models.OutZC;
-import com.bhdx.models.SubjectClass;
-import com.bhdx.models.ZCDetail;
+import com.bhdx.models.*;
 import com.bhdx.tools.AjaxTool;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +23,7 @@ public class ZCManagerController {
         String classId = request.getParameter("classId");
         //System.out.println(classId);
         List<ZCDetail> list = template.selectList("com.bhdx.DAO.ZCManagerMapper.getZCByClass",classId);
-      /* for (ZCDetail zcDetail : list) {
+     /* for (ZCDetail zcDetail : list) {
             System.out.print(zcDetail);
         }*/
         AjaxTool ajaxTool = new AjaxTool(list, response);
@@ -140,6 +137,7 @@ public class ZCManagerController {
         String name = request.getParameter("name");
         String zsName = request.getParameter("zsname");
         String zk = request.getParameter("zk");
+        //System.out.println(zk);
         String markStr = request.getParameter("mark");
         Double mark = Double.parseDouble(markStr);
         String remark = request.getParameter("remark");
@@ -166,15 +164,13 @@ public class ZCManagerController {
         }catch (Exception e){
             e.printStackTrace();
         }
-        /*try{
-            int i = template.update("com.bhdx.DAO.ZCManagerMapper.updateZCById",zcDetail);
-            System.out.println(i);
-            if (i > 0){
-                request.getRequestDispatcher("managerZC/selectZCByClass.jsp").forward(request, response);
-            }
-        }catch(Exception e){
-            e.printStackTrace();
-        }*/
     }
 
+    //查询折扣表  做下拉框
+    @RequestMapping("/doSelectZK")
+    @ResponseBody
+    public void selectZK(HttpServletRequest request,HttpServletResponse response){
+        List<ZK> list = template.selectList("com.bhdx.DAO.ZCManagerMapper.selectZK");
+        AjaxTool ajaxTool = new AjaxTool(list,response);
+    }
 }

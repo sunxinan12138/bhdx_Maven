@@ -13,7 +13,7 @@
     </delete>
 <!--根据证书编号修改证书详情-->
     <update id="updateCXById" parameterType="com.bhdx.models.CXDetail">
-        UPDATE cxDetail SET stuid = #{stuid},name = #{name},zsname = #{zsname},mark = #{mark},remark = #{remark},time = #{time},sort = #{sort},classId = #{classId} WHERE id = #{id};
+        UPDATE cxDetail SET stuid = #{stuid},name = #{name},zsname = #{zsname},mark = #{mark},remark = #{remark},time = #{time},sort = #{sort},classId = #{classID} WHERE id = #{id};
     </update>
     <!--通过证书编号查询证书-->
     <select id="selectCXById" resultType="com.bhdx.models.CXDetail">

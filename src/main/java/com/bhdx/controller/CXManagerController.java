@@ -65,7 +65,7 @@ public class CXManagerController {
         String sort = request.getParameter("sort");
         String time = request.getParameter("time");
         String remark = request.getParameter("remark");
-        String classid = request.getParameter("classId");
+        String classid = request.getParameter("classID");
 
         CXDetail cxDetail = new CXDetail();
         cxDetail.setId(id);

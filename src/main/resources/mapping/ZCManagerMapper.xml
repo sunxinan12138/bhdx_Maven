@@ -27,9 +27,8 @@
     <update id="updateZCById" parameterType="com.bhdx.models.ZCDetail">
         UPDATE zceDetail SET stuid = #{stuid},name = #{name},zsname = #{zsName},mark = #{mark},zk = #{zk},remark = #{remark},time = #{time},classId = #{classID} WHERE id = #{id};
     </update>
-    <!--
-     <update id="updateCXById" parameterType="com.bhdx.models.CXDetail">
-        UPDATE cxDetail SET stuid = #{stuid},name = #{name},zsname = #{zsname},mark = #{mark},remark = #{remark},time = #{time},sort = #{sort},classId = #{classId} WHERE id = #{id};
-    </update>
-    -->
+    <!--查询折扣表-->
+    <select id="selectZK" resultType="com.bhdx.models.ZK">
+        SELECT * FROM zk;
+    </select>
 </mapper>

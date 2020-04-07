@@ -74,7 +74,7 @@
                         "<td>"+attr[i].time+"</td>"+
                         "<td>"+attr[i].sort+"</td>"+
                         "<td>"+attr[i].classID+"</td>"+
-                        "<td width=\"10%\"<img src="+attr[i].imgName+" width="+200%+" height="+200%+" /></td>"+
+                        "<td><img src=images/"+attr[i].imgName+" width="+80+" height="+40+"></td>"+
                         "<td><a href='javascript:' onclick='matterAccess("+CXid+")'>通过</a>&nbsp<a href='javascript:' onclick='matterNoAccess("+CXid+")'>不通过</a></td>" +
                         "<td><a href='doSelectCXById?CXid="+CXid+"'>修改</a></td></tr>")
                     $("#02").append($tr);//页面显示数据
