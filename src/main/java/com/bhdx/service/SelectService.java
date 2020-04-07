@@ -1,8 +1,6 @@
 package com.bhdx.service;
 
-import com.bhdx.models.DetailMark;
-import com.bhdx.models.KindDic;
-import com.bhdx.models.LevelDic;
+import com.bhdx.models.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -23,4 +21,10 @@ public interface SelectService {
     public boolean cchzc(String zsname);
 
     public String cchall(String zsname);
+
+    //查询zc证书 by学号
+    List<CXDetail> findCxBistuid(String stuid);
+
+    //查询zc证书 by学号
+    List<ZCDetail> findZcBistuid(String stuid);
 }

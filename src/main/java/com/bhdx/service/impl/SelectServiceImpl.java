@@ -101,4 +101,14 @@ public class SelectServiceImpl implements SelectService {
         }
         return message;
     }
+
+    @Override
+    public List<CXDetail> findCxBistuid(String stuid) {
+        return template.selectList("com.bhdx.DAO.SelectMapper.findCxBistuid", stuid);
+    }
+
+    @Override
+    public List<ZCDetail> findZcBistuid(String stuid) {
+        return template.selectList("com.bhdx.DAO.SelectMapper.findZcBistuid", stuid);
+    }
 }

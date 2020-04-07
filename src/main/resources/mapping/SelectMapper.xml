@@ -15,6 +15,26 @@
       SELECT * FROM dicZs WHERE kindId = #{kindId}
     </select>
     <!--通过学号查综测-->
+    <select id="findZcBistuid" parameterType="java.lang.String" resultType="com.bhdx.models.ZCDetail">
+      SELECT*FROM zceDetail WHERE stuid = #{stuid}
+    </select>
     <!--通过学号查创新-->
+    <select id="findCxBistuid" parameterType="java.lang.String" resultType="com.bhdx.models.CXDetail">
+      SELECT*FROM cxDetail WHERE stuid = #{stuid}
+    </select>
     <!--通过学号查删除-->
+    <delete id="delById">
+         DELETE FROM cxDetail WHERE ID=#{id};
+    </delete>
+    <delete id="delByIdZC">
+        DELETE FROM zceDetail WHERE ID=#{id};
+    </delete>
+    <!--查看不通过的证书-->
+    <select id="finddelzs" parameterType="java.lang.String" resultType="com.bhdx.models.DelMessage">
+        select * from delMessage where stuid = #{stuid}
+    </select>
+    <!--删除不通过的证书-->
+    <delete id="deldel">
+          DELETE FROM delMessage WHERE ID=#{id};
+    </delete>
 </mapper>

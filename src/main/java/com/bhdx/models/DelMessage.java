@@ -2,6 +2,7 @@ package com.bhdx.models;
 
 public class DelMessage {
 
+    private int id;
     private String stuid;
     private String zsname;
     private String cause;
@@ -37,5 +38,24 @@ public class DelMessage {
 
     public void setFlag(String flag) {
         this.flag = flag;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "DelMessage{" +
+                "id=" + id +
+                ", stuid='" + stuid + '\'' +
+                ", zsname='" + zsname + '\'' +
+                ", cause='" + cause + '\'' +
+                ", flag='" + flag + '\'' +
+                '}';
     }
 }

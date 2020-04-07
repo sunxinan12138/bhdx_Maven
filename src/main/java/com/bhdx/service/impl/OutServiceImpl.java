@@ -22,7 +22,7 @@ public class OutServiceImpl implements OutService {
     public List<Student> outExcel(String classid, String path) {
 
         List zslist = outExcelMapper.selectOutCx(classid);
-        System.out.println(zslist);
+        //System.out.println(zslist);
         new ExcelTest(zslist, classid, path);
         return zslist;
     }
