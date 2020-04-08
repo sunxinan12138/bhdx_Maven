@@ -49,7 +49,7 @@ public class StudentController {
     @RequestMapping("/doSelectStu")
     @ResponseBody
     public void doSelectStu(Student s, HttpServletRequest request, HttpServletResponse response) {
-        // System.out.println("ajax!");
+//        System.out.println("ajax!");
         boolean log = false;
         boolean pswvoolean = false;
         Object objid = request.getParameter("stuid");
@@ -64,10 +64,10 @@ public class StudentController {
             response.setHeader("Content-Type", "text/html;charset=utf-8");
             PrintWriter out = response.getWriter();
             if (pswvoolean) {
-                System.out.println("session");
+//                System.out.println("session");
                 // request.getSession().setAttribute("assTel", slist.get(0).getId());
                 request.getSession().setAttribute("stuid", slist);
-                String sessionId = request.getSession().getId() + "--" + slist.get(0).getId();
+                String sessionId = request.getSession().getId() + "--" + slist.get(0).getId() +"--" + slist.get(0).getName();
                 System.out.println(sessionId);
                 Gson g = new Gson();
                 String value = g.toJson(sessionId);
