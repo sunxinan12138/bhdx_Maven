@@ -29,9 +29,9 @@
     </update>
     <insert id="addStudent" parameterType="com.bhdx.models.Student">
         INSERT INTO student
-        (ID,psw,name,classId,tel,address,dormitory)
+        (ID,psw,name,classId)
         VALUES
-        (#{id},#{psw},#{name},#{classID},#{tel},#{address},#{dormitory});
+        (#{id},#{psw},#{name},#{classID});
 
     </insert>
     <select id="getStudentID" parameterType="String"  resultType="java.lang.String">

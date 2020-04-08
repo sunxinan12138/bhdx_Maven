@@ -1,16 +1,15 @@
 package com.bhdx.controller;
 
-import com.alibaba.druid.support.json.JSONUtils;
 import com.bhdx.models.Student;
+import com.bhdx.models.SubjectClass;
 import com.bhdx.service.StudentService;
 import com.bhdx.tools.AjaxTool;
+import com.bhdx.tools.StringSplittingTool;
 import com.google.gson.Gson;
-import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,14 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class StudentController {
@@ -124,9 +118,17 @@ public class StudentController {
     }
     @RequestMapping("/doAddStudent")
     public void addStudent(Student stu,HttpServletRequest request, HttpServletResponse response)  {
-
+        String id=stu.getId();
+        boolean result = false;
         try {
-            template.insert("com.bhdx.DAO.StudentMapper.addStudent", stu);
+           int i= template.insert("com.bhdx.DAO.StudentMapper.addStudent", stu);
+            if(i == 1){
+                result = true;
+                AjaxTool ajaxTool = new AjaxTool(id,response);
+            }else{
+                result = false;
+                AjaxTool ajaxTool = new AjaxTool(result,response);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -155,6 +157,23 @@ public class StudentController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    @RequestMapping("/doGetStudentClass")
+    public void getStudentClass(HttpServletRequest request, HttpServletResponse response) {
+        String id=request.getParameter("id");
+        System.out.println(id);
+        String SubjectID = id.substring(2,10);
+        String className= StringSplittingTool.GetSubject(id);
+        SubjectClass subjectClass=new SubjectClass();
+        subjectClass.setId(SubjectID);
+        subjectClass.setSubject(className);
+        System.out.println(className);
+        List<SubjectClass> list= new ArrayList<>();
+        list.add(subjectClass);
+        for(SubjectClass students: list ){
+            System.out.println(students);
+        }
+        AjaxTool ajaxTool = new AjaxTool(list,response);
     }
     @RequestMapping("doDeleteStudent")
     public void deleteStudent(HttpServletResponse response,HttpServletRequest request){

@@ -23,64 +23,46 @@
 <div style="margin: 0 auto ;height: auto; width: 40%" class="panel-heading">
     <form action="doAddStudent" role="form" method="post">
         <div class="form-group">
+            <label>学号</label>
+            <input style="width: 50%" type="text" class="form-control" name="id"
+                   value="" onchange="getId($(this))">
+        </div>
+        <div class="form-group">
             <label>姓名</label>
             <input style="width: 50%" type="text" class="form-control" name="name">
         </div>
         <div class="form-group">
             <label>班级</label>
-            <div style="padding-bottom: 10px" class="dropdown">
-                <select style="width: 50%" onchange="choose()" class="form-control" id="selectId" name="classID">
-                    <option value="-1">--选择班级--</option>
-                </select>
-            </div>
+                    <input style="width: 50%"  class="form-control" id="subject" type="text" readOnly>
         </div>
-        <div class="form-group">
-                <label>学号</label>
-                <input style="width: 50%" type="text" class="form-control" name="id"
-                       placeholder="自动生成" id="b1" readOnly>
-        </div>
+        <input style="width: 50%"  class="form-control" id="classID" name="classID" type="hidden">
         <div class="form-group">
                 <label>密码</label>
-                <input style="width: 50%" type="password" class="form-control" name="psw">
-        </div>
-        <div class="form-group">
-                <label>联系方式</label>
-                <input style="width: 50%" type="text" class="form-control" name="tel">
-        </div>
-        <div class="form-group">
-                <label>地址</label>
-                <input style="width: 50%" type="text" class="form-control" name="address">
-        </div>
-        <div class="form-group">
-                <label>寝室号</label>
-                <input style="width: 50%" type="text" class="form-control" name="dormitory">
+                <input style="width: 50%" type="password" id="psw" class="form-control" name="psw"
+                       readOnly>
         </div>
         <button type="submit" class="btn btn-default">提交</button>
     </form>
 </div>
 <script type="text/javascript">
-
-    $(document).ready(
-        function () {
-
+        function getId(obj) {
+            var id=obj.val();
+            $("#psw").attr("value",id.substring(6,12));
             $.ajax({
-                url: 'doSelectAllClass',
+                url: 'doGetStudentClass?id='+id,
                 type: 'POST',
                 async: true,
                 timeout: '3000',
                 dataType: 'text',
-                success: function (e) {
+                success: function (value) {
                     // 解析
-                    var arr = JSON.parse(e);
-                    for (var i = 0; i < arr.length; i++) {
-                        var $tr = $("<option value ='" + arr[i].id + "'>" + arr[i].subject + "</option>")
-                        var $table = $("#selectId");
-                        $table.append($tr);
-                    }
+                    var arr = JSON.parse(value);
+                    $("#subject").attr("value",arr[0].subject);
+                    $("#classID").attr("value",arr[0].id);
+
                 }
             })
         }
-    )
 
     function choose() {
         var myDate = new Date();
