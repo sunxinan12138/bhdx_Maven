@@ -82,7 +82,10 @@ public class StudentManagementController {
         String sid = request.getParameter("sid");
         System.out.println(sid);
         int i = template.delete("com.bhdx.DAO.StudentManagementMapper.deleteClassByID",sid);
-        if(i == 0){
+        int j = template.delete("com.bhdx.DAO.StudentManagementMapper.deleteStudentByID",sid);
+        int k = template.delete("com.bhdx.DAO.StudentManagementMapper.deleteCXDetailByID",sid);
+        int m = template.delete("com.bhdx.DAO.StudentManagementMapper.deleteZCDetailByID",sid);
+        if(i+j+k+m<4){
             result = false;
         }else{
             result = true;

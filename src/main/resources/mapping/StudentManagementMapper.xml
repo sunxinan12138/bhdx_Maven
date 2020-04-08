@@ -15,9 +15,21 @@
     <select id="SelectAllClass" resultType="com.bhdx.models.SubjectClass">
         select * from class;
     </select>
-
+    <!--删除班级-->
     <delete id="deleteClassByID" parameterType="java.lang.String">
-        DELETE class,student FROM class,student WHERE class.id = student.classId AND class.id= #{sid}
+        DELETE class FROM class WHERE class.id= #{sid}
+    </delete>
+    <!--删除综测证书-->
+    <delete id="deleteZCDetailByID" parameterType="String">
+        DELETE zceDetail FROM zceDetail WHERE classId= #{sid}
+    </delete>
+    <!--删除创新证书-->
+    <delete id="deleteCXDetailByID" parameterType="String">
+        DELETE cxDetail FROM cxDetail WHERE classId= #{sid}
+    </delete>
+    <!--删除学生-->
+    <delete id="deleteStudentByID" parameterType="String">
+        DELETE student FROM student WHERE classId= #{sid}
     </delete>
     <!--转专业-->
     <update id="updateStudentClass" parameterType="java.util.Map">
