@@ -3,6 +3,7 @@ package com.bhdx.controller;
 import com.bhdx.models.SubjectClass;
 import com.bhdx.models.Student;
 import com.bhdx.tools.AjaxTool;
+import com.google.gson.Gson;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -115,7 +116,9 @@ public class StudentManagementController {
         String subjectId = request.getParameter("sid");
         System.out.println(subjectId);
         List<Student> studentList = template.selectList("com.bhdx.DAO.StudentManagementMapper.selectAllStudentById",subjectId);
-        modelAndView.addObject("studentList",studentList);
+        Gson g = new Gson();
+        String value = g.toJson(studentList);
+        modelAndView.addObject("studentList",value);
         modelAndView.setViewName("SM_test");
         return modelAndView;
     }

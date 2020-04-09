@@ -12,14 +12,36 @@
 <head>
     <title>Title</title>
 </head>
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var slist =JSON.parse(JSON.stringify( ${studentList}));
+        for( var i = 0; i<slist.length;i++){
+            var $tr = $("<tr>"+
+                "<td >"+slist[i].id+"</td>"+
+                "<td >"+slist[i].name+"</td>"+
+                "<td >"+slist[i].tel+"</td>"+
+                "<td >"+slist[i].address+"</td>"+
+                "<td >"+slist[i].dormitory+"</td>"+
+                "</tr>");
+            var $table = $("#slist");
+            $table.append($tr);
+        }
+    })
+</script>
 <body>
-
-<c:forEach items="${studentList}" var="item" varStatus="status">
-    <tr >
-    <td class="center"><span class="center">${item.name}</span></td>
-    <td>${item.classID}</td>
-    <td>${item.psw}</td>
+<table class="table table-hover" border="solid">
+    <thead align="center">
+    <tr>
+        <th width="5%">学号</th>
+        <th width="5%">姓名</th>
+        <th width="5%">电话号</th>
+        <th width="5%">家庭住址</th>
+        <th width="5%">寝室号</th>
     </tr>
-</c:forEach>
+    </thead>
+    <tbody id="slist"  align="center">
+    </tbody>
+</table>
 </body>
 </html>
