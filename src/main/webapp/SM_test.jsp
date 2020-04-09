@@ -11,6 +11,8 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
@@ -30,7 +32,7 @@
     })
 </script>
 <body>
-<table class="table table-hover" border="solid">
+<table class="table table-bordered" >
     <thead align="center">
     <tr>
         <th width="5%">学号</th>

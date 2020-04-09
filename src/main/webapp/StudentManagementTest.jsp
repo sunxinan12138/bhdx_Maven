@@ -9,6 +9,8 @@
 <html>
 <head>
     <title>Test</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
@@ -159,7 +161,7 @@
         <input type="submit" value="添加" onclick="addNewclass()"/>
     </div>
     <div>
-        <table class="table table-hover" >
+        <table class="table table-bordered" >
             <thead align="center">
             <tr>
                 <th width="10%">学号</th>
@@ -172,7 +174,7 @@
         </table>
     </div>
     <div>
-        <table class="table table-hover" border="">
+        <table class="table table-bordered" >
             <thead align="center">
             <tr>
                 <th width="10%">班级编号</th>
