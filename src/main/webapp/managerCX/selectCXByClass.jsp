@@ -155,6 +155,7 @@
                     {"CXid":CXid,"remark":remark,"status":status},
                     function(data){
                         var result = JSON.parse(data);
+                        alert(result);
                         if(result==true){
                             alert("审核成功");
                             window.location.reload();

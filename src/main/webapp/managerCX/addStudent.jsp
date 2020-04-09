@@ -22,10 +22,10 @@
 <body>
 
 <div style="margin: 0 auto ;height: auto; width: 40%" class="panel-heading">
-    <form action="doAddStudent" role="form">
+    <form action="doAddStudent" role="form" method="post">
         <div class="form-group">
             <label>学号</label>
-            <input style="width: 50%" type="text" class="form-control" name="ID"
+            <input style="width: 50%" type="text" class="form-control" name="id"
                    placeholder="请输入学号">
         </div>
         <div class="form-group">
@@ -33,19 +33,6 @@
             <input style="width: 50%" type="text" class="form-control" name="name"
                    placeholder="请输入姓名">
         </div>
-        <div class="form-group">
-            <label>班级号</label>
-            <div class="dropdown">
-                <div style="padding-bottom: 10px" class="dropdown">
-                    <select style="width: 50%" onchange="choose()" class="form-control" id="selectId">
-                    </select>
-                </div>
-                <input id="clsId" readonly="readonly" style="width: 50%" type="text" class="form-control" name="classId"
-                       placeholder="班级号">
-
-            </div>
-        </div>
-
         <button type="submit" class="btn btn-default">提交</button>
     </form>
 </div>

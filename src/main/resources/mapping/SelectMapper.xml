@@ -37,4 +37,7 @@
     <delete id="deldel">
           DELETE FROM delMessage WHERE ID=#{id};
     </delete>
+    <select id="doshowImg" parameterType="java.lang.String" resultType="com.bhdx.models.CXDetail">
+      SELECT img FROM cxDetail WHERE id =#{id}
+    </select>
 </mapper>

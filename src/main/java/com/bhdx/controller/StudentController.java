@@ -61,7 +61,7 @@ public class StudentController {
 //                System.out.println("session");
                 // request.getSession().setAttribute("assTel", slist.get(0).getId());
                 request.getSession().setAttribute("stuid", slist);
-                String sessionId = request.getSession().getId() + "--" + slist.get(0).getId() +"--" + slist.get(0).getName();
+                String sessionId = request.getSession().getId() + "--" + slist.get(0).getId() + "--" + slist.get(0).getName();
                 System.out.println(sessionId);
                 Gson g = new Gson();
                 String value = g.toJson(sessionId);
@@ -116,36 +116,42 @@ public class StudentController {
         btn = studentService.changemessage(student);
         new AjaxTool(btn, response);
     }
+
     @RequestMapping("/doAddStudent")
-    public void addStudent(Student stu,HttpServletRequest request, HttpServletResponse response)  {
-        String id=stu.getId();
+    public void addStudent(Student stu, HttpServletRequest request, HttpServletResponse response) {
+        String id = stu.getId();
+        id = id + "成功";
+        String classId = StringSplittingTool.GetSubjectID(id);
+        stu.setClassID(classId);
+        String psw = id.substring(4, 12);
+        stu.setPsw(psw);
         boolean result = false;
         try {
-           int i= template.insert("com.bhdx.DAO.StudentMapper.addStudent", stu);
-            if(i == 1){
+            int i = template.insert("com.bhdx.DAO.StudentMapper.addStudent", stu);
+            if (i == 1) {
                 result = true;
-                AjaxTool ajaxTool = new AjaxTool(id,response);
-            }else{
+                AjaxTool ajaxTool = new AjaxTool(id, response);
+            } else {
                 result = false;
-                AjaxTool ajaxTool = new AjaxTool(result,response);
+                AjaxTool ajaxTool = new AjaxTool(result, response);
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     @RequestMapping("/doGetStudentID")
     public void getStudentID(HttpServletRequest request, HttpServletResponse response) {
-        String condition=request.getParameter("condition");
+        String condition = request.getParameter("condition");
         System.out.println(condition);
-        String ID=template.selectOne("com.bhdx.DAO.StudentMapper.getStudentID",condition);
+        String ID = template.selectOne("com.bhdx.DAO.StudentMapper.getStudentID", condition);
         System.out.println(ID);
-        String sid=null;
-        if(ID!=null){
-            sid = ID.substring(ID.length() -2,ID.length());
-        }
-        else{
-            sid="none";
+        String sid = null;
+        if (ID != null) {
+            sid = ID.substring(ID.length() - 2, ID.length());
+        } else {
+            sid = "none";
         }
         System.out.println(sid);
         response.setHeader("Content-Type", "text/html; charset=utf-8");
@@ -158,33 +164,35 @@ public class StudentController {
             e.printStackTrace();
         }
     }
+
     @RequestMapping("/doGetStudentClass")
     public void getStudentClass(HttpServletRequest request, HttpServletResponse response) {
-        String id=request.getParameter("id");
+        String id = request.getParameter("id");
         System.out.println(id);
-        String SubjectID = id.substring(2,10);
-        String className= StringSplittingTool.GetSubject(id);
-        SubjectClass subjectClass=new SubjectClass();
+        String SubjectID = id.substring(2, 10);
+        String className = StringSplittingTool.GetSubject(id);
+        SubjectClass subjectClass = new SubjectClass();
         subjectClass.setId(SubjectID);
         subjectClass.setSubject(className);
         System.out.println(className);
-        List<SubjectClass> list= new ArrayList<>();
+        List<SubjectClass> list = new ArrayList<>();
         list.add(subjectClass);
-        for(SubjectClass students: list ){
+        for (SubjectClass students : list) {
             System.out.println(students);
         }
-        AjaxTool ajaxTool = new AjaxTool(list,response);
+        AjaxTool ajaxTool = new AjaxTool(list, response);
     }
+
     @RequestMapping("doDeleteStudent")
-    public void deleteStudent(HttpServletResponse response,HttpServletRequest request){
+    public void deleteStudent(HttpServletResponse response, HttpServletRequest request) {
         boolean result = false;
         String ID = request.getParameter("hhh");
-        int i = template.delete("com.bhdx.DAO.StudentMapper.deleteStudent",ID);
-        if(i == 1){
+        int i = template.delete("com.bhdx.DAO.StudentMapper.deleteStudent", ID);
+        if (i == 1) {
             result = true;
-        }else{
+        } else {
             result = false;
         }
-        AjaxTool ajaxTool = new AjaxTool(result,response);
+        AjaxTool ajaxTool = new AjaxTool(result, response);
     }
 }

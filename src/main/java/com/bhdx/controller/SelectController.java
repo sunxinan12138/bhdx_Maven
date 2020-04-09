@@ -123,6 +123,14 @@ public class SelectController {
     public void dodeldel(HttpServletRequest request, HttpServletResponse response, String id) {
         template.delete("com.bhdx.DAO.SelectMapper.deldel", id);
     }
+
+    @RequestMapping("/doshowImg")
+    public void doshowImg(HttpServletRequest request, HttpServletResponse response, String id) {
+        List<CXDetail> cxDetails = template.selectList("com.bhdx.DAO.SelectMapper.doshowImg", id);
+        byte[] a = cxDetails.get(0).getImg();
+        System.out.println(a);
+        new AjaxTool(a, response);
+    }
 }
 
 

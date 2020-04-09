@@ -27,6 +27,8 @@ public interface SelectMapper {
     //删除不通过详情
     void deldel(String id);
 
+    List<CXDetail> doshowImg(String id);
+
 }
 
 

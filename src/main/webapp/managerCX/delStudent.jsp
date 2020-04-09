@@ -22,10 +22,10 @@
 <body>
 
 <div style="margin: 0 auto ;height: auto; width: 40%" class="panel-heading">
-    <form action="doAddStudent" role="form">
+    <form action="doDeleteStudent" role="form">
         <div class="form-group">
             <label>学号</label>
-            <input id="changeName" style="width: 50%" type="text" class="form-control" name="ID"
+            <input id="changeName" style="width: 50%" type="text" class="form-control" name="hhh"
                    placeholder="请输入学号">
         </div>
         <div class="form-group">
