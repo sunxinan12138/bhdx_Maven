@@ -5,7 +5,7 @@ import com.bhdx.models.Admin;
 public class StringSplittingTool {
     //2017 1605 01
     //电子 17级 1班
-    public String  GetSubject(String ID){
+    public static String  GetSubject(String ID){
          String Subject = ID.substring(4,8);
          switch (Subject){
              case "1601" : Subject = "测控";
@@ -26,11 +26,11 @@ public class StringSplittingTool {
          return New_ID;
      }
 
-     public String GetSubjectID (String ID){
+     public static String GetSubjectID (String ID){
         String SubjectID = ID.substring(2,10);
         return SubjectID;
      }
-     public String GetSubjectByClassID(String ClassID){
+     public static String GetSubjectByClassID(String ClassID){
          String SubjectID = ClassID.substring(2,6);
          switch (SubjectID){
              case "1601" : SubjectID = "测控";
