@@ -2,6 +2,7 @@ package com.bhdx.DAO;
 
 import com.bhdx.models.CXDetail;
 import com.bhdx.models.OutCX;
+import com.bhdx.models.OutZC;
 import com.bhdx.models.ZCDetail;
 
 public interface AddzsMapper {
@@ -11,4 +12,6 @@ public interface AddzsMapper {
 
     //管理员添加分
     void addMark(OutCX outCX);
+
+    void addMarkZC(OutZC outZC);
 }

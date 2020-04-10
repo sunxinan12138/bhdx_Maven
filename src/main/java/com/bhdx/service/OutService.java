@@ -8,4 +8,6 @@ public interface OutService {
     //创新导出
     List<Student> outExcel(String classid, String path);
 
+    List<Student> outExcelZC(String classid, String path);
+
 }

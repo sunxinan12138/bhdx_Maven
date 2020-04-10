@@ -2,6 +2,7 @@ package com.bhdx.controller;
 
 import com.bhdx.models.CXDetail;
 import com.bhdx.models.OutCX;
+import com.bhdx.models.OutZC;
 import com.bhdx.models.ZCDetail;
 import com.bhdx.service.AddZsService;
 import com.bhdx.service.StudentService;
@@ -147,11 +148,21 @@ public class AddZsController {
         }
     }
 
-    //管理员添加证书
+    //管理员添加证书创新
     @RequestMapping("/doAddMark")
     public void doAddMark(HttpServletRequest request, HttpServletResponse response, OutCX outCX) {
         boolean a = false;
         a = addZsService.addMark(outCX);
+        new AjaxTool(a, response);
+    }
+
+
+    //管理员添加证书创新
+    @RequestMapping("/doAddMarkZC")
+    public void doAddMarkZC(HttpServletRequest request, HttpServletResponse response, OutZC outZC) {
+        outZC.setZk("打折");
+        boolean a = false;
+        a = addZsService.addMarkZC(outZC);
         new AjaxTool(a, response);
     }
 }

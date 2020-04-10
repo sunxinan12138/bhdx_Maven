@@ -65,4 +65,17 @@ public class OutZC {
     public void setCause(String cause) {
         this.cause = cause;
     }
+
+    @Override
+    public String toString() {
+        return "OutZC{" +
+                "id=" + id +
+                ", stuid='" + stuid + '\'' +
+                ", name='" + name + '\'' +
+                ", zsName='" + zsName + '\'' +
+                ", mark=" + mark +
+                ", zk='" + zk + '\'' +
+                ", cause='" + cause + '\'' +
+                '}';
+    }
 }

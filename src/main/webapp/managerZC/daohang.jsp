@@ -22,7 +22,9 @@
 <body>
 <ul class="nav-pills nav-stacked" >
     <li style="padding: 15px"><a href="managerZC/selectClass.jsp" target="right">按班级查找和导出</a></li>
-    <li style="padding: 15px"><a href="#"  target="right">查看所有创新证书</a></li>
+    <li style="padding: 15px"><a href="managerZC\selectZCByClass.jsp"  target="right">查看所有综测证书</a></li>
+    <li style="padding: 15px"><a href="managerZC\addStuMark.jsp" target="-_blank">添加学生分数</a></li>
+    <li style="padding: 15px"><a href="outFile\outZCExcel.jsp" target="right">证书导出</a></li>
 </ul>
 </body>
 </html>

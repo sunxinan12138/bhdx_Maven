@@ -30,4 +30,17 @@ public class OutExcelController {
         request.setAttribute("lenth", lenth);
         return modelAndView;
     }
+    // 导出创综测
+    @RequestMapping("/doOutExcelZC")
+    public ModelAndView doOutExcelZC(HttpServletRequest request, HttpServletResponse response, String classId, String path, String className) {
+        ModelAndView modelAndView = new ModelAndView();
+        path = path + "\\" + className + "综测" + classId + ".xlsx";
+        System.out.println(path);
+        List<Student> list = outService.outExcelZC(classId, path);
+        int lenth = list.size();
+        //跳转sucess。jsp
+        modelAndView.setViewName("sucess");
+        request.setAttribute("lenth", lenth);
+        return modelAndView;
+    }
 }

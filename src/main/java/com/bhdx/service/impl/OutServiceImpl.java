@@ -26,4 +26,13 @@ public class OutServiceImpl implements OutService {
         new ExcelTest(zslist, classid, path);
         return zslist;
     }
+
+    @Override
+    public List<Student> outExcelZC(String classid, String path) {
+
+        List zslist = outExcelMapper.selectOutZc(classid);
+        //System.out.println(zslist);
+        new ExcelTest(path, zslist, classid);
+        return zslist;
+    }
 }

@@ -5,7 +5,7 @@
 <mapper namespace="com.bhdx.DAO.ZCManagerMapper">
     <!-- 根据班级查询综测-->
     <select id="getZCByClass" resultType="com.bhdx.models.ZCDetail">
-        SELECT * FROM zceDetail WHERE classId = #{classId};
+        SELECT id,stuid,NAME,zsname,mark,TIME,zk,remark,imgName,shCondition,classId FROM zceDetail WHERE classId = #{classID};
     </select>
     <!--查询所有班级 -->
     <select id="selectAllClass" resultType="com.bhdx.models.SubjectClass">

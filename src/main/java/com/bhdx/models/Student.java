@@ -9,9 +9,9 @@ public class Student {
     private String name;//名字
     private String classID;//班级代号
     private List<CXDetail> cxDetailList;
-    private  List<ZCDetail> zcDetailList;
+    private List<ZCDetail> zcDetailList;
     private List<OutCX> outCXList;
-    //  private  List<ZCDetail> zcDetailList;
+    private List<OutZC> outZCList;
     private String tel;//电话号
     private String address;//家庭住址
     private int dormitory;//寝室号
@@ -97,6 +97,14 @@ public class Student {
         this.outCXList = outCXList;
     }
 
+    public List<OutZC> getOutZCList() {
+        return outZCList;
+    }
+
+    public void setOutZCList(List<OutZC> outZCList) {
+        this.outZCList = outZCList;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -107,6 +115,7 @@ public class Student {
                 ", cxDetailList=" + cxDetailList +
                 ", zcDetailList=" + zcDetailList +
                 ", outCXList=" + outCXList +
+                ", outZCList=" + outZCList +
                 ", tel='" + tel + '\'' +
                 ", address='" + address + '\'' +
                 ", dormitory=" + dormitory +

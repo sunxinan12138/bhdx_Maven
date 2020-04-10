@@ -2,6 +2,7 @@ package com.bhdx.service.impl;
 
 import com.bhdx.models.CXDetail;
 import com.bhdx.models.OutCX;
+import com.bhdx.models.OutZC;
 import com.bhdx.models.ZCDetail;
 import com.bhdx.service.AddZsService;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -47,6 +48,17 @@ public class AddZsServiceImpl implements AddZsService {
     public boolean addMark(OutCX outCX) {
         boolean btn = false;
         int a = template.insert("com.bhdx.DAO.AddzsMapper.addMark", outCX);
+        if (a == 1) {
+            btn = true;
+        }
+        System.out.println(btn);
+        return btn;
+    }
+
+    @Override
+    public boolean addMarkZC(OutZC outZC) {
+        boolean btn = false;
+        int a = template.insert("com.bhdx.DAO.AddzsMapper.addMarkZC", outZC);
         if (a == 1) {
             btn = true;
         }

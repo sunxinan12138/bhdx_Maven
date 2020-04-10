@@ -13,4 +13,7 @@
     <insert id="addMark" parameterType="com.bhdx.models.OutCX">
           INSERT into outCx (stuid,name,zsname,mark,sort) VALUES (#{stuid},#{name},#{zsname},#{mark},#{sort});
     </insert>
+    <insert id="addMarkZC" parameterType="com.bhdx.models.OutZC">
+          INSERT into outZc (stuid,name,zsname,mark,zk) VALUES (#{stuid},#{name},#{zsName},#{mark},#{zk});
+    </insert>
 </mapper>
