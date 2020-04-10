@@ -1,5 +1,6 @@
 package com.bhdx.service;
 
+import com.bhdx.models.OutCX;
 import com.bhdx.models.Student;
 
 import java.util.List;
@@ -15,4 +16,6 @@ public interface StudentService {
     public void changepsw(Map map);
 
     boolean changemessage(Student student);
+
+
 }

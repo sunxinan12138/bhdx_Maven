@@ -36,6 +36,7 @@
         <button type="submit" class="btn btn-default">提交</button>
     </form>
 </div>
+<a href="managerCX\addStudentMore.jsp" target="_blank">表格批量添加学生</a>
 
 <script type="text/javascript">
 

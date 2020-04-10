@@ -22,7 +22,7 @@ public class OutExcelController {
     @RequestMapping("/doOutExcel")
     public ModelAndView outExcel(HttpServletRequest request, HttpServletResponse response, String classId, String path, String className) {
         ModelAndView modelAndView = new ModelAndView();
-        path = path + "\\" + className + "综测" + classId + ".xlsx";
+        path = path + "\\" + className + "创新" + classId + ".xlsx";
         List<Student> list = outService.outExcel(classId, path);
         int lenth = list.size();
         //跳转sucess。jsp

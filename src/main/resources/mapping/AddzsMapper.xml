@@ -10,4 +10,7 @@
     insert into cxDetail (stuid,name,zsname,mark,time,sort,remark,imgName,img,classId) values  (#{stuid}, #{name}, #{zsname}, #{mark},#{time},#{sort}, #{remark}, #{imgName}, #{img},#{classID});
     </insert>
 
+    <insert id="addMark" parameterType="com.bhdx.models.OutCX">
+          INSERT into outCx (stuid,name,zsname,mark,sort) VALUES (#{stuid},#{name},#{zsname},#{mark},#{sort});
+    </insert>
 </mapper>

@@ -36,7 +36,7 @@ public class ExcelTest {
                 Cell cell = row1.createCell(0);
                 cell.setCellValue(studentList.get(i).getId());
                 Cell cell1 = row1.createCell(1);
-                cell1.setCellValue(studentList.get(0).getName());
+                cell1.setCellValue(studentList.get(i).getName());
                 for (int j = 0; j < studentList.get(i).getOutCXList().size(); j++) {
                     Cell cell2 = row1.createCell(2 + 3 * j);
                     cell2.setCellValue(studentList.get(i).getOutCXList().get(j).getZsname());

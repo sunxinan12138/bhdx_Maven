@@ -1,8 +1,11 @@
 package com.bhdx.service.impl;
 
 import com.bhdx.DAO.StudentMapper;
+import com.bhdx.models.OutCX;
 import com.bhdx.models.Student;
 import com.bhdx.service.StudentService;
+import com.sun.org.apache.xalan.internal.xsltc.compiler.Template;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +16,9 @@ import java.util.Map;
 public class StudentServiceImpl implements StudentService {
     @Autowired
     private StudentMapper studentMapper;
+
+    @Autowired
+    private SqlSessionTemplate template;
 
     @Override
     public List<Student> findStudent() {
@@ -40,4 +46,6 @@ public class StudentServiceImpl implements StudentService {
         }
         return btn;
     }
+
+
 }

@@ -5,7 +5,7 @@
 <mapper namespace="com.bhdx.DAO.CXManagerMapper">
     <!--根据班级号查询创新分-->
     <select id="selectCXByClass" resultType="com.bhdx.models.CXDetail">
-        SELECT * FROM cxDetail WHERE classId = #{classID};
+       SELECT id,stuid,NAME,zsname,mark,TIME,sort,remark,imgName,shCondition,classId FROM cxDetail WHERE classId = #{classID};
     </select>
     <!--根据创新编号删除记录-->
     <delete id="deleteCXById">

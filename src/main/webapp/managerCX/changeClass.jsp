@@ -70,7 +70,6 @@
         options.text();
         $("#clsId").val(options.val());
     }
-
 </script>
 </body>
 </html>

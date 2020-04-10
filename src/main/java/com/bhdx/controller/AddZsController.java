@@ -1,6 +1,7 @@
 package com.bhdx.controller;
 
 import com.bhdx.models.CXDetail;
+import com.bhdx.models.OutCX;
 import com.bhdx.models.ZCDetail;
 import com.bhdx.service.AddZsService;
 import com.bhdx.service.StudentService;
@@ -146,5 +147,12 @@ public class AddZsController {
         }
     }
 
+    //管理员添加证书
+    @RequestMapping("/doAddMark")
+    public void doAddMark(HttpServletRequest request, HttpServletResponse response, OutCX outCX) {
+        boolean a = false;
+        a = addZsService.addMark(outCX);
+        new AjaxTool(a, response);
+    }
 }
 
