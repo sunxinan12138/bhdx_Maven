@@ -113,6 +113,7 @@ public class SelectController {
 
     }
 
+    //查找删除的证书
     @RequestMapping("/dofinddelzs")
     public void dofinddelzs(HttpServletRequest request, HttpServletResponse response, String stuid) {
         List<DelMessage> list = template.selectList("com.bhdx.DAO.SelectMapper.finddelzs", stuid);
@@ -124,12 +125,28 @@ public class SelectController {
         template.delete("com.bhdx.DAO.SelectMapper.deldel", id);
     }
 
+    //图片
     @RequestMapping("/doshowImg")
     public void doshowImg(HttpServletRequest request, HttpServletResponse response, String id) {
         List<CXDetail> cxDetails = template.selectList("com.bhdx.DAO.SelectMapper.doshowImg", id);
         byte[] a = cxDetails.get(0).getImg();
         System.out.println(a);
         new AjaxTool(a, response);
+    }
+
+    //查找通过的证书创新
+    @RequestMapping("/doTGCxSelectZsByStuid")
+    public void doTGCxSelectZsByStuid(HttpServletRequest request, HttpServletResponse response, String stuid) {
+        List<OutCX> outCXList = template.selectList("com.bhdx.DAO.SelectMapper.doTGCxSelectZsByStuid", stuid);
+        new AjaxTool(outCXList, response);
+    }
+
+    //查找通过的证书综测
+    @RequestMapping("/doTGZcSelectZsByStuid")
+    public void doTGZcSelectZsByStuid(HttpServletRequest request, HttpServletResponse response, String stuid) {
+        List<OutZC> outZCList = template.selectList("com.bhdx.DAO.SelectMapper.doTGZcSelectZsByStuid", stuid);
+        System.out.println(outZCList);
+        new AjaxTool(outZCList, response);
     }
 }
 

@@ -39,7 +39,7 @@ public class ExcelTest {
                 cell1.setCellValue(studentList.get(i).getName());
                 for (int j = 0; j < studentList.get(i).getOutCXList().size(); j++) {
                     Cell cell2 = row1.createCell(2 + 3 * j);
-                    cell2.setCellValue(studentList.get(i).getOutCXList().get(j).getZsname());
+                    cell2.setCellValue(studentList.get(i).getOutCXList().get(j).getZsName());
                     Cell cell3 = row1.createCell(3 + 3 * j);
                     cell3.setCellValue(studentList.get(0).getOutCXList().get(j).getMark());
                     Cell cell4 = row1.createCell(4 + 3 * j);

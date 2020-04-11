@@ -40,4 +40,10 @@
     <select id="doshowImg" parameterType="java.lang.String" resultType="com.bhdx.models.CXDetail">
       SELECT img FROM cxDetail WHERE id =#{id}
     </select>
+    <select id="doTGCxSelectZsByStuid" parameterType="java.lang.String" resultType="com.bhdx.models.OutCX">
+        SELECT zsname,mark,sort FROM outCx WHERE stuid =#{stuid}
+    </select>
+    <select id="doTGZcSelectZsByStuid" parameterType="java.lang.String" resultType="com.bhdx.models.OutZC">
+        SELECT zsname,mark,zk FROM outZc WHERE stuid =#{stuid}
+    </select>
 </mapper>

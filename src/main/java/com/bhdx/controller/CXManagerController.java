@@ -110,7 +110,7 @@ public class CXManagerController {
                     OutCX outCX = new OutCX();
                     outCX.setStuid(stuid);
                     outCX.setName(name);
-                    outCX.setZsname(zsname);
+                    outCX.setZsName(zsname);
                     outCX.setMark(mark);
                     outCX.setSort(sort);
                     outCX.setCause(remark);

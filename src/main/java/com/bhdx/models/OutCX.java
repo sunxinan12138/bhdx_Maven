@@ -12,7 +12,7 @@ public class OutCX {
     private int id;
     private String stuid;
     private String name;
-    private String zsname;
+    private String zsName;
     private Double mark;
     private String sort;
     private String cause;
@@ -41,12 +41,12 @@ public class OutCX {
         this.name = name;
     }
 
-    public String getZsname() {
-        return zsname;
+    public String getZsName() {
+        return zsName;
     }
 
-    public void setZsname(String zsname) {
-        this.zsname = zsname;
+    public void setZsName(String zsName) {
+        this.zsName = zsName;
     }
 
     public Double getMark() {
@@ -79,7 +79,7 @@ public class OutCX {
                 "id=" + id +
                 ", stuid='" + stuid + '\'' +
                 ", name='" + name + '\'' +
-                ", zsname='" + zsname + '\'' +
+                ", zsName='" + zsName + '\'' +
                 ", mark=" + mark +
                 ", sort='" + sort + '\'' +
                 ", cause='" + cause + '\'' +

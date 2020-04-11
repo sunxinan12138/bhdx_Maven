@@ -21,7 +21,7 @@
     </select>
         <!--通过审核-->
     <insert id="insertOutCX" parameterType="com.bhdx.models.OutCX">
-    INSERT into outCx (stuid,name,zsname,mark,sort,cause) VALUES (#{stuid},#{name},#{zsname},#{mark},#{sort},#{cause});
+    INSERT into outCx (stuid,name,zsName,mark,sort,cause) VALUES (#{stuid},#{name},#{zsName},#{mark},#{sort},#{cause});
     </insert>
 
     <!--不通过审核-->
