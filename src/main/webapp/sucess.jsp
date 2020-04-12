@@ -9,6 +9,7 @@
 <html>
 <head>
     <%
+        Object name = request.getAttribute("name");
         Object lenth = request.getAttribute("lenth");
         String path = request.getContextPath();
         String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -23,6 +24,8 @@
 <body>
 <p id="lenth">成功添加<%=lenth%>条数据
 </p>
+<%=name %><br>
+<a href="downCX?fileName=<%=name%>" download='<%=name%>'>下载</a>
 <a href="outFile/outCXExcel.jsp">继续导出</a>
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 </body>

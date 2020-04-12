@@ -28,8 +28,10 @@ public interface SelectMapper {
     void deldel(String id);
 
     List<CXDetail> doshowImg(String id);
-    //查找通过的证书创新
 
+    List<ZCDetail> doshowImgZC(String id);
+
+    //查找通过的证书创新
     List<OutCX> doTGCxSelectZsByStuid(String stuid);
 
     //查找通过的证书综测

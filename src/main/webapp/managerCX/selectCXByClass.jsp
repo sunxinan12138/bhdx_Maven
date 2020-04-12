@@ -74,7 +74,7 @@
                         "<td>"+attr[i].time+"</td>"+
                         "<td>"+attr[i].sort+"</td>"+
                         "<td>"+attr[i].classID+"</td>"+
-                        "<td><img src=images/"+attr[i].imgName+" width="+80+" height="+40+"></td>"+
+                        "<td><a href='javascript:examImg(" + attr[i].id + ")'>查看</a></td>"+
                         "<td><a href='javascript:' onclick='matterAccess("+CXid+")'>通过</a>&nbsp<a href='javascript:' onclick='matterNoAccess("+CXid+")'>不通过</a></td>" +
                         "<td><a href='doSelectCXById?CXid="+CXid+"'>修改</a></td></tr>")
                     $("#02").append($tr);//页面显示数据
@@ -126,6 +126,33 @@
                     layer.close(index);
                 }
             }
+        });
+    }
+    //弹出图片
+    function examImg(e) {
+        //设置弹出框样式
+        var html = '<img onkeyup="word_limit(this,400);" src="images/imgCX15.jpg" style="width:90%;height:90%;display:block;margin:0 auto;"  id="content_text"></textarea>';
+        var status = '0';//标记审核通过
+        $.ajax({
+            url: 'doshowImg',
+            type: 'POST',
+            async: true,
+            timeout: '3000',
+            dataType: 'text',
+            data: {'id': e},
+            success: function (d) {
+                var a = JSON.parse(d);
+                $("#content_text").attr("src", a);
+            }
+        })
+        layer.open({
+            title: "查看图片",
+            type: 1,
+            area: ['600px', '500px'],
+            closeBtn: 1,
+            anim: 2,
+            shadeClose: true, //开启遮罩关闭
+            content: html
         });
     }
 

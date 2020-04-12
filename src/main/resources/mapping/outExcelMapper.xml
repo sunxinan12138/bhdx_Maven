@@ -8,13 +8,13 @@
         <result column="student_name" property="name"/>
         <collection property="outCXList" ofType="com.bhdx.models.OutCX">
             <id column="out_id" property="id"/>
-            <result column="out_zsname" property="zsname"/>
+            <result column="out_zsname" property="zsName"/>
             <result column="out_mark" property="mark"/>
             <result column="out_sort" property="sort"/>
         </collection>
     </resultMap>
     <select id="selectOutCx" parameterType="java.lang.String" resultMap="Student_OutCX">
-SELECT s.ID student_ID,s.name student_name,o.id out_id,o.zsname out_zsname,o.mark out_mark,o.sort out_sort
+SELECT s.ID student_ID,s.name student_name,o.id out_id,o.zsName out_zsname,o.mark out_mark,o.sort out_sort
 FROM student s,outCx o WHERE s.classID = #{classId} AND s.ID = o.stuid
     </select>
     <resultMap id="Student_OutZC" type="com.bhdx.models.Student">

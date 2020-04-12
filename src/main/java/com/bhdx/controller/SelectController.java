@@ -9,9 +9,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.imageio.stream.FileImageOutputStream;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.*;
 
 /**
@@ -128,10 +134,55 @@ public class SelectController {
     //图片
     @RequestMapping("/doshowImg")
     public void doshowImg(HttpServletRequest request, HttpServletResponse response, String id) {
-        List<CXDetail> cxDetails = template.selectList("com.bhdx.DAO.SelectMapper.doshowImg", id);
-        byte[] a = cxDetails.get(0).getImg();
-        System.out.println(a);
-        new AjaxTool(a, response);
+        id = request.getParameter("id");
+        System.out.println(id);
+        String name = "images" + "/" + "imgCX" + id + ".jpg";
+        String realPath = request.getSession().getServletContext().getRealPath("/");
+        String path = realPath + "images" + "/" + "imgCX" + id + ".jpg";
+        System.out.println(path);
+        File file = new File(path);
+        try {
+            //如果有图片就不查了
+//            if (!file.exists()) {
+//                List<CXDetail> cxDetails = template.selectList("com.bhdx.DAO.SelectMapper.doshowImg", id);
+//                byte[] a = cxDetails.get(0).getImg();
+//                FileImageOutputStream imageOutput = new FileImageOutputStream(new File(path));
+//                imageOutput.write(a, 0, a.length);
+//                imageOutput.close();
+//            }
+            List<CXDetail> cxDetails = template.selectList("com.bhdx.DAO.SelectMapper.doshowImg", id);
+            byte[] a = cxDetails.get(0).getImg();
+            FileImageOutputStream imageOutput = new FileImageOutputStream(new File(path));
+            imageOutput.write(a, 0, a.length);
+            imageOutput.close();
+            new AjaxTool(name, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    //综测图片
+    @RequestMapping("/doshowImgZC")
+    public void doshowImgZC(HttpServletRequest request, HttpServletResponse response, String id) {
+        id = request.getParameter("id");
+        System.out.println(id);
+        String name = "images" + "/" + "imgZC" + id + ".jpg";
+        String realPath = request.getSession().getServletContext().getRealPath("/");
+        String path = realPath + "images" + "/" + "imgZC" + id + ".jpg";
+        System.out.println(path);
+        File file = new File(path);
+        try {
+            List<ZCDetail> cxDetails = template.selectList("com.bhdx.DAO.SelectMapper.doshowImgZC", id);
+            byte[] a = cxDetails.get(0).getImg();
+            FileImageOutputStream imageOutput = new FileImageOutputStream(new File(path));
+            imageOutput.write(a, 0, a.length);
+            imageOutput.close();
+            new AjaxTool(name, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     //查找通过的证书创新

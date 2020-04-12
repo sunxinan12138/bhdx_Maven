@@ -213,9 +213,8 @@
     //弹出图片
     function examImg(e) {
         //设置弹出框样式
-        var html = '<img onkeyup="word_limit(this,400);" src="" style="width:90%;height:90%;display:block;margin:0 auto;"  id="content_text"></textarea>';
+        var html = '<img onkeyup="word_limit(this,400);" src="images/imgCX15.jpg" style="width:90%;height:90%;display:block;margin:0 auto;"  id="content_text"></textarea>';
         var status = '0';//标记审核通过
-        alert(e);
         $.ajax({
             url: 'doshowImg',
             type: 'POST',
@@ -224,27 +223,8 @@
             dataType: 'text',
             data: {'id': e},
             success: function (d) {
-                // var result = JSON.parse(d);
-                var arry = d;
-                alert(d);
-                var str12 = arrayBufferToBase64(arry);//转换字符串
-                console.log(str12);
-                var outputImg = document.getElementById("content_text");
-                outputImg.src = 'data:image/png;base64,' + str12;
-                // // append it to your page
-                document.body.appendChild(outputImg);
-                console.log(outputImg);
-
-                function arrayBufferToBase64(buffer) {
-                    var binary = '';
-                    var bytes = new Uint8Array(buffer);
-                    var len = bytes.byteLength;
-                    for (var i = 0; i < len; i++) {
-                        binary += String.fromCharCode(bytes[i]);
-                    }
-                    return window.btoa(binary);
-                }
-
+                var a = JSON.parse(d);
+                $("#content_text").attr("src", a);
             }
         })
         layer.open({

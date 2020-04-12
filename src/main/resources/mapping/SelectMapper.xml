@@ -40,6 +40,9 @@
     <select id="doshowImg" parameterType="java.lang.String" resultType="com.bhdx.models.CXDetail">
       SELECT img FROM cxDetail WHERE id =#{id}
     </select>
+    <select id="doshowImgZC" parameterType="java.lang.String" resultType="com.bhdx.models.ZCDetail">
+          SELECT img FROM zceDetail WHERE id =#{id}
+    </select>
     <select id="doTGCxSelectZsByStuid" parameterType="java.lang.String" resultType="com.bhdx.models.OutCX">
         SELECT zsname,mark,sort FROM outCx WHERE stuid =#{stuid}
     </select>

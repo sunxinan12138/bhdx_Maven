@@ -51,6 +51,7 @@ public class ExcelTest {
 
             workbook.write(out);
             out.close();
+            workbook.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -95,6 +96,7 @@ public class ExcelTest {
 
             workbook.write(out);
             out.close();
+            workbook.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
