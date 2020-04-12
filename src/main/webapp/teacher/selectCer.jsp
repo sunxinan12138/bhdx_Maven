@@ -76,7 +76,7 @@
                         c += '<tr>' +
                             '<td>'+attr[i].stuid+'</td>' +
                             '<td>'+attr[i].name+'</td>' +
-                            '<td>'+attr[i].zsname+'</td>' +
+                            '<td>'+attr[i].zsName+'</td>' +
                             '<td>'+attr[i].mark+'</td>';
                         if( flag ){
                             c += '<td>'+attr[i].zk+'</td>';
