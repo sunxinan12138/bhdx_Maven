@@ -5,7 +5,7 @@
 <mapper namespace="com.bhdx.DAO.CXManagerMapper">
     <!--根据班级号查询创新分-->
     <select id="selectCXByClass" resultType="com.bhdx.models.CXDetail">
-       SELECT id,stuid,NAME,zsname,mark,TIME,sort,remark,imgName,shCondition,classId FROM cxDetail WHERE classId = #{classID};
+       SELECT id,stuid,NAME,zsName,mark,TIME,sort,remark,imgName,shCondition,classId FROM cxDetail WHERE classId = #{classID};
     </select>
     <!--根据创新编号删除记录-->
     <delete id="deleteCXById">
@@ -13,11 +13,11 @@
     </delete>
 <!--根据证书编号修改证书详情-->
     <update id="updateCXById" parameterType="com.bhdx.models.CXDetail">
-        UPDATE cxDetail SET stuid = #{stuid},name = #{name},zsname = #{zsname},mark = #{mark},remark = #{remark},time = #{time},sort = #{sort},classId = #{classID} WHERE id = #{id};
+        UPDATE cxDetail SET stuid = #{stuid},name = #{name},zsName = #{zsName},mark = #{mark},remark = #{remark},time = #{time},sort = #{sort},classId = #{classID} WHERE id = #{id};
     </update>
     <!--通过证书编号查询证书-->
     <select id="selectCXById" resultType="com.bhdx.models.CXDetail">
-    SELECT id,stuid,NAME,zsname,mark,TIME,sort,remark,imgName,shCondition,classId  FROM cxDetail WHERE id = #{id};
+    SELECT id,stuid,NAME,zsName,mark,TIME,sort,remark,imgName,shCondition,classId  FROM cxDetail WHERE id = #{id};
     </select>
         <!--通过审核-->
     <insert id="insertOutCX" parameterType="com.bhdx.models.OutCX">
@@ -26,7 +26,7 @@
 
     <!--不通过审核-->
     <insert id="insertDelMessage" parameterType="com.bhdx.models.DelMessage">
-        INSERT INTO delMessage (stuid,zsname,cause,flag) VALUES (#{stuid},#{zsname},#{cause},#{flag});
+        INSERT INTO delMessage (stuid,zsName,cause,flag) VALUES (#{stuid},#{zsName},#{cause},#{flag});
     </insert>
 
 

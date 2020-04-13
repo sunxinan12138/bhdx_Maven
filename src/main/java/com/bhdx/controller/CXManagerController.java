@@ -71,7 +71,7 @@ public class CXManagerController {
         cxDetail.setId(id);
         cxDetail.setStuid(stuid);
         cxDetail.setName(name);
-        cxDetail.setZsname(zsname);
+        cxDetail.setZsName(zsname);
         cxDetail.setMark(mark);
         cxDetail.setTime(time);
         cxDetail.setSort(sort);
@@ -103,7 +103,7 @@ public class CXManagerController {
         if (list.size() > 0){
                 String stuid = list.get(0).getStuid();
                 String name = list.get(0).getName();
-                String zsname = list.get(0).getZsname();
+                String zsname = list.get(0).getZsName();
                 Double mark = list.get(0).getMark();
                 String sort = list.get(0).getSort();
                 if (status.equals("0")){//审核通过
