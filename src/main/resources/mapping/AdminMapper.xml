@@ -3,40 +3,46 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bhdx.DAO.AdminMapper">
-    <resultMap id="Student_CXDetail" type="com.bhdx.models.Student">
+   <!-- <resultMap id="Student_CXDetail" type="com.bhdx.models.Student">
         <id column="student_ID" property="id" />
         <result column="student_name" property="name"/>
         <collection property="cxDetailList" ofType="com.bhdx.models.CXDetail">
             <id column="cstuid" property="stuid"/>
-            <!--<result column="clevel" property="level"/>-->
+            &lt;!&ndash;<result column="clevel" property="level"/>&ndash;&gt;
             <result column="czsname" property="zsname"/>
             <result column="cmark" property="mark"/>
             <result column="cremark" property="remark"/>
             <result column="cimg" property="img"/>
             <result column="cshCondition" property="shCondition"/>
         </collection>
-    </resultMap>
-
+    </resultMap>-->
+    <!--查询所有管理员-->
     <select id="Select_Admin" resultType="com.bhdx.models.Admin">
         SELECT * from Admin
     </select>
-
-    <select id="SelectCXDetail" resultMap="Student_CXDetail">
---         SELECT * from zsdetail where classID = #{classID}
-        SELECT s.ID student_ID,s.name student_name,
-        c.stuid cstuid,c.level clevel,c.zsname czsname,c.mark cmark,c.remark cremark,
-        c.img cimg,c.shCondition cshCondition
-        FROM student s,cxDetail c WHERE s.classID = #{classID}AND s.ID = c.stuid
+    <!--查询班级创新表-->
+    <select id="SelectCXDetail" resultType="CXDetail">
+      SELECT  stuid,name,zsname,mark,time,sort,remark,img,shCondition
+      FROM cxDetail WHERE classId = #{classID}
     </select>
-
+    <!--查询班级综测表-->
+    <select id="SelectZCDetail" resultType="ZCDetail">
+      SELECT  stuid,name,zsname,mark,zk,time,remark,img,shCondition
+      FROM zceDetail WHERE classId = #{classID}
+    </select>
+    <!--修改密码-->
     <update id="ChangePsw" parameterType="com.bhdx.models.Admin">
       UPDATE Admin SET `Password`=#{Password} WHERE `ID`=#{ID};
     </update>
-
+    <!--根据学号查询班级所有学生-->
+    <select id="selectStudentByClassid" resultType="Student">
+        SELECT * from studen where classId = #{ID}
+    </select>
+    <!--根据班级号查询班级-->
     <select id="queryClass" resultType="SubjectClass">
        SELECT * FROM class WHERE ID = #{ID};
     </select>
-
+    <!--添加班级管理员-->
     <insert id="addStuAdmin" parameterType="Admin">
         insert  into  Admin (`ID`,`Password`,`Name`,`Mark`) VALUES ( #{ID},#{Password},#{Name},'stu');
     </insert>

@@ -1,9 +1,9 @@
 package com.bhdx.controller;
 
-import com.bhdx.models.Admin;
-import com.bhdx.models.SubjectClass;
+import com.bhdx.models.*;
 import com.bhdx.tools.AjaxTool;
 import com.bhdx.tools.StringSplittingTool;
+import com.google.gson.Gson;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,21 +43,17 @@ public class AdminController {
                 if(temp.getID().equals(ID)&&temp.getPassword().equals(Psd)){//登陆成功
                     session.setAttribute("UserName",temp.getName());//把登录用户存储到session里
                     session.setAttribute("ID",ID);
-                    StringSplittingTool classID = new StringSplittingTool();
+                    andView.addObject("UserName",temp.getName());
                     if(temp.getMark().equals("CX")){
-                        //拆分出专业班级代号，传到数据库进行查询
-//                    List <CXDetail> cxDetails = template.selectList("com.bhdx.DAO.AdminMapper.SelectCXDetail",classID.GetSubjectID(temp.getID()));
-//                    andView.addObject("cxDetails",cxDetails);//把查询出来的放到zsdetail里传到前端
-                        andView.addObject("UserName",temp.getName());
-                        //跳回主页面
                         andView.setViewName("managerCX/manager");
                     }else if(temp.getMark().equals("ZC")){
-                        //拆分出专业班级代号，传到数据库进行查询
+                        andView.setViewName("managerZC/manager");
+                    }else if(temp.getMark().equals("stu")){
+                        andView.addObject("UserID",ID);
                         andView.addObject("UserName",temp.getName());
                         //跳回主页面
-                        andView.setViewName("managerZC/manager");
+                        andView.setViewName("ClassAudit");
                     }
-
                     flag=true;
                     break;
                 }
@@ -115,5 +111,18 @@ public class AdminController {
            result = false;
         }
         AjaxTool ajaxTool = new AjaxTool(result,response);
+    }
+
+    @RequestMapping("doSelectZCByClassID")
+    public void SelectZCByClassID (HttpServletRequest request, HttpServletResponse response){
+        String ID = request.getParameter("ID");
+        List <ZCDetail> zcDetails = template.selectList("com.bhdx.DAO.AdminMapper.SelectZCDetail",ID);
+        AjaxTool ajaxTool = new AjaxTool(zcDetails,response);
+    }
+    @RequestMapping("doSelectCXByClassID")
+    public void SelectCXByClassID (HttpServletRequest request, HttpServletResponse response){
+        String ID = request.getParameter("ID");
+        List <CXDetail> cxDetails = template.selectList("com.bhdx.DAO.AdminMapper.SelectCXDetail",ID);
+        AjaxTool ajaxTool = new AjaxTool(cxDetails,response);
     }
 }
