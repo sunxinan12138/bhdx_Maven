@@ -155,6 +155,7 @@ public class SelectController {
             FileImageOutputStream imageOutput = new FileImageOutputStream(new File(path));
             imageOutput.write(a, 0, a.length);
             imageOutput.close();
+            //System.out.println("img");
             new AjaxTool(name, response);
         } catch (Exception e) {
             e.printStackTrace();

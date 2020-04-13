@@ -22,7 +22,7 @@ public class CXDetail {
     private int id;
     private String stuid;
     private String name;
-    private String zsname;
+    private String zsName;
     private Double mark;
     private String remark;
     private String time;
@@ -111,12 +111,12 @@ public class CXDetail {
         this.stuid = stuid;
     }
 
-    public String getZsname() {
-        return zsname;
+    public String getZsName() {
+        return zsName;
     }
 
-    public void setZsname(String zsname) {
-        this.zsname = zsname;
+    public void setZsName(String zsName) {
+        this.zsName = zsName;
     }
 
     public String getShCondition() {
@@ -134,13 +134,13 @@ public class CXDetail {
                 "id=" + id +
                 ", stuid='" + stuid + '\'' +
                 ", name='" + name + '\'' +
-                ", zsname='" + zsname + '\'' +
+                ", zsName='" + zsName + '\'' +
                 ", mark=" + mark +
                 ", remark='" + remark + '\'' +
                 ", time='" + time + '\'' +
                 ", sort='" + sort + '\'' +
                 ", imgName='" + imgName + '\'' +
-                ", classId='" + classID + '\'' +
+                ", classID='" + classID + '\'' +
                 ", img=" + Arrays.toString(img) +
                 ", shCondition='" + shCondition + '\'' +
                 '}';

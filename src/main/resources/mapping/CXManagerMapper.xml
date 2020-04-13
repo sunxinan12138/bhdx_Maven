@@ -17,7 +17,7 @@
     </update>
     <!--通过证书编号查询证书-->
     <select id="selectCXById" resultType="com.bhdx.models.CXDetail">
-    SELECT * FROM cxDetail WHERE id = #{id};
+    SELECT id,stuid,NAME,zsname,mark,TIME,sort,remark,imgName,shCondition,classId  FROM cxDetail WHERE id = #{id};
     </select>
         <!--通过审核-->
     <insert id="insertOutCX" parameterType="com.bhdx.models.OutCX">

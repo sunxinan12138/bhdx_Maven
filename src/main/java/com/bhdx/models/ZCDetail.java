@@ -25,6 +25,7 @@ public class ZCDetail {
     private String classID;
     private String imgName;
     private byte[] img;
+    private String shCondition;
 
     public int getId() {
         return id;
@@ -113,6 +114,15 @@ public class ZCDetail {
     public void setClassID(String classID) {
         this.classID = classID;
     }
+
+    public String getShCondition() {
+        return shCondition;
+    }
+
+    public void setShCondition(String shCondition) {
+        this.shCondition = shCondition;
+    }
+
     @Override
     public String toString() {
         return "ZCDetail{" +
@@ -127,6 +137,7 @@ public class ZCDetail {
                 ", classID='" + classID + '\'' +
                 ", imgName='" + imgName + '\'' +
                 ", img=" + Arrays.toString(img) +
+                ", shCondition='" + shCondition + '\'' +
                 '}';
     }
 }

@@ -21,7 +21,7 @@
     </insert>
     <!--根据编号查询综测详情-->
     <select id="getZCById" resultType="com.bhdx.models.ZCDetail">
-        SELECT * FROM zceDetail WHERE id = #{id};
+        SELECT id,stuid,NAME,zsname,mark,TIME,zk,remark,imgName,shCondition,classId FROM zceDetail WHERE id = #{id};
     </select>
     <!--根据编号修改综测详情-->
     <update id="updateZCById" parameterType="com.bhdx.models.ZCDetail">
