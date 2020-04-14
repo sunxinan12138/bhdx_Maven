@@ -113,7 +113,7 @@
                     {"ZCid": ZCid, "remark": remark, "status": status},
                     function (data) {
                         var result = JSON.parse(data);
-                        if (result == true) {
+                        if (result) {
                             alert("审核成功");
                             window.location.reload();
                         } else {

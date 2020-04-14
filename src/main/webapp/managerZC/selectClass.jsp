@@ -52,7 +52,7 @@
 </script>
 <div class="panel panel-default">
     <div>
-        <table class="table table-hover">
+        <table class="table table-bordered">
             <thead align="center">
             <tr>
                 <th style="text-align: center" width="10%">班级</th>

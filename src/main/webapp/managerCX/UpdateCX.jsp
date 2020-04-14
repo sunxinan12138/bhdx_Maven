@@ -32,7 +32,7 @@
                                                   style="border: 0px;" readonly="true"><br>
         姓&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp名：<input type="text" name="name" id="name" value="<%=cxDetail.getName() %>"
                                                      style="border: 0px;" readonly="true"><br>
-        证书名称：<input type="text" name="zsname" id="zsname" value="<%=cxDetail.getZsname() %>" style="border: 0px;"
+        证书名称：<input type="text" name="zsname" id="zsname" value="<%=cxDetail.getZsName() %>" style="border: 0px;"
                     readonly="true"><br>
         创新分数：<input type="text" name="mark" id="mark" value="<%=cxDetail.getMark() %>"><br>
         日&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp期： <input type="text" name="time" id="time" value="<%=cxDetail.getTime() %>"><br>

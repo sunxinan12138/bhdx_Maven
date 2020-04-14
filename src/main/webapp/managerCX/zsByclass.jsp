@@ -162,7 +162,7 @@
                 $('.wait_pop').show();
                 $.post(
                     "./doAccessCX",
-                    {"CXid": CXid, "remark": remark, "status": status},
+                    {"CXid": CXid, "remark": remark, "status": 1},
                     function (data) {
                         var result = JSON.parse(data);
                         alert(result);

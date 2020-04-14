@@ -27,6 +27,7 @@
     <li style="padding: 15px"><a href="managerCX\addStuMark.jsp" target="-_blank">添加学生分数</a></li>
     <li style="padding: 15px"><a href="managerCX/class.jsp" target="right">班级管理</a></li>
     <li style="padding: 15px"><a href="outFile\outCXExcel.jsp" target="right">证书导出</a></li>
+    <li style="padding: 15px"><a href="managerCX\selectCer.jsp" target="right">查看审核通过的信息</a></li>
 </ul>
 </body>
 </html>
