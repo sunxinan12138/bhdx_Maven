@@ -132,6 +132,7 @@ public class AddZsController {
             String imgCXName = "imgCX" + iname;
             String imgZCName = "imgZC" + iname;
             zcDetail.setZsName(zsname);
+            cxDetail.setZsName(zsname);
             zcDetail.setMark(markzcd);
             zcDetail.setImgName(imgZCName);
             zcDetail.setImg(file.getBytes());
@@ -139,7 +140,7 @@ public class AddZsController {
             cxDetail.setImgName(imgCXName);
             cxDetail.setImg(file.getBytes());
             System.out.println(cxDetail);
-            System.out.println(zcDetail);
+           // System.out.println(zcDetail);
             //综测添加
             if (zcDetail.getMark() != 0) {
                 btn = addZsService.zcadd(zcDetail);

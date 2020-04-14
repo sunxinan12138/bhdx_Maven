@@ -7,7 +7,7 @@
     insert into zceDetail (stuid,name,mark,zk,zsname,time,remark,imgName,img,classId) values  (#{stuid}, #{name}, #{mark}, #{zk}, #{zsName},#{time},#{remark}, #{imgName}, #{img},#{classID});
     </insert>
     <insert id="cxadd" parameterType="com.bhdx.models.CXDetail">
-    insert into cxDetail (stuid,name,zsname,mark,time,sort,remark,imgName,img,classId) values  (#{stuid}, #{name}, #{zsname}, #{mark},#{time},#{sort}, #{remark}, #{imgName}, #{img},#{classID});
+    insert into cxDetail (stuid,name,zsName,mark,time,sort,remark,imgName,img,classId) values  (#{stuid}, #{name}, #{zsName}, #{mark},#{time},#{sort}, #{remark}, #{imgName}, #{img},#{classID});
     </insert>
 
     <insert id="addMark" parameterType="com.bhdx.models.OutCX">
