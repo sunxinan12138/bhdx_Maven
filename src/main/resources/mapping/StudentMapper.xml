@@ -6,11 +6,11 @@
     <select id="findAll" resultType="Student">
     SELECT * FROM student
   </select>
-    <select id="selectInfo" parameterType="String" resultType="Student" >
+    <select id="selectInfo" parameterType="String" resultType="Student">
     SELECT * FROM student WHERE id=#{id}
   </select>
     <update id="changepsw" parameterType="java.util.Map">
-        <foreach item="value" index="key" collection="map" separator=";" >
+        <foreach item="value" index="key" collection="map" separator=";">
             UPDATE student
             SET
             psw = #{value}
@@ -34,7 +34,7 @@
         (#{id},#{psw},#{name},#{classID});
 
     </insert>
-    <select id="getStudentID" parameterType="String"  resultType="java.lang.String">
+    <select id="getStudentID" parameterType="String" resultType="java.lang.String">
       select max(ID) from student where ID like CONCAT(#{condition},'%');
     </select>
 
@@ -43,8 +43,14 @@
     </delete>
 
 
-
     <select id="findClassIdBystuid" resultType="java.lang.String" parameterType="java.lang.String">
         SELECT classId FROM student WHERE ID = #{stuid}
     </select>
+
+    <insert id="addStudentMore">
+  INSERT INTO student (ID,psw,name,classId) VALUES
+  <foreach collection="list" item="student" separator=",">
+      (#{student.id},#{student.psw},#{student.name},#{student.classID})
+  </foreach>
+    </insert>
 </mapper>

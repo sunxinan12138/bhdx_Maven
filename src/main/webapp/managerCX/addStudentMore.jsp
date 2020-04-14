@@ -20,10 +20,11 @@
     <title>批量添加</title>
 </head>
 <body>
-<form  action="addStudentMore" style="margin: 0 auto ;height: auto; width: 40%" role="form" method="post">
-    <div  class="form-group">
-        <label for="inputfile">Excel表格添加</label>
-        <input type="file" id="inputfile">
+<form action="addStudentMore" style="margin: 0 auto ;height: auto; width: 40%" role="form" method="POST"
+      enctype="multipart/form-data">
+    <div class="form-group">
+        <label>Excel表格添加</label>
+        <input name="file" type="file" id="file">
     </div>
     <button type="submit" class="btn btn-default">提交</button>
 </form>

@@ -46,5 +46,8 @@ public class StudentServiceImpl implements StudentService {
         return btn;
     }
 
-
+    @Override
+    public int addStudentMore(List<Student> students) {
+        return template.insert("com.bhdx.DAO.StudentMapper.addStudentMore", students);
+    }
 }

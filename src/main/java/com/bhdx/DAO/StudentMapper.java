@@ -22,4 +22,6 @@ public interface StudentMapper {
     public void deleteStudent(String ID);
 
     String findClassIdBystuid(String stuid);
+
+    public void addStudentMore(List<Student> list);
 }

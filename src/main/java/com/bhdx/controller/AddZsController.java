@@ -1,13 +1,15 @@
 package com.bhdx.controller;
 
-import com.bhdx.models.CXDetail;
-import com.bhdx.models.OutCX;
-import com.bhdx.models.OutZC;
-import com.bhdx.models.ZCDetail;
+import com.bhdx.models.*;
 import com.bhdx.service.AddZsService;
 import com.bhdx.service.StudentService;
 import com.bhdx.tools.AjaxTool;
 import com.google.gson.Gson;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +18,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.awt.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class AddZsController {
@@ -164,6 +171,52 @@ public class AddZsController {
         boolean a = false;
         a = addZsService.addMarkZC(outZC);
         new AjaxTool(a, response);
+    }
+
+    //批量添加学生
+    @RequestMapping("/addStudentMore")
+    public void addStudentMore(HttpServletRequest request, HttpServletResponse response, Student student, @RequestParam("file") MultipartFile file) {
+        List<Student> studentList = new ArrayList<>();
+        String classid = file.getOriginalFilename();
+        classid = classid.substring(0, classid.indexOf("."));
+        try {
+            Workbook workbook = new XSSFWorkbook(file.getInputStream());
+            Sheet sheet = workbook.getSheetAt(0);
+            int lenth = sheet.getLastRowNum();//最后一行
+            for (int i = 0; i < lenth; i++) {
+                student = new Student();
+                Row row = sheet.getRow(i);
+                short lastCell = row.getLastCellNum();
+                for (int j = 0; j < lastCell; j++) {
+                    Cell cell = row.getCell(j);
+                    Object value = cell.getStringCellValue();
+                    if (j == 0) {
+                        String id = value.toString();
+                        student.setId(id);
+                        student.setPsw(id.substring(4, 12));
+                    } else if (j == 1) {
+                        student.setName(value.toString());
+                    }
+                }
+                student.setClassID(classid);
+                studentList.add(i, student);
+                student = null;
+            }
+            System.out.println(studentList);
+            if (studentList.size() != 0) {
+                System.out.println("添加");
+                System.out.println(studentList);
+                int a = studentService.addStudentMore(studentList);
+                new AjaxTool("成功", response);
+            } else {
+                new AjaxTool("失败", response);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
 }
 

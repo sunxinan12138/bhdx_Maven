@@ -17,5 +17,8 @@ public interface StudentService {
 
     boolean changemessage(Student student);
 
+    //批量添加学生
+    int addStudentMore(List<Student> students);
+
 
 }
