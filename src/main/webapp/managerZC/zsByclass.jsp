@@ -192,7 +192,7 @@
         <input type="text" id="01" disabled value=<%=classid%>>
     </div>
     <div>
-        <table class="table table-hover">
+        <table class="table table-bordered">
             <thead align="center">
             <tr>
                 <th width="10%">学生id</th>
